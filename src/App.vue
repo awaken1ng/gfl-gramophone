@@ -203,6 +203,10 @@ export default {
 $material-icons-font-path: '~material-icons/iconfont/'
 @import '~material-icons/iconfont/material-icons.scss'
 
+$subtitle: #888888
+$focus: #cccccc
+$highlight: #ffaa00
+
 body
   margin: 0 15% 4% 15%
 
@@ -242,20 +246,20 @@ body
       align-items: center
     & > .subtitle
       margin-left: 0.5rem
-      color: #888888
+      color: #subtitle
       font-size: 75%
     &:hover
-      background-color: #cccccc
+      background-color: $focus
     &.playing
-      background-color: #ffaa00
+      background-color: $highlight
     &.loading
-      background-color: #ffaa00
+      background-color: $highlight
       animation: pulse 3s infinite ease-in-out
 
 .footer
   margin-top: 3rem
   font-size: 75%
-  color: #888888
+  color: $subtitle
   p
     margin: 0
 
