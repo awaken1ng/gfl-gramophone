@@ -9,6 +9,8 @@
         span.material-icons stop
       div.next.button(v-on:click="onNextPrevButtonClick('next')")
         span.material-icons skip_next
+      div.loop.button.active
+        span.material-icons loop
 
       div.progress-bar
         vue-slider.seek-bar(v-model="played"
@@ -20,6 +22,7 @@
         span {{ formatMMSS(played) }}
         span /
         span {{ formatMMSS(duration) }}
+
     div.playlist
       div.item(v-for="(track, index) in playlist"
                     v-bind:key="index"
@@ -29,6 +32,7 @@
           span.material-icons {{ getPlaybackStatusIcon(index) }}
         span.title {{ track.title }}
         span.subtitle {{ track.subtitle }}
+
     div.footer
       p Girls' Frontline is Copyright SUNBORN Network Technology Co., Ltd.
       p All music and names owned and trademarked by SUNBORN Network Technology Co., Ltd. are property of SUNBORN Network Technology Co., Ltd.
@@ -228,6 +232,8 @@ body
   display: flex
   align-items: center
   background-color: white
+  .loop.button.active
+    color: $highlight
   .progress-bar
     display: flex
     align-items: center
