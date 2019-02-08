@@ -203,27 +203,33 @@ export default {
 $material-icons-font-path: '~material-icons/iconfont/'
 @import '~material-icons/iconfont/material-icons.scss'
 
+body
+  margin: 0 15% 4% 15%
+
 #app
   font-family: 'Avenir', Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   text-align: center
-  margin: 8% 15%
 
 .button
   display: flex
   user-select: none
 
 .controls
+  position: sticky
+  top: 0
+  padding-top: 4%
+  padding-bottom: 1rem
   display: flex
   align-items: center
+  background-color: white
   .progress-bar
     display: flex
     align-items: center
     width: 100%
 
 .playlist
-  margin-top: 1rem
   & > .item
     display: flex
     height: 30px
