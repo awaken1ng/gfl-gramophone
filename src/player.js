@@ -6,7 +6,7 @@ class AudioPlayer {
     this.progress = {
       iid: 0, // interval id
       played: 0,
-      callback: null
+      callbacks: null
     }
   }
 
@@ -57,7 +57,7 @@ class AudioPlayer {
    * @param {number} position - At what position start the audio playback
    * @param {function(number)} progressCallback
    */
-  play (position, progressCallback) {
+  play (position, callbacks) {
     console.log('Starting playback from', position)
     // start the playback
     let source = this.source
@@ -66,21 +66,23 @@ class AudioPlayer {
     // start counting seconds on how long the audio been playing
     // send the position to callback every second
     let progress = this.progress
-    progress.callback = progressCallback
+    progress.callbacks = callbacks
     progress.played = position
     progress.iid = setInterval(function () {
       if (source.loop && progress.played >= source.loopEnd) {
         // wrap around if we passed the loop end
         progress.played = source.loopStart
+        if (callbacks && callbacks.loop) callbacks.loop()
       } else if (!source.loop && progress.played >= source.buffer.duration) {
         // if we passed the end of the song, stop the counter
         clearInterval(progress.iid)
         progress.iid = 0
         progress.played = 0
+        if (callbacks && callbacks.stop) callbacks.stop()
       } else {
         progress.played += 1
       }
-      if (progressCallback) progressCallback(progress.played)
+      if (callbacks && callbacks.progress) callbacks.progress(progress.played)
     }, 1000)
   }
 
@@ -97,7 +99,7 @@ class AudioPlayer {
     this.progress = {
       iid: 0,
       played: 0,
-      callback: null
+      callbacks: null
     }
   }
 
@@ -114,17 +116,17 @@ class AudioPlayer {
       start: this.source.loopStart,
       end: this.source.loopEnd
     }
-    let progressCallback = this.progress.callback
+    let callbacks = this.progress.callbacks
     let resumeAt = this.progress.played
 
     // clean up
     this.source = null
     this.progress.played = 0
-    this.progress.callback = null
+    this.progress.callbacks = null
 
     // set the source back and resume playback
     this.set(buffer, loop)
-    this.play(resumeAt, progressCallback)
+    this.play(resumeAt, callbacks)
   }
 
   /**
@@ -149,12 +151,12 @@ class AudioPlayer {
       start: this.source.loopStart,
       end: this.source.loopEnd
     }
-    let progressCallback = this.progress.callback
+    let callbacks = this.progress.callbacks
 
     this.stop()
     this.set(buffer, loop)
     this.progress.played = position
-    this.play(position, progressCallback)
+    this.play(position, callbacks)
   }
 }
 
