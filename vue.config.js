@@ -8,5 +8,12 @@ module.exports = {
         '#': path.resolve(__dirname, './src')
       }
     }
+  },
+  chainWebpack: config => {
+    // do not pointlessly copy `public` folder to `dist`
+    // when not building for production
+    if (process.env.NODE_ENV !== 'production') {
+      config.plugins.delete('copy')
+    }
   }
 }
