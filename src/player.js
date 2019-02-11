@@ -39,14 +39,17 @@ class AudioPlayer {
     console.log('Setting the source to', buffer, loop)
     let source = this.context.createBufferSource()
     source.buffer = buffer
-    if (loop) {
-      source.loop = Boolean(loop.start || loop.end)
+    source.connect(this.context.destination)
+    this.source = source
+    this.setLoop(loop)
+  }
+  setLoop (loop) {
+    let source = this.source
+    if (source && loop) {
+      source.loop = Boolean(loop.enabled && (loop.start || loop.end))
       source.loopStart = loop.start
       source.loopEnd = loop.end
     }
-    source.connect(this.context.destination)
-
-    this.source = source
   }
 
   /**
@@ -67,7 +70,13 @@ class AudioPlayer {
     progress.played = position
     progress.iid = setInterval(function () {
       if (source.loop && progress.played >= source.loopEnd) {
+        // wrap around if we passed the loop end
         progress.played = source.loopStart
+      } else if (!source.loop && progress.played >= source.buffer.duration) {
+        // if we passed the end of the song, stop the counter
+        clearInterval(progress.iid)
+        progress.iid = 0
+        progress.played = 0
       } else {
         progress.played += 1
       }
@@ -101,6 +110,7 @@ class AudioPlayer {
     // move the source, loop range, callback and position
     let buffer = this.source.buffer
     let loop = {
+      enabled: this.source.loop,
       start: this.source.loopStart,
       end: this.source.loopEnd
     }
@@ -135,6 +145,7 @@ class AudioPlayer {
     console.log('Seeking to', position)
     let buffer = this.source.buffer
     let loop = {
+      enabled: this.source.loop,
       start: this.source.loopStart,
       end: this.source.loopEnd
     }

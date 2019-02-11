@@ -9,7 +9,8 @@
         span.material-icons stop
       div.next.button(v-on:click="onNextPrevButtonClick('next')")
         span.material-icons skip_next
-      div.loop.button.active
+      div.loop.button(v-on:click="onLoopButtonClick"
+                      v-bind:class="{ active: state.looping }")
         span.material-icons loop
 
       div.progress-bar
@@ -43,6 +44,8 @@ import vueSlider from 'vue-slider-component'
 import playlist from '#/assets/playlist.json'
 import player from '#/player'
 
+const sampleRate = 44100
+
 export default {
   name: 'app',
   components: { vueSlider },
@@ -55,6 +58,7 @@ export default {
       state: {
         nowPlaying: null, // track index
         lastPlayed: null, // index of last played track
+        looping: true,
         isLoading: false,
         isPaused: false
       }
@@ -125,6 +129,20 @@ export default {
 
       this.startPlayback(track, 0)
     },
+    onLoopButtonClick: function () {
+      this.state.looping = !this.state.looping
+
+      // update the currently playing track
+      let nowPlaying = this.state.nowPlaying
+      if (nowPlaying !== null) {
+        let track = this.playlist[nowPlaying]
+        this.player.setLoop({
+          enabled: this.state.looping,
+          start: track.loop.start / sampleRate,
+          end: track.loop.end / sampleRate
+        })
+      }
+    },
     onSeek: function (value) {
       this.player.seek(value)
     },
@@ -146,8 +164,8 @@ export default {
 
       let callback = function (buffer) {
         // loop ranges are stored in samples, convert to seconds
-        let sampleRate = 44100
         let loop = {
+          enabled: state.looping,
           start: track.loop.start / sampleRate,
           end: track.loop.end / sampleRate
         }
