@@ -144,6 +144,8 @@ class AudioPlayer {
   }
 
   seek (position) {
+    if (!this.source) return
+
     console.log('Seeking to', position)
     let buffer = this.source.buffer
     let loop = {
