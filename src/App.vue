@@ -161,6 +161,7 @@ export default {
       let player = this.player
       let state = this.state
       let cache = this.cache
+      let stopPlayback = this.stopPlayback
 
       let callback = function (buffer) {
         // loop ranges are stored in samples, convert to seconds
@@ -171,7 +172,7 @@ export default {
         }
         player.stop()
         player.set(buffer, loop)
-        player.play(position)
+        player.play(position, { stop: function () { stopPlayback() } })
         state.nowPlaying = trackIndex
         state.lastPlayed = trackIndex
       }
