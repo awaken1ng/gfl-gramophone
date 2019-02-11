@@ -216,6 +216,7 @@ export default {
     },
     formatMMSS: function (seconds) {
       // format seconds to 'mm:ss'
+      seconds = Math.round(seconds)
       let minutes = String(Math.floor(seconds / 60)).padStart(2, '0')
       seconds = String(Math.round(seconds % 60)).padStart(2, '0')
       return `${minutes}:${seconds}`
