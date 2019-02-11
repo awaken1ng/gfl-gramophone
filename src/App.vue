@@ -18,6 +18,7 @@
                             v-bind:max="Math.ceil(duration)"
                             tooltip="false"
                             width="100%"
+                            ref="seekbar"
                             v-bind:processStyle="{ backgroundColor: '#ffaa00' }"
                             v-on:callback="onSeek")
         span {{ formatMMSS(played) }}
@@ -195,6 +196,7 @@ export default {
     stopPlayback: function () {
       this.player.stop()
       this.state.nowPlaying = null
+      this.$refs.seekbar.setIndex(0)
     },
 
     // utility
