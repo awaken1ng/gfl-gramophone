@@ -297,6 +297,7 @@ $highlight: #ffaa00
   color: $subtitle
   margin-top: 3rem
   font-size: 75%
+  text-align: center
   p
     margin: 0
 
