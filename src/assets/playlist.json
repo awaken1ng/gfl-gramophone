@@ -3,7 +3,7 @@
   "playlist": [
     {
       "title": "Cuty",
-      "subtitle": "Dormitory Theme",
+      "tags": "Dormitory",
       "path": "dorm/dorm.ogg",
       "loop": {
         "start": 7844,

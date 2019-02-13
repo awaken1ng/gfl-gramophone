@@ -25,8 +25,9 @@
                     v-bind:class="{ playing: isPlaying(index), loading: isLoading(index) }"
                     v-on:click="onPlaylistItemClick(index)")
         span.status.material-icons {{ getPlaybackStatusIcon(index) }}
-        span.title {{ track.title }}
-        span.subtitle {{ track.subtitle }}
+        div.title
+          div.name {{ track.title }}
+          div.tags {{ track.tags ? typeof track.tags === 'string' ? track.tags : track.tags.join(', ') : '' }}
     div.footer
       p Girls' Frontline is Copyright SUNBORN Network Technology Co., Ltd.
       p All music and names owned and trademarked by SUNBORN Network Technology Co., Ltd. are property of SUNBORN Network Technology Co., Ltd.
@@ -264,9 +265,12 @@ body
       height: 30px
       justify-content: center
       align-items: center
-    & > .subtitle
-      margin-left: 0.5rem
-      color: #subtitle
+    & > .title
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      & > .tags
+        color: #636363
       font-size: 75%
     &:hover
       background-color: $focus
