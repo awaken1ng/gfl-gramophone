@@ -226,7 +226,7 @@ $material-icons-font-path: '~material-icons/iconfont/'
   display: flex
   user-select: none
 
-$subtitle: #888888
+$subtitle: #636363
 $focus: #cccccc
 $highlight: #ffaa00
 
@@ -283,7 +283,7 @@ $highlight: #ffaa00
       flex-direction: column
       align-items: flex-start
       & > .tags
-        color: #636363
+        color: $subtitle
         font-size: 75%
     &:hover
       background-color: $focus
@@ -294,9 +294,9 @@ $highlight: #ffaa00
       animation: pulse 3s infinite ease-in-out
 
 .footer
+  color: $subtitle
   margin-top: 3rem
   font-size: 75%
-  color: $subtitle
   p
     margin: 0
 
