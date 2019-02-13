@@ -9,22 +9,21 @@
         span.loop.material-icons(v-on:click="onLoopButtonClick"
                                 v-bind:class="{ active: state.looping }") loop
       div.progress-bar
-        vue-slider.seek-bar(v-model="played"
-                            v-bind:max="Math.ceil(duration)"
-                            tooltip="false"
+        vue-slider.seek-bar(tooltip="false"
                             width="100%"
                             ref="seekbar"
+                            v-model="played"
+                            v-bind:max="Math.ceil(duration)"
                             v-bind:processStyle="{ backgroundColor: '#ffaa00' }"
                             v-on:callback="onSeek")
-        span {{ formatMMSS(played) }}
-        span /
-        span {{ formatMMSS(duration) }}
-
+        span.played {{ formatMMSS(played) }}
+        | /
+        span.duration {{ formatMMSS(duration) }}
     div.playlist
       div.item(v-for="(track, index) in playlist"
-                    v-bind:key="index"
-                    v-bind:class="{ playing: isPlaying(index), loading: isLoading(index) }"
-                    v-on:click="onPlaylistItemClick(index)")
+               v-bind:key="index"
+               v-bind:class="{ playing: isPlaying(index), loading: isLoading(index) }"
+               v-on:click="onPlaylistItemClick(index)")
         span.status.material-icons {{ getPlaybackStatusIcon(index) }}
         div.title
           div.name {{ track.title }}
@@ -248,7 +247,6 @@ $highlight: #ffaa00
   font-family: 'Avenir', Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  text-align: center
 
 .controls
   position: sticky
@@ -269,9 +267,12 @@ $highlight: #ffaa00
 .playlist
   & > .item
     display: flex
-    height: 30px
-    line-height: 35px
+    min-height: 33px
+    padding-top: 1px
+    align-items: center
     transition: 50ms ease-in-out
+    &:not(:last-child)
+      margin-bottom: 2px
     & > .status
       width: 30px
       height: 30px
@@ -283,7 +284,7 @@ $highlight: #ffaa00
       align-items: flex-start
       & > .tags
         color: #636363
-      font-size: 75%
+        font-size: 75%
     &:hover
       background-color: $focus
     &.playing
