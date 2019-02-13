@@ -1,12 +1,13 @@
 <template lang="pug">
   div#app
     div.controls
-      span.previous.material-icons(v-on:click="onNextPrevButtonClick('previous')") skip_previous
-      span.play.material-icons(v-on:click="onPlayButtonClick") {{ getPlayButtonIcon() }}
-      span.stop.material-icons(v-on:click="stopPlayback") stop
-      span.next.material-icons(v-on:click="onNextPrevButtonClick('next')") skip_next
-      span.loop.material-icons(v-on:click="onLoopButtonClick"
-                               v-bind:class="{ active: state.looping }") loop
+      div.control-buttons
+        span.previous.material-icons(v-on:click="onNextPrevButtonClick('previous')") skip_previous
+        span.play.material-icons(v-on:click="onPlayButtonClick") {{ getPlayButtonIcon() }}
+        span.stop.material-icons(v-on:click="stopPlayback") stop
+        span.next.material-icons(v-on:click="onNextPrevButtonClick('next')") skip_next
+        span.loop.material-icons(v-on:click="onLoopButtonClick"
+                                v-bind:class="{ active: state.looping }") loop
       div.progress-bar
         vue-slider.seek-bar(v-model="played"
                             v-bind:max="Math.ceil(duration)"
@@ -230,8 +231,18 @@ $subtitle: #888888
 $focus: #cccccc
 $highlight: #ffaa00
 
-body
-  margin: 0 15% 4% 15%
+@media (max-width: 500px)
+  body
+    margin: 0 0.5rem 0.5rem 0.5rem
+  .controls
+    flex-direction: column
+    padding-top: 0.5rem
+
+@media (min-width: 500px)
+  body
+    margin: 0 15% 4% 15%
+  .controls
+    padding-top: 4%
 
 #app
   font-family: 'Avenir', Helvetica, Arial, sans-serif
@@ -242,13 +253,14 @@ body
 .controls
   position: sticky
   top: 0
-  padding-top: 4%
   padding-bottom: 1rem
   display: flex
   align-items: center
   background-color: white
-  .loop.active
-    color: $highlight
+  .control-buttons
+    display: flex
+    .loop.active
+      color: $highlight
   .progress-bar
     display: flex
     align-items: center
