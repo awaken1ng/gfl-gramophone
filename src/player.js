@@ -15,18 +15,21 @@ class AudioPlayer {
    * @param {string} url
    * @param {function(AudioBuffer)} callback
    */
-  download (url, successCallback, errorCallback) {
+  download (url, callbacks) {
+    if (!callbacks || (callbacks && !callbacks.success)) throw Error('No success callback passed')
+
     let player = this
     let request = new XMLHttpRequest()
-    if (!errorCallback) errorCallback = function (error) { console.error('AudioPlayer.downloadAudio', error) }
+    if (!callbacks.error) callbacks.error = function (error) { console.error('AudioPlayer.download', error) }
 
     request.open('GET', url, true)
     request.responseType = 'arraybuffer'
     request.onload = function () {
       player.context.decodeAudioData(request.response)
-        .then(successCallback)
-        .catch(errorCallback)
+        .then(callbacks.success)
+        .catch(callbacks.error)
     }
+    if (callbacks.progress) request.onprogress = callbacks.progress
     request.send()
   }
 
@@ -55,7 +58,7 @@ class AudioPlayer {
   /**
    *
    * @param {number} position - At what position start the audio playback
-   * @param {function(number)} progressCallback
+   * @param {object} Object with progress, stop and/or loop callback functions
    */
   play (position, callbacks) {
     console.log('Starting playback from', position)

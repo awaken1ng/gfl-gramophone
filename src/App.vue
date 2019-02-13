@@ -176,14 +176,16 @@ export default {
       if (cache[trackIndex]) {
         callback(cache[trackIndex])
       } else {
-        let onSuccess = function (buffer) {
-          state.isLoading = false
-          cache[trackIndex] = buffer
-          callback(buffer)
-        }
-        let onError = function () { state.isLoading = false }
         state.isLoading = trackIndex
-        player.download(url, onSuccess, onError)
+        player.download(url,
+          {
+            success: function (buffer) {
+              state.isLoading = false
+              cache[trackIndex] = buffer
+              callback(buffer)
+            },
+            error: function () { state.isLoading = false }
+          })
       }
     },
     stopPlayback: function () {
