@@ -1,18 +1,12 @@
 <template lang="pug">
   div#app
     div.controls
-      div.previous.button(v-on:click="onNextPrevButtonClick('previous')")
-        span.material-icons skip_previous
-      div.play.button(v-on:click="onPlayButtonClick")
-        span.material-icons {{ getPlayButtonIcon() }}
-      div.stop.button(v-on:click="stopPlayback")
-        span.material-icons stop
-      div.next.button(v-on:click="onNextPrevButtonClick('next')")
-        span.material-icons skip_next
-      div.loop.button(v-on:click="onLoopButtonClick"
-                      v-bind:class="{ active: state.looping }")
-        span.material-icons loop
-
+      span.previous.material-icons(v-on:click="onNextPrevButtonClick('previous')") skip_previous
+      span.play.material-icons(v-on:click="onPlayButtonClick") {{ getPlayButtonIcon() }}
+      span.stop.material-icons(v-on:click="stopPlayback") stop
+      span.next.material-icons(v-on:click="onNextPrevButtonClick('next')") skip_next
+      span.loop.material-icons(v-on:click="onLoopButtonClick"
+                               v-bind:class="{ active: state.looping }") loop
       div.progress-bar
         vue-slider.seek-bar(v-model="played"
                             v-bind:max="Math.ceil(duration)"
@@ -30,11 +24,9 @@
                     v-bind:key="index"
                     v-bind:class="{ playing: isPlaying(index), loading: isLoading(index) }"
                     v-on:click="onPlaylistItemClick(index)")
-        div.playback-status.button
-          span.material-icons {{ getPlaybackStatusIcon(index) }}
+        span.status.material-icons {{ getPlaybackStatusIcon(index) }}
         span.title {{ track.title }}
         span.subtitle {{ track.subtitle }}
-
     div.footer
       p Girls' Frontline is Copyright SUNBORN Network Technology Co., Ltd.
       p All music and names owned and trademarked by SUNBORN Network Technology Co., Ltd. are property of SUNBORN Network Technology Co., Ltd.
@@ -229,6 +221,10 @@ export default {
 $material-icons-font-path: '~material-icons/iconfont/'
 @import '~material-icons/iconfont/material-icons.scss'
 
+.material-icons
+  display: flex
+  user-select: none
+
 $subtitle: #888888
 $focus: #cccccc
 $highlight: #ffaa00
@@ -242,10 +238,6 @@ body
   -moz-osx-font-smoothing: grayscale
   text-align: center
 
-.button
-  display: flex
-  user-select: none
-
 .controls
   position: sticky
   top: 0
@@ -254,7 +246,7 @@ body
   display: flex
   align-items: center
   background-color: white
-  .loop.button.active
+  .loop.active
     color: $highlight
   .progress-bar
     display: flex
@@ -267,7 +259,7 @@ body
     height: 30px
     line-height: 35px
     transition: 50ms ease-in-out
-    & > .playback-status
+    & > .status
       width: 30px
       height: 30px
       justify-content: center
