@@ -8,7 +8,7 @@
     playlist
     div.footer
       p Girls' Frontline is Copyright SUNBORN Network Technology Co., Ltd.
-      p All music and names owned and trademarked by SUNBORN Network Technology Co., Ltd. are property of SUNBORN Network Technology Co., Ltd.
+      p All music is property of SUNBORN Network Technology Co., Ltd. or it's respective owner.
 </template>
 
 <script>

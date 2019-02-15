@@ -183,5 +183,49 @@
       "start": 7177,
       "end": 4021920
     }
+  },
+  {
+    "title": "Operation Rabbit Hunt - Menu",
+    "path": "GF_MAP_EX_8_select/GF_MAP_EX_8_select.ogg",
+    "loop": {
+      "start": 368764,
+      "end": 2950244
+    }
+  },
+  {
+    "title": "Uprising",
+    "tags": ["Operation Rabbit Hunt E1", "Guilty Gear Xrd -SIGN-"],
+    "path": "GF_MAP_EX_8_1/GF_MAP_EX_8_1.ogg",
+    "loop": {
+      "start": 529200,
+      "end": 10407600
+    }
+  },
+  {
+    "title": "The Spider's Thread (Do you know?)",
+    "tags": ["Operation Rabbit Hunt E2", "Guilty Gear Xrd -SIGN-"],
+    "path": "GF_MAP_EX_8_2/GF_MAP_EX_8_2.ogg",
+    "loop": {
+      "start": 2262198,
+      "end": 12846232
+    }
+  },
+  {
+    "title": "Reunion",
+    "tags": ["Operation Rabbit Hunt E3", "Guilty Gear Xrd -SIGN-"],
+    "path": "GF_MAP_EX_8_3/GF_MAP_EX_8_3.ogg",
+    "loop": {
+      "start": 2975603,
+      "end": 9273530
+    }
+  },
+  {
+    "title": "Marionette",
+    "tags": ["Operation Rabbit Hunt E4", "Guilty Gear Xrd -SIGN-"],
+    "path": "GF_MAP_EX_8_4/GF_MAP_EX_8_4.ogg",
+    "loop": {
+      "start": 4395976,
+      "end": 13501352
+    }
   }
 ]
