@@ -1,38 +1,35 @@
-{
-  "root": "bgm",
-  "playlist": [
-    {
-      "title": "Cuty",
-      "tags": "Dormitory",
-      "path": "dorm/dorm.ogg",
-      "loop": {
-        "start": 7844,
-        "end": 4241258
-      }
-    },
-    {
-      "title": "Cafe",
-      "path": "GF_Cafe/GF_Cafe.ogg",
-      "loop": {
-        "start": 384861,
-        "end": 3656284
-      }
-    },
-    {
-      "title": "Memorial",
-      "path": "GF_Memorial/GF_Memorial.ogg",
-      "loop": {
-        "start": 859354,
-        "end": 4250552
-      }
-    },
-    {
-      "title": "Daily 2",
-      "path": "GF_Daily02_loop/GF_Daily02_loop.ogg",
-      "loop": {
-        "start": 14516,
-        "end": 4389576
-      }
+[
+  {
+    "title": "Cuty",
+    "tags": "Dormitory",
+    "path": "dorm/dorm.ogg",
+    "loop": {
+      "start": 7844,
+      "end": 4241258
     }
-  ]
-}
+  },
+  {
+    "title": "Cafe",
+    "path": "GF_Cafe/GF_Cafe.ogg",
+    "loop": {
+      "start": 384861,
+      "end": 3656284
+    }
+  },
+  {
+    "title": "Memorial",
+    "path": "GF_Memorial/GF_Memorial.ogg",
+    "loop": {
+      "start": 859354,
+      "end": 4250552
+    }
+  },
+  {
+    "title": "Daily 2",
+    "path": "GF_Daily02_loop/GF_Daily02_loop.ogg",
+    "loop": {
+      "start": 14516,
+      "end": 4389576
+    }
+  }
+]

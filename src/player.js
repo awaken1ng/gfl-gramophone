@@ -2,13 +2,44 @@ class AudioPlayer {
   constructor () {
     this.context = new (window.AudioContext || window.webkitAudioContext)()
 
+    this.gain = null
     this.source = null
     this.progress = {
       iid: 0, // interval id
       played: 0,
       callbacks: null
     }
+    this.set = {
+      /**
+       * Set audio source
+       * @param {AudioBuffer} buffer
+       * @param {{start: number, end: number}} loop
+       */
+      source: function (buffer, loop) {
+        console.log('Setting the source to', buffer, loop)
+        let gain = this.context.createGain()
+        this.gain = gain
+
+        let source = this.context.createBufferSource()
+        source.buffer = buffer
+        source.connect(gain)
+        gain.connect(this.context.destination)
+        this.source = source
+        if (loop) this.set.loop(loop)
+      }.bind(this),
+      loop: function (loop) {
+        let source = this.source
+        if (source && loop) {
+          source.loop = Boolean(loop.enabled && (loop.start || loop.end))
+          source.loopStart = loop.start
+          source.loopEnd = loop.end
+        }
+      }.bind(this)
+    }
   }
+
+  get volume () { if (this.gain) return this.gain.gain.value }
+  set volume (value) { if (this.gain) this.gain.gain.value = value }
 
   /**
    * Download audio from URL and do something with it in callback
@@ -31,28 +62,6 @@ class AudioPlayer {
     }
     if (callbacks.progress) request.onprogress = callbacks.progress
     request.send()
-  }
-
-  /**
-   * Set audio source
-   * @param {AudioBuffer} buffer
-   * @param {{start: number, end: number}} loop
-   */
-  set (buffer, loop) {
-    console.log('Setting the source to', buffer, loop)
-    let source = this.context.createBufferSource()
-    source.buffer = buffer
-    source.connect(this.context.destination)
-    this.source = source
-    this.setLoop(loop)
-  }
-  setLoop (loop) {
-    let source = this.source
-    if (source && loop) {
-      source.loop = Boolean(loop.enabled && (loop.start || loop.end))
-      source.loopStart = loop.start
-      source.loopEnd = loop.end
-    }
   }
 
   /**
@@ -95,6 +104,7 @@ class AudioPlayer {
     if (this.source) {
       this.source.stop()
       this.source = null
+      this.gain = null
     }
 
     // stop and reset the progress counter
@@ -121,14 +131,17 @@ class AudioPlayer {
     }
     let callbacks = this.progress.callbacks
     let resumeAt = this.progress.played
+    let volume = this.gain.gain.value
 
     // clean up
     this.source = null
+    this.gain = null
     this.progress.played = 0
     this.progress.callbacks = null
 
     // set the source back and resume playback
-    this.set(buffer, loop)
+    this.set.source(buffer, loop)
+    this.volume = volume
     this.play(resumeAt, callbacks)
   }
 
@@ -157,13 +170,15 @@ class AudioPlayer {
       end: this.source.loopEnd
     }
     let callbacks = this.progress.callbacks
+    let volume = this.gain.gain.value
 
     this.stop()
-    this.set(buffer, loop)
+    this.set.source(buffer, loop)
+    this.volume = volume
     this.progress.played = position
     this.play(position, callbacks)
   }
 }
 
-let player = new AudioPlayer()
+const player = new AudioPlayer()
 export default player
