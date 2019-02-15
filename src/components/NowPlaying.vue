@@ -25,10 +25,16 @@ export default {
   },
   watch: {
     'state.isLoading.progress': function (current) {
-      if (current) this.text = `Downloading: ${current}%`
+      if (current) {
+        let track = this.playlist[current]
+        this.text = `Downloading - ${track.title} - ${current}%`
+      }
     },
     'state.isDecoding': function (current) {
-      if (current !== false) { this.text = 'Decoding' }
+      if (current !== false) {
+        let track = this.playlist[current]
+        this.text = `Decoding - ${track.title}`
+      }
     },
     'state.nowPlaying': function (current) {
       if (current !== null) this.text = this.playlist[current].title
