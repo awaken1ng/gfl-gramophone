@@ -81,9 +81,10 @@ class AudioPlayer {
     progress.callbacks = callbacks
     progress.played = position
     progress.iid = setInterval(function () {
+      progress.played += 1
       if (source.loop && progress.played >= source.loopEnd) {
         // wrap around if we passed the loop end
-        progress.played = source.loopStart
+        progress.played = source.loopStart + (progress.played - source.loopEnd)
         if (callbacks && callbacks.loop) callbacks.loop()
       } else if (!source.loop && progress.played >= source.buffer.duration) {
         // if we passed the end of the song, stop the counter
@@ -91,8 +92,6 @@ class AudioPlayer {
         progress.iid = 0
         progress.played = 0
         if (callbacks && callbacks.stop) callbacks.stop()
-      } else {
-        progress.played += 1
       }
       if (callbacks && callbacks.progress) callbacks.progress(progress.played)
     }, 1000)
