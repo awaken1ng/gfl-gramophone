@@ -26,7 +26,7 @@ export default {
   watch: {
     'state.isLoading.progress': function (current) {
       if (current) {
-        let track = this.playlist[current]
+        let track = this.playlist[this.state.isLoading.track]
         this.text = `Downloading - ${track.title} - ${current}%`
       }
     },
