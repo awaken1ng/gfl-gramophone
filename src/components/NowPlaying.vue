@@ -28,7 +28,7 @@ export default {
       if (current) this.text = `Downloading: ${current}%`
     },
     'state.isDecoding': function (current) {
-      if (current) this.text = 'Decoding'
+      if (current !== false) { this.text = 'Decoding' }
     },
     'state.nowPlaying': function (current) {
       if (current !== null) this.text = this.playlist[current].title
