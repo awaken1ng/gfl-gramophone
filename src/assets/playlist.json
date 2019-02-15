@@ -227,5 +227,32 @@
       "start": 4395976,
       "end": 13501352
     }
+  },
+  {
+    "title": "Snowflake",
+    "tags": "Arctic Warfare Boss",
+    "path": "GF_Boss_Map/GF_Boss_Map.ogg",
+    "loop": {
+      "start": 249165,
+      "end": 4420377
+    }
+  },
+  {
+    "title": "To the Twilight",
+    "tags": "Arctic Warfare E2",
+    "path": "GF_Winter_Night/GF_Winter_Night.ogg",
+    "loop": {
+      "start": 492244,
+      "end": 4615117
+    }
+  },
+  {
+    "title": "White Front",
+    "tags": "Arctic Warfare E3",
+    "path": "GF_Winter_Hiru/GF_Winter_Hiru.ogg",
+    "loop": {
+      "start": 123039,
+      "end": 4245910
+    }
   }
 ]
