@@ -25,6 +25,7 @@ export default {
 
 <style lang="stylus">
 @import '~material-icons/iconfont/material-icons.css'
+@require '~#/shared.styl'
 
 .material-icons
   display: flex
