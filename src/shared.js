@@ -25,6 +25,7 @@ const shared = {
 shared.methods.playback.stop = function () {
   player.stop()
   shared.state.nowPlaying = null
+  shared.state.isPaused = false
   shared.sliders.seekbar.setIndex(0)
 }
 
