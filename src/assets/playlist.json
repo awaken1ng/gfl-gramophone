@@ -39,5 +39,131 @@
       "start": 14516,
       "end": 4389576
     }
+  },
+  {
+    "title": "Safety first.A",
+    "tags": "Chapter 1",
+    "path": "GF_MAP1_BGM/GF_MAP1_BGM_1.ogg",
+    "loop": {
+      "start": 227379,
+      "end": 5519390
+    }
+  },
+  {
+    "title": "Safety first.B",
+    "tags": "Chapter 1",
+    "path": "GF_MAP1_BGM/GF_MAP1_BGM_0.ogg",
+    "loop": {
+      "start": 227379,
+      "end": 5519390
+    }
+  },
+  {
+    "title": "Greenlight.A",
+    "tags": "Chapter 2",
+    "path": "GF_MAP2_BGM/GF_MAP2_BGM_1.ogg",
+    "loop": {
+      "start": 160348,
+      "end": 4810933
+    }
+  },
+  {
+    "title": "Greenlight.B",
+    "tags": "Chapter 2",
+    "path": "GF_MAP2_BGM/GF_MAP2_BGM_0.ogg",
+    "loop": {
+      "start": 160348,
+      "end": 4810933
+    }
+  },
+  {
+    "title": "Beacon.A",
+    "tags": "Chapter 3",
+    "path": "GF_MAP3_BGM/GF_MAP3_BGM_1.ogg",
+    "loop": {
+      "start": 160348,
+      "end": 5291969
+    }
+  },
+  {
+    "title": "Beacon.B",
+    "tags": "Chapter 3",
+    "path": "GF_MAP3_BGM/GF_MAP3_BGM_0.ogg",
+    "loop": {
+      "start": 160348,
+      "end": 5291969
+    }
+  },
+  {
+    "title": "Sentry.A",
+    "tags": "Chapter 4",
+    "path": "GF_MAP4_BGM/GF_MAP4_BGM_1.ogg",
+    "loop": {
+      "start": 826875,
+      "end": 5126625
+    }
+  },
+  {
+    "title": "Sentry.B",
+    "tags": "Chapter 4",
+    "path": "GF_MAP4_BGM/GF_MAP4_BGM_0.ogg",
+    "loop": {
+      "start": 826875,
+      "end": 5126625
+    }
+  },
+  {
+    "title": "For the Record.A",
+    "tags": "Chapter 5",
+    "path": "GF_MAP5_BGM/GF_MAP5_BGM_1.ogg",
+    "loop": {
+      "start": 165375,
+      "end": 5457375
+    }
+  },
+  {
+    "title": "For the Record.B",
+    "tags": "Chapter 5",
+    "path": "GF_MAP5_BGM/GF_MAP5_BGM_0.ogg",
+    "loop": {
+      "start": 165375,
+      "end": 5457375
+    }
+  },
+  {
+    "title": "Host.A",
+    "tags": "Chapter 6",
+    "path": "GF_MAP6_BGM/GF_MAP6_BGM_1.ogg",
+    "loop": {
+      "start": 139621,
+      "end": 5314050
+    }
+  },
+  {
+    "title": "Host.B",
+    "tags": "Chapter 6",
+    "path": "GF_MAP6_BGM/GF_MAP6_BGM_0.ogg",
+    "loop": {
+      "start": 139621,
+      "end": 5314050
+    }
+  },
+  {
+    "title": "Nihilism.A",
+    "tags": ["Chapter 7", "Arctic Warfare E1"],
+    "path": "GF_MAP7_BGM/GF_MAP7_BGM_1.ogg",
+    "loop": {
+      "start": 186014,
+      "end": 5478102
+    }
+  },
+  {
+    "title": "Nihilism.B",
+    "tags": ["Chapter 7", "Arctic Warfare E1"],
+    "path": "GF_MAP7_BGM/GF_MAP7_BGM_0.ogg",
+    "loop": {
+      "start": 186014,
+      "end": 5478102
+    }
   }
 ]
