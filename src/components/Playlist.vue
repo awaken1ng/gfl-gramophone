@@ -35,7 +35,7 @@ export default {
     isPlaying: function (index) { return this.state.nowPlaying === index },
     isLoading: function (index) {
       if (this.state.isLoading) return this.state.isLoading.track === index
-      if (this.state.isDecoding) return this.state.isDecoding === index
+      if (this.state.isDecoding !== false) return this.state.isDecoding === index
     },
     getPlaybackStatusIcon: function (index) { return this.isPlaying(index) ? 'play_arrow' : '' }
   }
