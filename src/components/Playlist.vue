@@ -33,7 +33,10 @@ export default {
       shared.methods.playback.start(index, 0)
     },
     isPlaying: function (index) { return this.state.nowPlaying === index },
-    isLoading: function (index) { return this.state.isLoading === index },
+    isLoading: function (index) {
+      if (this.state.isLoading) return this.state.isLoading.track === index
+      if (this.state.isDecoding) return this.state.isDecoding === index
+    },
     getPlaybackStatusIcon: function (index) { return this.isPlaying(index) ? 'play_arrow' : '' }
   }
 }

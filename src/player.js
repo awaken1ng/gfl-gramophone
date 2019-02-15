@@ -47,7 +47,7 @@ class AudioPlayer {
    * @param {function(AudioBuffer)} callback
    */
   download (url, callbacks) {
-    if (!callbacks || (callbacks && !callbacks.success)) throw Error('No success callback passed')
+    if (!callbacks || (callbacks && !callbacks.decoded)) throw Error('Decoded callback is missing')
 
     let player = this
     let request = new XMLHttpRequest()
@@ -56,8 +56,9 @@ class AudioPlayer {
     request.open('GET', url, true)
     request.responseType = 'arraybuffer'
     request.onload = function () {
+      if (callbacks.load) callbacks.load()
       player.context.decodeAudioData(request.response)
-        .then(callbacks.success)
+        .then(callbacks.decoded)
         .catch(callbacks.error)
     }
     if (callbacks.progress) request.onprogress = callbacks.progress

@@ -1,8 +1,10 @@
 <template lang="pug">
   div#app
-    div.controls
-      control-buttons
-      progress-bar
+    div.status-area
+      now-playing
+      div.controls
+        control-buttons
+        progress-bar
     playlist
     div.footer
       p Girls' Frontline is Copyright SUNBORN Network Technology Co., Ltd.
@@ -13,10 +15,11 @@
 import ControlButtons from '#/components/ControlButtons'
 import ProgressBar from '#/components/ProgressBar'
 import Playlist from '#/components/Playlist'
+import NowPlaying from '#/components/NowPlaying'
 
 export default {
   name: 'app',
-  components: { ControlButtons, ProgressBar, Playlist }
+  components: { ControlButtons, ProgressBar, Playlist, NowPlaying }
 }
 </script>
 
@@ -44,11 +47,11 @@ export default {
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
-.controls
+.status-area
   position: sticky
   top: 0
   display: flex
-  align-items: center
+  flex-direction: column
   background-color: white
 
 .footer

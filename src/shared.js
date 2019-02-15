@@ -11,6 +11,7 @@ const shared = {
     lastPlayed: null, // index of last played track
     looping: true,
     isLoading: false,
+    isDecoding: false,
     isPaused: false
   },
   sliders: {
@@ -57,11 +58,20 @@ shared.methods.playback.start = function (trackIndex, position) {
   if (cache[trackIndex]) {
     callback(cache[trackIndex])
   } else {
-    state.isLoading = trackIndex
+    state.isLoading = { track: trackIndex, progress: 0 }
     player.download(url,
       {
-        success: function (buffer) {
+        progress: function (event) {
+          if (!event.lengthComputable) return
+          let percent = (event.loaded / event.total) * 100
+          state.isLoading.progress = parseInt(percent.toFixed(0))
+        },
+        load: function () {
           state.isLoading = false
+          state.isDecoding = trackIndex
+        },
+        decoded: function (buffer) {
+          state.isDecoding = false
           cache[trackIndex] = buffer
           callback(buffer)
         },

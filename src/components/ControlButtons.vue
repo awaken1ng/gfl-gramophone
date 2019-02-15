@@ -89,19 +89,24 @@ export default {
 <style lang="stylus">
 @require '~#/shared.styl'
 
-.control-buttons
-  display: flex // align buttons in a row
-  .material-icons
-    font-size: $icon-size // adjust the size of the buttons
-  .loop.active
-    color: $highlight // highlight the loop button when looping is active
+.controls
+  display: flex
+  .control-buttons
+    display: flex // align buttons in a row
+    .material-icons
+      font-size: $icon-size // adjust the size of the buttons
+    .loop.active
+      color: $highlight // highlight the loop button when looping is active
 
 @media (max-width: 500px)
-  .controls
-    flex-direction: column-reverse // reverse the container so that
-                                   // the seekbar is on top of the screen
-    .control-buttons
-      padding-top: 0.5rem // put some distance between seekbar and buttons
-      .material-icons
-        padding: 0 $control-buttons-horizontal-padding // space out the buttons
+  .status-area
+    text-align: center
+    .controls
+      flex-direction: column-reverse // reverse the container so that
+                                    // the seekbar is on top of the screen
+      align-items: center
+      .control-buttons
+        padding-top: 0.5rem // put some distance between seekbar and buttons
+        .material-icons
+          padding: 0 $control-buttons-horizontal-padding // space out the buttons
 </style>
