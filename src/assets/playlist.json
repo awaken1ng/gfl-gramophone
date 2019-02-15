@@ -165,5 +165,23 @@
       "start": 186014,
       "end": 5478102
     }
+  },
+  {
+    "title": "Departure",
+    "tags": "Operation Cube",
+    "path": "GF_EV1Stage_LoopV2/GF_EV1Stage_LoopV2.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5225015
+    }
+  },
+  {
+    "title": "Black Out",
+    "tags": "Operation Cube Boss",
+    "path": "GF_EV1Boss_loop/GF_EV1Boss_loop.ogg",
+    "loop": {
+      "start": 7177,
+      "end": 4021920
+    }
   }
 ]
