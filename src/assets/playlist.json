@@ -25,6 +25,14 @@
     }
   },
   {
+    "title": "Daily 1",
+    "path": "GF_Daily_01_loop/GF_Daily_01_loop.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5115508
+    }
+  },
+  {
     "title": "Daily 2",
     "path": "GF_Daily02_loop/GF_Daily02_loop.ogg",
     "loop": {
