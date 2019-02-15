@@ -30,10 +30,14 @@ export default {
 @media (max-width: 500px)
   body
     margin: 0 0.5rem 0.5rem 0.5rem
+    #app > div:first-child
+      padding-top: 0.5rem
 
 @media (min-width: 500px)
   body
     margin: 0 15% 4% 15%
+    #app > div:first-child
+      padding-top: 4%
 
 #app
   font-family: 'Avenir', Helvetica, Arial, sans-serif

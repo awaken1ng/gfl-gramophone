@@ -2,7 +2,7 @@
   div.control-buttons
     span.previous.material-icons(v-on:click="onNextPrevButtonClick('previous')") skip_previous
     span.play.material-icons(v-on:click="onPlayButtonClick") {{ getPlayButtonIcon() }}
-    span.stop.material-icons(v-on:click="stopPlayback") stop
+    span.stop.material-icons(v-on:click="onStopButtonClick") stop
     span.next.material-icons(v-on:click="onNextPrevButtonClick('next')") skip_next
     span.loop.material-icons(v-on:click="onLoopButtonClick"
                              v-bind:class="{ active: state.looping }") loop
@@ -19,23 +19,19 @@ const state = shared.state
 export default {
   name: 'control-buttons',
   components: { VolumeSlider },
-  data: function () {
-    return {
-      state: shared.state
-    }
-  },
+  data: function () { return { state: shared.state } },
   methods: {
     onPlayButtonClick: function () {
       let playing = state.nowPlaying !== null
       let paused = state.isPaused
 
-      if (playing && !paused) {
+      if (playing && !paused) { // playing
         player.pause()
         state.isPaused = true
-      } else if (playing && paused) {
+      } else if (playing && paused) { // paused
         player.resume()
         state.isPaused = false
-      } else if (!playing && !paused) {
+      } else if (!playing && !paused) { // stopped
         let lastPlayed = (state.lastPlayed || 0)
         shared.methods.playback.start(lastPlayed, 0)
       }
@@ -46,26 +42,17 @@ export default {
 
       if (!isPlaying && state.lastPlayed === null) {
         // if player state is fresh, play the first or the last track
-        if (direction === 'next') {
-          track = 0
-        } else if (direction === 'previous') {
-          track = playlist.length - 1
-        }
+        if (direction === 'next') track = 0
+        else if (direction === 'previous') track = playlist.length - 1
       } else {
         if (direction === 'next') {
           // if we are at the end of the playlist, play the first track
-          if (track < playlist.length - 1) {
-            track += 1
-          } else {
-            track = 0
-          }
+          if (track < playlist.length - 1) track += 1
+          else track = 0
         } else if (direction === 'previous') {
           // if we are at the start of the playlist, play the last track
-          if (track > 0) {
-            track -= 1
-          } else {
-            track = playlist.length - 1
-          }
+          if (track > 0) track -= 1
+          else track = playlist.length - 1
         }
       }
 
@@ -76,25 +63,23 @@ export default {
 
       // update the currently playing track
       let nowPlaying = state.nowPlaying
-      if (nowPlaying !== null) {
-        let track = playlist[nowPlaying]
-        let sampleRate = shared.sampleRate
-        player.set.loop({
-          enabled: state.looping,
-          start: track.loop.start / sampleRate,
-          end: track.loop.end / sampleRate
-        })
-      }
+      if (nowPlaying === null) return
+
+      let track = playlist[nowPlaying]
+      let sampleRate = shared.sampleRate
+      player.set.loop({
+        enabled: state.looping,
+        start: track.loop.start / sampleRate,
+        end: track.loop.end / sampleRate
+      })
     },
-    stopPlayback: function () {
-      shared.methods.playback.stop()
-    },
+    onStopButtonClick: function () { shared.methods.playback.stop() },
     getPlayButtonIcon: function (index) {
       let isPlaying = state.nowPlaying !== null
       let isPaused = state.isPaused
 
-      if (!isPlaying && !isPaused) return 'play_arrow'
-      if (isPlaying && isPaused) return 'play_arrow'
+      if (!isPlaying && !isPaused) return 'play_arrow' // stopped
+      if (isPlaying && isPaused) return 'play_arrow' // paused
       return 'pause'
     }
   }
@@ -104,25 +89,19 @@ export default {
 <style lang="stylus">
 @require '~#/shared.styl'
 
+.control-buttons
+  display: flex // align buttons in a row
+  .material-icons
+    font-size: $icon-size // adjust the size of the buttons
+  .loop.active
+    color: $highlight // highlight the loop button when looping is active
+
 @media (max-width: 500px)
   .controls
-    flex-direction: column-reverse
-    padding-top: 0.5rem
+    flex-direction: column-reverse // reverse the container so that
+                                   // the seekbar is on top of the screen
     .control-buttons
-      padding-top: 0.5rem
+      padding-top: 0.5rem // put some distance between seekbar and buttons
       .material-icons
-        padding: 0 $control-buttons-horizontal-padding
-
-@media (min-width: 500px)
-  body
-    margin: 0 15% 4% 15%
-  .controls
-    padding-top: 4%
-
-.control-buttons
-  display: flex
-  .material-icons
-    font-size: $icon-size
-  .loop.active
-    color: $highlight
+        padding: 0 $control-buttons-horizontal-padding // space out the buttons
 </style>
