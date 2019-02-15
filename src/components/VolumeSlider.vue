@@ -89,7 +89,10 @@ export default {
     flex-direction: column
     align-items: center
     // toggle visibility by using opacity
+    transition-time = 100ms
+    transition: transition-time ease-in-out
     .vue-slider-component
+      transition: transition-time ease-in-out
       opacity: 0
     &.active .vue-slider-component
         opacity: 1
