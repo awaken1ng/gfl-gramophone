@@ -41,7 +41,7 @@ export default {
   body
     margin: 0 15% 4% 15%
     #app > div:first-child
-      padding-top: 4%
+      padding-top: 1%
 
 #app
   font-family: 'Avenir', Helvetica, Arial, sans-serif
