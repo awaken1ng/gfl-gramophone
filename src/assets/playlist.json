@@ -380,5 +380,50 @@
       "start": 0,
       "end": 0
     }
+  },
+  {
+    "title": "GF_EV5_Intermission",
+    "tags": "Continuum Turbulence",
+    "path": "GF_EV5_Intermission/GF_EV5_Intermission.ogg",
+    "loop": {
+      "start": 696316,
+      "end": 5152739
+    }
+  },
+  {
+    "title": "GF_EV5_BattleL1",
+    "tags": "Continuum Turbulence",
+    "path": "GF_EV5_BattleL1/GF_EV5_BattleL1.ogg",
+    "loop": {
+      "start": 105840,
+      "end": 5186160
+    }
+  },
+  {
+    "title": "GF_EV5_BattleL2",
+    "tags": "Continuum Turbulence",
+    "path": "GF_EV5_BattleL2/GF_EV5_BattleL2.ogg",
+    "loop": {
+      "start": 248063,
+      "end": 5540063
+    }
+  },
+  {
+    "title": "GF_EV5_BattleL3",
+    "tags": "Continuum Turbulence",
+    "path": "GF_EV5_BattleL3/GF_EV5_BattleL3.ogg",
+    "loop": {
+      "start": 264600,
+      "end": 5556600
+    }
+  },
+  {
+    "title": "GF_EV5_Boss",
+    "tags": "Continuum Turbulence",
+    "path": "GF_EV5_Boss/GF_EV5_Boss.ogg",
+    "loop": {
+      "start": 330750,
+      "end": 5622785
+    }
   }
 ]
