@@ -317,5 +317,68 @@
       "start": 17090,
       "end": 3419099
     }
+  },
+  {
+    "title": "GF_EV4_intermission",
+    "tags": "Singularity",
+    "path": "GF_EV4_intermission/GF_EV4_intermission.ogg",
+    "loop": {
+      "start": 120966,
+      "end": 3884169
+    }
+  },
+  {
+    "title": "GF_EV4_Map1",
+    "tags": "Singularity",
+    "path": "GF_EV4_Map1/GF_EV4_Map1.ogg",
+    "loop": {
+      "start": 117571,
+      "end": 5292000
+    }
+  },
+  {
+    "title": "GF_EV4_Map2",
+    "tags": "Singularity",
+    "path": "GF_EV4_Map2/GF_EV4_Map2.ogg",
+    "loop": {
+      "start": 194525,
+      "end": 5253088
+    }
+  },
+  {
+    "title": "GF_EV4_Map3",
+    "tags": "Singularity",
+    "path": "GF_EV4_Map3/GF_EV4_Map3.ogg",
+    "loop": {
+      "start": 222793,
+      "end": 5570526
+    }
+  },
+  {
+    "title": "GF_EV4_Boss1",
+    "tags": "Singularity",
+    "path": "GF_EV4_Boss1/GF_EV4_Boss1.ogg",
+    "loop": {
+      "start": 940962,
+      "end": 5610607
+    }
+  },
+  {
+    "title": "GF_EV4_Boss2",
+    "tags": "Singularity",
+    "path": "GF_EV4_Boss2/GF_EV4_Boss2.ogg",
+    "loop": {
+      "start": 0,
+      "end": 3008085
+    }
+  },
+  {
+    "title": "What am I Fighting for",
+    "tags": "Singularity Ending Song",
+    "path": "GF_Song/GF_Song.ogg",
+    "loop": {
+      "start": 0,
+      "end": 0
+    }
   }
 ]
