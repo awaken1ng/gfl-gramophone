@@ -131,6 +131,24 @@
     }
   },
   {
+    "title": "Departure",
+    "tags": "Operation Cube",
+    "path": "GF_EV1Stage_LoopV2/GF_EV1Stage_LoopV2.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5225015
+    }
+  },
+  {
+    "title": "Black Out",
+    "tags": "Operation Cube Boss",
+    "path": "GF_EV1Boss_loop/GF_EV1Boss_loop.ogg",
+    "loop": {
+      "start": 7177,
+      "end": 4021920
+    }
+  },
+  {
     "title": "Host.A",
     "tags": "Chapter 6",
     "path": "GF_MAP6_BGM/GF_MAP6_BGM_1.ogg",
@@ -142,7 +160,7 @@
   {
     "title": "Host.B",
     "tags": "Chapter 6",
-    "path": "GF_MAP6_BGM/GF_MAP6_BGM_0.ogg",
+    "path": "GF_MAP6_BGM/GF_MAP6_BArctic WM_0.ogg",
     "loop": {
       "start": 139621,
       "end": 5314050
@@ -167,113 +185,6 @@
     }
   },
   {
-    "title": "GF_MAP8_BGM_old",
-    "tags": "Chapter 8",
-    "path": "GF_MAP8_BGM_old/GF_MAP8_BGM_old.ogg",
-    "loop": {
-      "start": 933862,
-      "end": 5416516
-    }
-  },
-  {
-    "title": "GF_MAP9_BGM",
-    "tags": "Chapter 9",
-    "path": "GF_MAP9_BGM/GF_MAP9_BGM.ogg",
-    "loop": {
-      "start": 1180513,
-      "end": 5251292
-    }
-  },
-  {
-    "title": "GF_MAP10_BGM",
-    "tags": "Chapter 10",
-    "path": "GF_MAP10_BGM/GF_MAP10_BGM.ogg",
-    "loop": {
-      "start": 926100,
-      "end": 5247900
-    }
-  },
-  {
-    "title": "GF_MAP11_BGM",
-    "tags": "Chapter 11",
-    "path": "GF_MAP11_BGM/GF_MAP11_BGM.ogg",
-    "loop": {
-      "start": 635040,
-      "end": 5927040
-    }
-  },
-  {
-    "title": "Departure",
-    "tags": "Operation Cube",
-    "path": "GF_EV1Stage_LoopV2/GF_EV1Stage_LoopV2.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5225015
-    }
-  },
-  {
-    "title": "Black Out",
-    "tags": "Operation Cube Boss",
-    "path": "GF_EV1Boss_loop/GF_EV1Boss_loop.ogg",
-    "loop": {
-      "start": 7177,
-      "end": 4021920
-    }
-  },
-  {
-    "title": "Operation Rabbit Hunt - Menu",
-    "path": "GF_MAP_EX_8_select/GF_MAP_EX_8_select.ogg",
-    "loop": {
-      "start": 368764,
-      "end": 2950244
-    }
-  },
-  {
-    "title": "Uprising",
-    "tags": ["Operation Rabbit Hunt E1", "Guilty Gear Xrd -SIGN-"],
-    "path": "GF_MAP_EX_8_1/GF_MAP_EX_8_1.ogg",
-    "loop": {
-      "start": 529200,
-      "end": 10407600
-    }
-  },
-  {
-    "title": "The Spider's Thread (Do you know?)",
-    "tags": ["Operation Rabbit Hunt E2", "Guilty Gear Xrd -SIGN-"],
-    "path": "GF_MAP_EX_8_2/GF_MAP_EX_8_2.ogg",
-    "loop": {
-      "start": 2262198,
-      "end": 12846232
-    }
-  },
-  {
-    "title": "Reunion",
-    "tags": ["Operation Rabbit Hunt E3", "Guilty Gear Xrd -SIGN-"],
-    "path": "GF_MAP_EX_8_3/GF_MAP_EX_8_3.ogg",
-    "loop": {
-      "start": 2975603,
-      "end": 9273530
-    }
-  },
-  {
-    "title": "Marionette",
-    "tags": ["Operation Rabbit Hunt E4", "Guilty Gear Xrd -SIGN-"],
-    "path": "GF_MAP_EX_8_4/GF_MAP_EX_8_4.ogg",
-    "loop": {
-      "start": 4395976,
-      "end": 13501352
-    }
-  },
-  {
-    "title": "Snowflake",
-    "tags": "Arctic Warfare Boss",
-    "path": "GF_Boss_Map/GF_Boss_Map.ogg",
-    "loop": {
-      "start": 249165,
-      "end": 4420377
-    }
-  },
-  {
     "title": "To the Twilight",
     "tags": "Arctic Warfare E2",
     "path": "GF_Winter_Night/GF_Winter_Night.ogg",
@@ -289,6 +200,24 @@
     "loop": {
       "start": 123039,
       "end": 4245910
+    }
+  },
+  {
+    "title": "Snowflake",
+    "tags": "Arctic Warfare Boss",
+    "path": "GF_Boss_Map/GF_Boss_Map.ogg",
+    "loop": {
+      "start": 249165,
+      "end": 4420377
+    }
+  },
+  {
+    "title": "GF_MAP8_BGM_old",
+    "tags": "Chapter 8",
+    "path": "GF_MAP8_BGM_old/GF_MAP8_BGM_old.ogg",
+    "loop": {
+      "start": 933862,
+      "end": 5416516
     }
   },
   {
@@ -352,6 +281,24 @@
     "loop": {
       "start": 17090,
       "end": 3419099
+    }
+  },
+  {
+    "title": "GF_MAP9_BGM",
+    "tags": "Chapter 9",
+    "path": "GF_MAP9_BGM/GF_MAP9_BGM.ogg",
+    "loop": {
+      "start": 1180513,
+      "end": 5251292
+    }
+  },
+  {
+    "title": "GF_MAP10_BGM",
+    "tags": "Chapter 10",
+    "path": "GF_MAP10_BGM/GF_MAP10_BGM.ogg",
+    "loop": {
+      "start": 926100,
+      "end": 5247900
     }
   },
   {
@@ -463,6 +410,15 @@
     }
   },
   {
+    "title": "GF_MAP11_BGM",
+    "tags": "Chapter 11",
+    "path": "GF_MAP11_BGM/GF_MAP11_BGM.ogg",
+    "loop": {
+      "start": 635040,
+      "end": 5927040
+    }
+  },
+  {
     "title": "GF_EV6_90w_pt1",
     "tags": "Isomer",
     "path": "GF_EV6_90w_pt1/GF_EV6_90w_pt1.ogg",
@@ -559,6 +515,50 @@
     "loop": {
       "start": 0,
       "end": 0
+    }
+  },
+  {
+    "title": "Operation Rabbit Hunt - Menu",
+    "path": "GF_MAP_EX_8_select/GF_MAP_EX_8_select.ogg",
+    "loop": {
+      "start": 368764,
+      "end": 2950244
+    }
+  },
+  {
+    "title": "Uprising",
+    "tags": ["Operation Rabbit Hunt E1", "Guilty Gear Xrd -SIGN-"],
+    "path": "GF_MAP_EX_8_1/GF_MAP_EX_8_1.ogg",
+    "loop": {
+      "start": 529200,
+      "end": 10407600
+    }
+  },
+  {
+    "title": "The Spider's Thread (Do you know?)",
+    "tags": ["Operation Rabbit Hunt E2", "Guilty Gear Xrd -SIGN-"],
+    "path": "GF_MAP_EX_8_2/GF_MAP_EX_8_2.ogg",
+    "loop": {
+      "start": 2262198,
+      "end": 12846232
+    }
+  },
+  {
+    "title": "Reunion",
+    "tags": ["Operation Rabbit Hunt E3", "Guilty Gear Xrd -SIGN-"],
+    "path": "GF_MAP_EX_8_3/GF_MAP_EX_8_3.ogg",
+    "loop": {
+      "start": 2975603,
+      "end": 9273530
+    }
+  },
+  {
+    "title": "Marionette",
+    "tags": ["Operation Rabbit Hunt E4", "Guilty Gear Xrd -SIGN-"],
+    "path": "GF_MAP_EX_8_4/GF_MAP_EX_8_4.ogg",
+    "loop": {
+      "start": 4395976,
+      "end": 13501352
     }
   }
 ]
