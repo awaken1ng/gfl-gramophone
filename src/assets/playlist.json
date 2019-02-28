@@ -425,5 +425,104 @@
       "start": 330750,
       "end": 5622785
     }
+  },
+  {
+    "title": "GF_EV6_90w_pt1",
+    "tags": "Isomer",
+    "path": "GF_EV6_90w_pt1/GF_EV6_90w_pt1.ogg",
+    "loop": {
+      "start": 1209601,
+      "end": 3628803
+    }
+  },
+  {
+    "title": "GF_EV6_90w_pt2",
+    "tags": "Isomer",
+    "path": "GF_EV6_90w_pt2/GF_EV6_90w_pt2.ogg",
+    "loop": {
+      "start": 504000,
+      "end": 3830403
+    }
+  },
+  {
+    "title": "GF_EV6_90w_pt3",
+    "tags": "Isomer",
+    "path": "GF_EV6_90w_pt3/GF_EV6_90w_pt3.ogg",
+    "loop": {
+      "start": 453600,
+      "end": 3880803
+    }
+  },
+  {
+    "title": "GF_EV6_G&K_pt1",
+    "tags": "Isomer",
+    "path": "GF_EV6_G&K_pt1/GF_EV6_G&K_pt1.ogg",
+    "loop": {
+      "start": 315940,
+      "end": 3475342
+    }
+  },
+  {
+    "title": "GF_EV6_G&K_pt2",
+    "tags": "Isomer",
+    "path": "GF_EV6_G&K_pt2/GF_EV6_G&K_pt2.ogg",
+    "loop": {
+      "start": 315940,
+      "end": 4739102
+    }
+  },
+  {
+    "title": "GF_EV6_G&K_pt3",
+    "tags": "Isomer",
+    "path": "GF_EV6_G&K_pt3/GF_EV6_G&K_pt3.ogg",
+    "loop": {
+      "start": 236955,
+      "end": 3080417
+    }
+  },
+  {
+    "title": "GF_EV6_SF_pt1",
+    "tags": "Isomer",
+    "path": "GF_EV6_SF_pt1/GF_EV6_SF_pt1.ogg",
+    "loop": {
+      "start": 311294,
+      "end": 2801644
+    }
+  },
+  {
+    "title": "GF_EV6_SF_pt2",
+    "tags": "Isomer",
+    "path": "GF_EV6_SF_pt2/GF_EV6_SF_pt2.ogg",
+    "loop": {
+      "start": 933881,
+      "end": 5291994
+    }
+  },
+  {
+    "title": "GF_EV6_SF_pt3",
+    "tags": "Isomer",
+    "path": "GF_EV6_SF_pt3/GF_EV6_SF_pt3.ogg",
+    "loop": {
+      "start": 1712116,
+      "end": 2645997
+    }
+  },
+  {
+    "title": "GF_EV6_Motor_Loop",
+    "tags": "Isomer",
+    "path": "GF_EV6_Motor_Loop/GF_EV6_Motor_Loop.ogg",
+    "loop": {
+      "start": 330750,
+      "end": 2447550
+    }
+  },
+  {
+    "title": "GF_EV6_ED",
+    "tags": "Isomer Ending Song",
+    "path": "GF_EV6_ED/GF_EV6_ED.ogg",
+    "loop": {
+      "start": 0,
+      "end": 0
+    }
   }
 ]
