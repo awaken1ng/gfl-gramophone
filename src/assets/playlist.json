@@ -254,5 +254,68 @@
       "start": 123039,
       "end": 4245910
     }
+  },
+  {
+    "title": "GF_EV3_Intermission",
+    "tags": "Deep Dive",
+    "path": "GF_EV3_Intermission/GF_EV3_Intermission.ogg",
+    "loop": {
+      "start": 82688,
+      "end": 4134397
+    }
+  },
+  {
+    "title": "GF_EV3_Map1_tri",
+    "tags": "Deep Dive",
+    "path": "GF_EV3_Map1_tri/GF_EV3_Map1_tri.ogg",
+    "loop": {
+      "start": 7230,
+      "end": 4171612
+    }
+  },
+  {
+    "title": "GF_EV3_Map2",
+    "tags": "Deep Dive",
+    "path": "GF_EV3_Map2/GF_EV3_Map2.ogg",
+    "loop": {
+      "start": 7211,
+      "end": 4938303
+    }
+  },
+  {
+    "title": "GF_EV3_Map3",
+    "tags": "Deep Dive",
+    "path": "GF_EV3_Map3/GF_EV3_Map3.ogg",
+    "loop": {
+      "start": 513164,
+      "end": 5388205
+    }
+  },
+  {
+    "title": "GF_EV3_MapEX",
+    "tags": "Deep Dive",
+    "path": "GF_EV3_MapEX/GF_EV3_MapEX.ogg",
+    "loop": {
+      "start": 741682,
+      "end": 6675072
+    }
+  },
+  {
+    "title": "GF_EV3_Boss",
+    "tags": "Deep Dive",
+    "path": "GF_EV3_Boss/GF_EV3_Boss.ogg",
+    "loop": {
+      "start": 17090,
+      "end": 3419099
+    }
+  },
+  {
+    "title": "GF_EV3_Boss_Inst",
+    "tags": "Deep Dive",
+    "path": "GF_EV3_Boss_Inst/GF_EV3_Boss_Inst.ogg",
+    "loop": {
+      "start": 17090,
+      "end": 3419099
+    }
   }
 ]
