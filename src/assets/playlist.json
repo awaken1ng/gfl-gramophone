@@ -167,6 +167,42 @@
     }
   },
   {
+    "title": "GF_MAP8_BGM_old",
+    "tags": "Chapter 8",
+    "path": "GF_MAP8_BGM_old/GF_MAP8_BGM_old.ogg",
+    "loop": {
+      "start": 933862,
+      "end": 5416516
+    }
+  },
+  {
+    "title": "GF_MAP9_BGM",
+    "tags": "Chapter 9",
+    "path": "GF_MAP9_BGM/GF_MAP9_BGM.ogg",
+    "loop": {
+      "start": 1180513,
+      "end": 5251292
+    }
+  },
+  {
+    "title": "GF_MAP10_BGM",
+    "tags": "Chapter 10",
+    "path": "GF_MAP10_BGM/GF_MAP10_BGM.ogg",
+    "loop": {
+      "start": 926100,
+      "end": 5247900
+    }
+  },
+  {
+    "title": "GF_MAP11_BGM",
+    "tags": "Chapter 11",
+    "path": "GF_MAP11_BGM/GF_MAP11_BGM.ogg",
+    "loop": {
+      "start": 635040,
+      "end": 5927040
+    }
+  },
+  {
     "title": "Departure",
     "tags": "Operation Cube",
     "path": "GF_EV1Stage_LoopV2/GF_EV1Stage_LoopV2.ogg",
