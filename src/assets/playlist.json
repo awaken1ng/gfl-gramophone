@@ -560,5 +560,221 @@
       "start": 4395976,
       "end": 13501352
     }
+  },
+  {
+    "title": "Miles",
+    "tags": ["Glory Day Menu", "DJMax Respect"],
+    "path": "DJMAX_Miles/DJMAX_Miles.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5718528
+    }
+  },
+  {
+    "title": "Plastic Method",
+    "tags": ["Glory Day E1-1, E3-1", "DJMax Respect"],
+    "path": "DJMAX_PlasticMethod/DJMAX_PlasticMethod.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5943168
+    }
+  },
+  {
+    "title": "Armored Phantom",
+    "tags": ["Glory Day E1-2, E3-2", "DJMax Respect"],
+    "path": "DJMAX_ArmoredPhantom/DJMAX_ArmoredPhantom.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5504256
+    }
+  },
+  {
+    "title": "Ventilator",
+    "tags": ["Glory Day E1-3, E3-3", "DJMax Respect"],
+    "path": "DJMAX_Ventilator/DJMAX_Ventilator.ogg",
+    "loop": {
+      "start": 0,
+      "end": 4699296
+    }
+  },
+  {
+    "title": "The Last Scene",
+    "tags": ["Glory Day E2-1, E4-1", "DJMax Respect"],
+    "path": "DJMAX_TheLastScene/DJMAX_TheLastScene.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5128192
+    }
+  },
+  {
+    "title": "Nightmare",
+    "tags": ["Glory Day E2-2, E4-2", "DJMax Respect"],
+    "path": "DJMAX_Nightmare/DJMAX_Nightmare.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5519232
+    }
+  },
+  {
+    "title": "Black Cat",
+    "tags": ["Glory Day E2-3, E4-3", "DJMax Respect"],
+    "path": "DJMAX_BlackCat/DJMAX_BlackCat.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5387904
+    }
+  },
+  {
+    "title": "Ask to Wind",
+    "tags": ["Glory Day E1-2", "DJMax Respect"],
+    "path": "DJMAX_AsktoWind/DJMAX_AsktoWind.ogg",
+    "loop": {
+      "start": 0,
+      "end": 4773888
+    }
+  },
+  {
+    "title": "Fallen Angel",
+    "tags": ["Glory Day E1-3", "DJMax Respect"],
+    "path": "DJMAX_FallenAngel/DJMAX_FallenAngel.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5309568
+    }
+  },
+  {
+    "title": "Virgin Force",
+    "tags": ["Glory Day E2-1", "DJMax Respect"],
+    "path": "DJMAX_VirginForce/DJMAX_VirginForce.ogg",
+    "loop": {
+      "start": 0,
+      "end": 6234624
+    }
+  },
+  {
+    "title": "Syrianna",
+    "tags": ["Glory Day E2-2", "DJMax Respect"],
+    "path": "DJMAX_Syriana/DJMAX_Syriana.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5606213
+    }
+  },
+  {
+    "title": "OBLIVION",
+    "tags": ["Glory Day E2-3", "DJMax Respect"],
+    "path": "DJMAX_OBLIVION/DJMAX_OBLIVION.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5261306
+    }
+  },
+  {
+    "title": "Beyond Yourself",
+    "tags": ["Glory Day", "DJMax Respect"],
+    "path": "DJMAX_BeyondYourself/DJMAX_BeyondYourself.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5207040
+    }
+  },
+  {
+    "title": "Shadow Flower",
+    "tags": ["Glory Day", "DJMax Respect"],
+    "path": "DJMAX_ShadowFlower/DJMAX_ShadowFlower.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5167872
+    }
+  },
+  {
+    "title": "Shadow Flower (Mycin.T Funk session)",
+    "tags": ["Glory Day", "DJMax Respect"],
+    "path": "DJMAX_ShadowFlowerF/DJMAX_ShadowFlowerF.ogg",
+    "loop": {
+      "start": 0,
+      "end": 7937280
+    }
+  },
+  {
+    "title": "Only For You",
+    "tags": ["Glory Day", "DJMax Respect"],
+    "path": "DJMAX_OnlyForYou/DJMAX_OnlyForYou.ogg",
+    "loop": {
+      "start": 0,
+      "end": 6266880
+    }
+  },
+  {
+    "title": "BELL",
+    "tags": ["Glory Day", "DJMax Respect"],
+    "path": "DJMAX_BELL/DJMAX_BELL.ogg",
+    "loop": {
+      "start": 0,
+      "end": 9588096
+    }
+  },
+  {
+    "title": "Bullet Wanted",
+    "tags": ["Glory Day", "DJMax Respect"],
+    "path": "DJMAX_BulletWanted/DJMAX_BulletWanted.ogg",
+    "loop": {
+      "start": 0,
+      "end": 4172544
+    }
+  },
+  {
+    "title": "The Obliterator",
+    "tags": ["Glory Day", "DJMax Respect"],
+    "path": "DJMAX_TheObliterator/DJMAX_TheObliterator.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5021568
+    }
+  },
+  {
+    "title": "Lady Made Star",
+    "tags": ["Glory Day", "DJMax Respect"],
+    "path": "DJMAX_LadyMadeStar/DJMAX_LadyMadeStar.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5541371
+    }
+  },
+  {
+    "title": "I Want You",
+    "tags": ["Glory Day", "DJMax Respect"],
+    "path": "DJMAX_IWantYou/DJMAX_IWantYou.ogg",
+    "loop": {
+      "start": 0,
+      "end": 4691138
+    }
+  },
+  {
+    "title": "WHY",
+    "tags": ["Glory Day", "DJMax Respect"],
+    "path": "DJMAX_WHY/DJMAX_WHY.ogg",
+    "loop": {
+      "start": 0,
+      "end": 5319936
+    }
+  },
+  {
+    "title": "Glory Day",
+    "tags": ["Glory Day", "DJMax Respect"],
+    "path": "DJMAX_GloryDay/DJMAX_GloryDay.ogg",
+    "loop": {
+      "start": 0,
+      "end": 7266816
+    }
+  },
+  {
+    "title": "First Kiss",
+    "tags": ["Glory Day", "DJMax Respect"],
+    "path": "DJMAX_FirstKiss/DJMAX_FirstKiss.ogg",
+    "loop": {
+      "start": 0,
+      "end": 9671040
+    }
   }
 ]
