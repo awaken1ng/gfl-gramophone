@@ -776,5 +776,122 @@
       "start": 0,
       "end": 9671040
     }
+  },
+  {
+    "title": "Shopsation",
+    "tags": ["Hitoribocchi Menu", "Houkai Gakuen"],
+    "path": "GF_xBH2_Menu/GF_xBH2_Menu.ogg",
+    "loop": {
+      "start": 0,
+      "end": 2822400
+    }
+  },
+  {
+    "title": "Innerlink",
+    "tags": ["Hitoribocchi E1-1", "Houkai Gakuen"],
+    "path": "GF_xBH2_Map1/GF_xBH2_Map1.ogg",
+    "loop": {
+      "start": 7241,
+      "end": 2612950
+    }
+  },
+  {
+    "title": "Encounter",
+    "tags": ["Hitoribocchi E1-2", "Houkai Gakuen"],
+    "path": "GF_xBH2_Map2/GF_xBH2_Map2.ogg",
+    "loop": {
+      "start": 7426,
+      "end": 3086488
+    }
+  },
+  {
+    "title": "Lift",
+    "tags": ["Hitoribocchi E1-3", "Houkai Gakuen"],
+    "path": "GF_xBH2_Map3/GF_xBH2_Map3.ogg",
+    "loop": {
+      "start": 0,
+      "end": 2690848
+    }
+  },
+  {
+    "title": "Lighting",
+    "tags": ["Hitoribocchi E1-4", "Houkai Gakuen"],
+    "path": "GF_xBH2_Map4/GF_xBH2_Map4.ogg",
+    "loop": {
+      "start": 7264,
+      "end": 2426880
+    }
+  },
+  {
+    "title": "BANG",
+    "tags": ["Hitoribocchi E2-1", "Houkai Gakuen"],
+    "path": "GF_xBH2_Map5/GF_xBH2_Map5.ogg",
+    "loop": {
+      "start": 7190,
+      "end": 1860147
+    }
+  },
+  {
+    "title": "Tiger onceit",
+    "tags": ["Hitoribocchi E2-2", "Houkai Gakuen"],
+    "path": "GF_xBH2_Map6/GF_xBH2_Map6.ogg",
+    "loop": {
+      "start": 7326,
+      "end": 3120572
+    }
+  },
+  {
+    "title": "Amber",
+    "tags": ["Hitoribocchi E2-3", "Houkai Gakuen"],
+    "path": "GF_xBH2_Map7/GF_xBH2_Map7.ogg",
+    "loop": {
+      "start": 7316,
+      "end": 1961715
+    }
+  },
+  {
+    "title": "EVO",
+    "tags": ["Hitoribocchi E2-4", "Houkai Gakuen"],
+    "path": "GF_xBH2_Map8/GF_xBH2_Map8.ogg",
+    "loop": {
+      "start": 7346,
+      "end": 2450432
+    }
+  },
+  {
+    "title": "GF_GGX_BGM_Danger",
+    "tags": ["Hitoribocchi", "Houkai Gakuen"],
+    "path": "GF_GGX_BGM_Danger/GF_GGX_BGM_Danger.ogg",
+    "loop": {
+      "start": 117571,
+      "end": 4469017
+    }
+  },
+  {
+    "title": "GF_GGX_BGM_Sad",
+    "tags": ["Hitoribocchi", "Houkai Gakuen"],
+    "path": "GF_GGX_BGM_Sad/GF_GGX_BGM_Sad.ogg",
+    "loop": {
+      "start": 2115786,
+      "end": 5398614
+    }
+  },
+  {
+    "title": "GF_GGX_BGM_Sunshine",
+    "tags": ["Hitoribocchi", "Houkai Gakuen"],
+    "path": "GF_GGX_BGM_Sunshine/GF_GGX_BGM_Sunshine.ogg",
+    "loop": {
+      "start": 113425,
+      "end": 4463057
+    }
+  },
+  {
+    "title": "GF_GGX_BGM_War",
+    "tags": ["Hitoribocchi", "Houkai Gakuen"],
+    "path": "GF_GGX_BGM_War/GF_GGX_BGM_War.ogg",
+    "loop": {
+      "start": 6364,
+      "end": 8142901
+    }
   }
 ]
