@@ -267,7 +267,7 @@
   },
   {
     "title": "Barbarous Funera",
-    "tags": "Deep Dive",
+    "tags": "Deep Dive Boss",
     "path": "GF_EV3_Boss/GF_EV3_Boss.ogg",
     "loop": {
       "start": 17090,
@@ -276,7 +276,7 @@
   },
   {
     "title": "Barbarous Funera (Instrumental)",
-    "tags": "Deep Dive",
+    "tags": "Deep Dive Boss",
     "path": "GF_EV3_Boss_Inst/GF_EV3_Boss_Inst.ogg",
     "loop": {
       "start": 17090,
