@@ -49,7 +49,14 @@ export default {
   },
   methods: {
     onSeek: function (value) {
-      this.player.seek(value)
+      if (!shared.state.isPaused) {
+        // we're playing, seek to the position
+        this.player.seek(value)
+      } else {
+        // we're paused, unpause and seek to position
+        this.player.resume(value)
+        shared.state.isPaused = false
+      }
     },
     formatMMSS: function (seconds) {
       // format seconds to 'mm:ss'
