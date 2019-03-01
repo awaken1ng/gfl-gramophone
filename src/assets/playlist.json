@@ -266,7 +266,7 @@
     }
   },
   {
-    "title": "GF_EV3_Boss",
+    "title": "Barbarous Funera",
     "tags": "Deep Dive",
     "path": "GF_EV3_Boss/GF_EV3_Boss.ogg",
     "loop": {
@@ -275,7 +275,7 @@
     }
   },
   {
-    "title": "GF_EV3_Boss_Inst",
+    "title": "Barbarous Funera (Instrumental)",
     "tags": "Deep Dive",
     "path": "GF_EV3_Boss_Inst/GF_EV3_Boss_Inst.ogg",
     "loop": {
@@ -518,7 +518,8 @@
     }
   },
   {
-    "title": "Operation Rabbit Hunt - Menu",
+    "title": "Sign",
+    "tags": "Operation Rabbit Hunt Menu",
     "path": "GF_MAP_EX_8_select/GF_MAP_EX_8_select.ogg",
     "loop": {
       "start": 368764,
