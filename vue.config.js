@@ -7,6 +7,15 @@ module.exports = {
       alias: {
         '#': path.resolve(__dirname, './src')
       }
+    },
+    performance: {
+      assetFilter: function (assetFilename) {
+        // ignore asset site warnings:
+        // - .map files, default webpack behaviour
+        //   https://webpack.js.org/configuration/performance/#performanceassetfilter
+        // - .ogg files, they're not bundled and not meant to be
+        return !(/\.map|\.ogg$/.test(assetFilename))
+      }
     }
   },
   chainWebpack: config => {
