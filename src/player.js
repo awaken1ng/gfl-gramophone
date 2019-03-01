@@ -119,8 +119,8 @@ class AudioPlayer {
   /**
    * Resume the playback of paused source
    */
-  resume () {
-    console.log('Resuming to', this.progress.played)
+  resume (resumeAt) {
+    console.log('Resuming at', this.progress.played)
 
     // move the source, loop range, callback and position
     let buffer = this.source.buffer
@@ -130,8 +130,9 @@ class AudioPlayer {
       end: this.source.loopEnd
     }
     let callbacks = this.progress.callbacks
-    let resumeAt = this.progress.played
     let volume = this.gain.gain.value
+
+    if (resumeAt === undefined) resumeAt = this.progress.played
 
     // clean up
     this.source = null
