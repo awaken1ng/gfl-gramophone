@@ -46,7 +46,7 @@ shared.methods.playback.start = function (trackIndex, position) {
       start: track.loop.start / sampleRate,
       end: track.loop.end / sampleRate
     }
-    player.stop()
+    shared.methods.playback.stop()
     player.set.source(buffer, loop)
     player.volume = localStorage.getItem('volume') || 1
     player.play(position, { stop: function () { stopPlayback() } })
