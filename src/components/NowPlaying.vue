@@ -2,43 +2,44 @@
   div.now-playing(v-bind:class="getClass()") {{ text }}
 </template>
 
-<script>
-import playlist from '#/assets/playlist'
-import shared from '#/shared'
+<script lang="ts">
+import { Watch, Component, Vue } from 'vue-property-decorator'
+import shared, { playlist } from '#/shared'
 
-export default {
-  name: 'now-playing',
-  data: function () {
+@Component
+export default class NowPlaying extends Vue {
+  state = shared.state
+  text = ''
+
+  getClass () {
     return {
-      playlist: playlist,
-      state: shared.state,
-      text: ''
+      playing: this.state.nowPlaying !== undefined && !this.state.isPaused,
+      loading: this.state.isLoading || this.state.isDecoding !== undefined
     }
-  },
-  methods: {
-    getClass: function () {
-      return {
-        playing: this.state.nowPlaying !== null && !this.state.isPaused,
-        loading: this.state.isLoading || this.state.isDecoding !== false
-      }
-    }
-  },
-  watch: {
-    'state.isLoading.progress': function (current) {
-      if (current) {
-        let track = this.playlist[this.state.isLoading.track]
-        this.text = `Downloading - ${track.title} - ${current}%`
-      }
-    },
-    'state.isDecoding': function (current) {
-      if (current !== false) {
-        let track = this.playlist[current]
-        this.text = `Decoding - ${track.title}`
-      }
-    },
-    'state.nowPlaying': function (current) {
-      if (current !== null) this.text = this.playlist[current].title
-    }
+  }
+
+  @Watch('state.isLoading.progress')
+  onLoading (current: number) {
+    const isLoading = this.state.isLoading
+    if (!current || !isLoading) return
+
+    const track = playlist[isLoading.track]
+    this.text = `Downloading - ${track.title} - ${current}%`
+  }
+
+  @Watch('state.isDecoding')
+  onDecoding (current: number | undefined) {
+    if (current === undefined) return
+
+    const track = playlist[current]
+    this.text = `Decoding - ${track.title}`
+  }
+
+  @Watch('state.nowPlaying')
+  onNowPlayingChange (current: number | undefined) {
+    if (current === undefined) return
+
+    this.text = playlist[current].title
   }
 }
 </script>

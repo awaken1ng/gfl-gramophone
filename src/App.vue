@@ -11,16 +11,16 @@
       p All music is property of SUNBORN Network Technology Co., Ltd. or it's respective owner.
 </template>
 
-<script>
-import ControlButtons from '#/components/ControlButtons'
-import ProgressBar from '#/components/ProgressBar'
-import Playlist from '#/components/Playlist'
-import NowPlaying from '#/components/NowPlaying'
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import ControlButtons from '#/components/ControlButtons.vue'
+import ProgressBar from '#/components/ProgressBar.vue'
+import Playlist from '#/components/Playlist.vue'
+import NowPlaying from '#/components/NowPlaying.vue'
+import 'vue-slider-component/theme/default.css'
 
-export default {
-  name: 'app',
-  components: { ControlButtons, ProgressBar, Playlist, NowPlaying }
-}
+@Component({ components: { ControlButtons, ProgressBar, Playlist, NowPlaying } })
+export default class App extends Vue {}
 </script>
 
 <style lang="stylus">
@@ -54,6 +54,14 @@ export default {
   display: flex
   flex-direction: column
   background-color: white
+
+// recolour the slider
+.vue-slider
+  .vue-slider-process
+    background-color: $highlight
+  .vue-slider-dot-tooltip-inner
+    background-color: $highlight
+    border-color: $highlight
 
 .footer
   color: $subtitle

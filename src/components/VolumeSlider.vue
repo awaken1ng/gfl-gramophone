@@ -2,65 +2,65 @@
   div.volume-slider(v-on:click="toggleDropdown"
                     v-bind:class="{ active: active }")
     span.material-icons {{ icon }}
-    slider(v-model="volume"
+    slider(style="padding: 8px"
+           v-model="volume"
            v-bind="slider"
            v-bind:class="{ active: active }")
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
 import Slider from 'vue-slider-component'
 import player from '#/player'
 
-export default {
-  name: 'volume-slider',
-  components: { Slider },
-  data: function () {
-    let interval = 0.01
+const interval = 0.01
 
-    return {
-      icon: 'volume_up',
-      player: player,
-      active: false,
-      slider: {
-        height: 200,
-        width: 4,
-        min: 0,
-        max: 1,
-        realTime: true, // absolute positioning sometimes causes the dot to be misaligned when clicked
-        direction: 'vertical',
-        reverse: true,
-        tooltipDir: 'right',
-        interval: interval,
-        formatter: function (value) {
-          let percent = value / interval
-          return percent.toFixed(0) + '%'
-        }
-      }
+@Component({ components: { Slider } })
+export default class VolumeSlider extends Vue {
+  icon: string = 'volume_up'
+  active: boolean = false
+  slider = {
+    min: 0,
+    max: 1,
+    interval,
+    height: 180,
+    direction: 'ttb',
+    tooltip: 'always',
+    tooltipPlacement: 'right',
+    tooltipFormatter: (value: number) => {
+      const percent = value / interval
+      return percent.toFixed(0) + '%'
     }
-  },
-  computed: {
-    volume: {
-      get: function () { return this.getVolume() },
-      set: function (value) {
-        localStorage.setItem('volume', value)
-        player.volume = value
-        this.icon = this.getVolumeIcon()
-      }
+  }
+
+  get volume (): number { return this.getVolume() }
+  set volume (value: number) {
+    localStorage.setItem('volume', value.toString())
+    player.volume = value
+    this.icon = this.getVolumeIcon(value)
+  }
+  toggleDropdown (event: MouseEvent) {
+    if (!event || !event.target) return
+
+    const target = event.target as HTMLElement
+    if (!target.classList.contains('material-icons')) return
+
+    this.active = !this.active
+  }
+  getVolume (): number {
+    const volume = localStorage.getItem('volume')
+    if (volume) {
+      return parseFloat(volume)
+    } else {
+      return player.volume || 1
     }
-  },
-  methods: {
-    toggleDropdown: function (event) {
-      if (!event.target.classList.contains('material-icons')) return
-      this.active = !this.active
-    },
-    getVolume: function () { return localStorage.getItem('volume') || player.volume || 1 },
-    getVolumeIcon: function () {
-      // computed volume property is cached and not updated immediately
-      let percent = parseInt(this.getVolume() / this.slider.interval)
-      if (percent === 0) return 'volume_mute'
-      else if (percent < 50) return 'volume_down'
-      else return 'volume_up'
-    }
+  }
+  getVolumeIcon (volume: number): string {
+    // computed volume property is cached and not updated immediately
+    const percent = volume / interval
+    if (percent === 0) return 'volume_mute'
+    else if (percent < 50) return 'volume_down'
+    else return 'volume_up'
   }
 }
 </script>
@@ -91,10 +91,10 @@ export default {
     // toggle visibility by using opacity
     transition-time = 100ms
     transition: transition-time ease-in-out
-    .vue-slider-component
+    .vue-slider
       transition: transition-time ease-in-out
       opacity: 0
-    &.active .vue-slider-component
+    &.active .vue-slider
         opacity: 1
     // make clicks go through when inactive
     pointer-events: none
@@ -107,11 +107,4 @@ export default {
     &.active
       background-color: #fff
       box-shadow: 0px 0px 5px $focus
-    // recolour the slider
-    .vue-slider-component
-      .vue-slider-process
-        background-color: $highlight
-      .vue-slider-tooltip
-        background-color: $highlight
-        border-color: $highlight
 </style>

@@ -1,0 +1,24 @@
+{
+  "defaultSeverity": "warning",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-standard"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**",
+      "src/assets/playlist.json"
+    ]
+  },
+  "rules": {
+    "quotemark": [true, "single"],
+    "indent": [true, "spaces", 2],
+    "interface-name": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "no-consecutive-blank-lines": true,
+    "no-console": false,
+    "member-access": false,
+    "object-literal-shorthand": true
+  }
+}

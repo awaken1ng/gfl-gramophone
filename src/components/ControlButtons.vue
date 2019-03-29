@@ -9,79 +9,78 @@
     volume-slider
 </template>
 
-<script>
-import VolumeSlider from '#/components/VolumeSlider'
+<script lang="ts">
+import { Watch, Component, Vue } from 'vue-property-decorator'
+import VolumeSlider from '#/components/VolumeSlider.vue'
 import player from '#/player'
-import shared from '#/shared'
-import playlist from '#/assets/playlist'
+import shared, { playlist } from '#/shared'
+
 const state = shared.state
 
-export default {
-  name: 'control-buttons',
-  components: { VolumeSlider },
-  data: function () { return { state: shared.state } },
-  methods: {
-    onPlayButtonClick: function () {
-      let playing = state.nowPlaying !== null
-      let paused = state.isPaused
+@Component({ components: { VolumeSlider } })
+export default class ControlButtons extends Vue {
+  state = shared.state
 
-      if (playing && !paused) { // playing
-        player.pause()
-        state.isPaused = true
-      } else if (playing && paused) { // paused
-        player.resume()
-        state.isPaused = false
-      } else if (!playing && !paused) { // stopped
-        let lastPlayed = (state.lastPlayed || 0)
-        shared.methods.playback.start(lastPlayed, 0)
-      }
-    },
-    onNextPrevButtonClick: function (direction) {
-      let isPlaying = state.nowPlaying !== null
-      let track = (state.nowPlaying || state.lastPlayed || 0)
+  onPlayButtonClick () {
+    const playing = state.nowPlaying !== undefined
+    const paused = state.isPaused
 
-      if (!isPlaying && state.lastPlayed === null) {
-        // if player state is fresh, play the first or the last track
-        if (direction === 'next') track = 0
-        else if (direction === 'previous') track = playlist.length - 1
-      } else {
-        if (direction === 'next') {
-          // if we are at the end of the playlist, play the first track
-          if (track < playlist.length - 1) track += 1
-          else track = 0
-        } else if (direction === 'previous') {
-          // if we are at the start of the playlist, play the last track
-          if (track > 0) track -= 1
-          else track = playlist.length - 1
-        }
-      }
-
-      shared.methods.playback.start(track, 0)
-    },
-    onLoopButtonClick: function () {
-      state.looping = !state.looping
-
-      // update the currently playing track
-      let nowPlaying = state.nowPlaying
-      if (nowPlaying === null) return
-
-      let track = playlist[nowPlaying]
-      let sampleRate = shared.sampleRate
-      player.set.loop({
-        enabled: state.looping,
-        start: track.loop.start / sampleRate,
-        end: track.loop.end / sampleRate
-      })
-    },
-    onStopButtonClick: function () { shared.methods.playback.stop() },
-    getPlayButtonIcon: function (index) {
-      let isPlaying = state.nowPlaying !== null
-      let isPaused = state.isPaused
-
-      if (!isPlaying && !isPaused) return 'play_arrow' // stopped
-      if (isPlaying && isPaused) return 'play_arrow' // paused
-      return 'pause'
+    if (playing && !paused) { // playing
+      player.pause()
+      state.isPaused = true
+    } else if (playing && paused) { // paused
+      player.resume()
+      state.isPaused = false
+    } else if (!playing && !paused) { // stopped
+      const lastPlayed = (state.lastPlayed || 0)
+      shared.methods.playback.start(lastPlayed, 0)
     }
+  }
+  onNextPrevButtonClick (direction: string) {
+    const isPlaying = state.nowPlaying !== undefined
+    let track = (state.nowPlaying || state.lastPlayed || 0)
+
+    if (!isPlaying && state.lastPlayed === null) {
+      // if player state is fresh, play the first or the last track
+      if (direction === 'next') track = 0
+      else if (direction === 'previous') track = playlist.length - 1
+    } else {
+      if (direction === 'next') {
+        // if we are at the end of the playlist, play the first track
+        if (track < playlist.length - 1) track += 1
+        else track = 0
+      } else if (direction === 'previous') {
+        // if we are at the start of the playlist, play the last track
+        if (track > 0) track -= 1
+        else track = playlist.length - 1
+      }
+    }
+
+    shared.methods.playback.start(track, 0)
+  }
+  onLoopButtonClick () {
+    state.looping = !state.looping
+
+    // update the currently playing track
+    const nowPlaying = state.nowPlaying
+    if (nowPlaying === undefined) return
+
+    const track = playlist[nowPlaying]
+    const sampleRate = shared.sampleRate
+    player.set.loop({
+      enabled: state.looping,
+      start: track.loop.start / sampleRate,
+      end: track.loop.end / sampleRate
+    })
+  }
+  onStopButtonClick () { shared.methods.playback.stop() }
+  getPlayButtonIcon (index: number) {
+    const isPlaying = state.nowPlaying !== undefined
+    const isPaused = state.isPaused
+
+    if (!isPlaying && !isPaused) return 'play_arrow' // stopped
+    if (isPlaying && isPaused) return 'play_arrow' // paused
+    return 'pause'
   }
 }
 </script>

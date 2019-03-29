@@ -11,34 +11,27 @@
         div.tags {{ track.tags ? typeof track.tags === 'string' ? track.tags : track.tags.join(', ') : '' }}
 </template>
 
-<script>
-import playlist from '#/assets/playlist.json'
-import shared from '#/shared'
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import shared, { playlist } from '#/shared'
 
-export default {
-  name: 'playlist',
-  data: function () {
-    return {
-      playlist: playlist,
-      state: shared.state
-    }
-  },
-  computed: {
-  },
-  methods: {
-    onPlaylistItemClick: function (index) {
+@Component
+export default class Playlist extends Vue {
+  state = shared.state
+  playlist = playlist
+
+  onPlaylistItemClick (index: number) {
       // ignore the event if user clicked on the currently playing item
       if (this.state.nowPlaying === index) return
 
       shared.methods.playback.start(index, 0)
-    },
-    isPlaying: function (index) { return this.state.nowPlaying === index },
-    isLoading: function (index) {
-      if (this.state.isLoading) return this.state.isLoading.track === index
-      if (this.state.isDecoding !== false) return this.state.isDecoding === index
-    },
-    getPlaybackStatusIcon: function (index) { return this.isPlaying(index) ? 'play_arrow' : '' }
   }
+  isPlaying (index: number) { return this.state.nowPlaying === index }
+  isLoading (index: number) {
+      if (this.state.isLoading) return this.state.isLoading.track === index
+    if (this.state.isDecoding !== undefined) return this.state.isDecoding === index
+  }
+  getPlaybackStatusIcon (index: number) { return this.isPlaying(index) ? 'play_arrow' : '' }
 }
 </script>
 
