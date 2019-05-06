@@ -174,8 +174,7 @@ class AudioPlayer {
       end: this.source.loopEnd
     }
     const callbacks = this.progress.callbacks
-    let volume = 1
-    if (this.gain) volume = this.gain.gain.value
+    const volume = this.volume
 
     if (resumeAt === undefined) resumeAt = this.progress.played
 
