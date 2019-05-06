@@ -218,13 +218,11 @@ class AudioPlayer {
       end: this.source.loopEnd
     }
     const callbacks = this.progress.callbacks
-    if (this.gain) {
-      const volume = this.gain.gain.value
-      this.volume = volume
-    }
+    const volume = this.volume
 
     this.stop()
     this.set.source(buffer, loop)
+    this.volume = volume
     this.progress.played = position
     this.play(position, callbacks as Callbacks)
   }
