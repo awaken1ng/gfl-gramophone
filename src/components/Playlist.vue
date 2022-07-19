@@ -21,14 +21,14 @@ export default class Playlist extends Vue {
   playlist = playlist
 
   onPlaylistItemClick (index: number) {
-      // ignore the event if user clicked on the currently playing item
-      if (this.state.nowPlaying === index) return
+    // ignore the event if user clicked on the currently playing item
+    if (this.state.nowPlaying === index) return
 
-      shared.methods.playback.start(index, 0)
+    shared.methods.playback.start(index, 0)
   }
   isPlaying (index: number) { return this.state.nowPlaying === index }
   isLoading (index: number) {
-      if (this.state.isLoading) return this.state.isLoading.track === index
+    if (this.state.isLoading) return this.state.isLoading.track === index
     if (this.state.isDecoding !== undefined) return this.state.isDecoding === index
   }
   getPlaybackStatusIcon (index: number) { return this.isPlaying(index) ? 'play_arrow' : '' }
