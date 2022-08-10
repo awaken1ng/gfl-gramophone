@@ -1,82 +1,64 @@
-<script lang="ts">
+<script setup lang="ts">
+import { ref, computed } from '@vue/reactivity';
 import Slider from 'vue-slider-component';
-import player from '@/player'
-import { defineComponent } from 'vue';
 
-const INTERVAL = 0.01
-
-export default defineComponent({
-  components: {
-    Slider,
+const props = defineProps({
+  volume: {
+    type: Number,
+    default: 1.0,
   },
-  data() {
-    return {
-      icon: 'volume_up',
-      active: false,
-      slider: {
-        interval: INTERVAL,
-        tooltipFormatter: (value: number) => {
-          const percent = value / INTERVAL
-          return percent.toFixed(0) + '%'
-        }
-      }
-    }
-  },
-  computed: {
-    volume: {
-      get() {
-        const volume = localStorage.getItem('volume')
-        if (volume) {
-          return parseFloat(volume)
-        } else {
-          return player.volume || 1
-        }
-      },
-      set(value: number) {
-        localStorage.setItem('volume', value.toString())
-        player.volume = value
-        this.icon = this.getVolumeIcon(value)
-      }
-    }
-  },
-  methods: {
-    toggleDropdown(event: MouseEvent) {
-      if (!event || !event.target) return
-
-      const target = event.target as HTMLElement
-      if (!target.classList.contains('material-icons')) return
-
-      this.active = !this.active
-    },
-    getVolumeIcon(volume: number): string {
-      // computed volume property is cached and not updated immediately
-      const percent = volume / INTERVAL
-      if (percent === 0) return 'volume_mute'
-      else if (percent < 50) return 'volume_down'
-      else return 'volume_up'
-    }
-  }
 });
+
+const emit = defineEmits<{
+  (event: 'change', newVolume: number): void,
+}>();
+
+const active = ref(false);
+
+const toggleDropdown = (event: MouseEvent) => {
+  if (!event || !event.target) return;
+
+  const target = event.target as HTMLElement;
+  if (!target.classList.contains('material-icons')) return;
+
+  active.value = !active.value;
+};
+
+const icon = computed(() => {
+  const percent = props.volume / INTERVAL;
+  if (percent === 0) return 'volume_mute';
+  else if (percent < 50) return 'volume_down';
+  else return 'volume_up';
+});
+
+const INTERVAL = 0.01;
+
+const tooltipFormatter = (value: number) => {
+  const percent = value / INTERVAL;
+  return percent.toFixed(0) + '%';
+};
 </script>
 
 <template>
-  <div class="volume-slider"
-    v-on:click="toggleDropdown"
-    v-bind:class="{ active }"
+  <div
+    class="volume-slider"
+    :class="{ active }"
+    @click="toggleDropdown"
   >
     <span class="material-icons">{{ icon }}</span>
     <Slider
+      :class="{ active }"
       style="padding: 8px;"
+      v-model="volume"
+      direction="ttb"
+      :height="180"
       :min="0"
       :max="1"
-      :interval="slider.interval"
-      :height="180"
-      direction="ttb"
+      :interval="INTERVAL"
       tooltip="always"
-      tooltipPlacement="right"
-      :tooltip-formatter="slider.tooltipFormatter"
-      v-model="volume"
-      v-bind:class="{ active }"
+      tooltip-placement="right"
+      :tooltip-formatter="tooltipFormatter"
+      @change="(v) => emit('change', v)"
     />
   </div>
 </template>

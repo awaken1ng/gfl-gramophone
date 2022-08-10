@@ -9,6 +9,8 @@ import shared, { playlist } from '@/shared'
 
 const state = ref(shared.state);
 
+const volume = ref(parseFloat(localStorage.getItem('volume') || "1"));
+
 const isPlaying = computed(() => state.value.nowPlaying !== undefined);
 
 const onNextPrev = (direction: 'next' | 'prev') => {
@@ -79,6 +81,11 @@ const onSeek = (toPosition: number) => {
     state.value.isPaused = false;
   }
 };
+
+const onVolumeChange = (newVolume: number) => {
+  localStorage.setItem('volume', newVolume.toString());
+  volume.value = newVolume;
+}
 </script>
 
 <template>
@@ -89,6 +96,7 @@ const onSeek = (toPosition: number) => {
         :is-playing="isPlaying"
         :is-paused="state.isPaused"
         :is-looping="state.looping"
+        :volume="volume"
         @prev="onNextPrev('prev')"
         @play="onPlay"
         @pause="onPause"
@@ -96,6 +104,7 @@ const onSeek = (toPosition: number) => {
         @stop="onStop"
         @next="onNextPrev('next')"
         @loop="onLoop"
+        @volume="onVolumeChange"
       />
       <ProgressBar
         :played="state.played"

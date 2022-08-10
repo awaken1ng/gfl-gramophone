@@ -6,6 +6,10 @@ const props = defineProps({
   isPlaying: Boolean,
   isPaused: Boolean,
   isLooping: Boolean,
+  volume: {
+    type: Number,
+    default: 1.0,
+  },
 });
 
 const emit = defineEmits<{
@@ -16,6 +20,7 @@ const emit = defineEmits<{
   (event: 'stop'): void,
   (event: 'next'): void,
   (event: 'loop'): void,
+  (event: 'volume', newVolume: number): void,
 }>();
 
 const onPlayClick = () => {
@@ -42,7 +47,7 @@ const playButtonIcon = computed(() => {
     <span class="stop material-icons" @click="emit('stop')">stop</span>
     <span class="next material-icons" @click="emit('next')">skip_next</span>
     <span class="loop material-icons" :class="{ active: isLooping }" @click="emit('loop')">loop</span>
-    <VolumeSlider/>
+    <VolumeSlider :volume="volume" @change="(v) => emit('volume', v)"/>
   </div>
 </template>
 
