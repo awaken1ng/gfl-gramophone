@@ -1,45 +1,107 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
-import NowPlaying from '@/components/NowPlaying.vue';
+<script setup lang="ts">
+import { ref, computed } from '@vue/reactivity';
 import ControlButtons from '@/components/ControlButtons.vue';
-import ProgressBar from '@/components/ProgressBar.vue';
+import NowPlaying from '@/components/NowPlaying.vue';
 import Playlist from '@/components/Playlist.vue';
-import shared from '@/shared';
+import ProgressBar from '@/components/ProgressBar.vue';
 import player from '@/player';
+import shared, { playlist } from '@/shared'
 
-export default defineComponent({
-  components: {
-    NowPlaying,
-    ControlButtons,
-    ProgressBar,
-    Playlist,
-  },
-  data() {
-    return {
-      state: shared.state,
-    }
-  },
-  methods: {
-    onSeek(toPosition: number) {
-      if (!shared.state.isPaused) {
-        // we're playing, seek to the position
-        player.seek(toPosition)
-      } else {
-        // we're paused, unpause and seek to position
-        player.resume(toPosition)
-        this.state.isPaused = false
-      }
+const state = ref(shared.state);
+
+const isPlaying = computed(() => state.value.nowPlaying !== undefined);
+
+const onNextPrev = (direction: 'next' | 'prev') => {
+  const isPlaying = state.value.nowPlaying !== undefined
+  let track = (state.value.nowPlaying || state.value.lastPlayed || 0)
+
+  if (!isPlaying && state.value.lastPlayed === null) {
+    // if player state is fresh, play the first or the last track
+    if (direction === 'next') track = 0
+    else if (direction === 'prev') track = playlist.length - 1
+  } else {
+    if (direction === 'next') {
+      // if we are at the end of the playlist, play the first track
+      if (track < playlist.length - 1) track += 1
+      else track = 0
+    } else if (direction === 'prev') {
+      // if we are at the start of the playlist, play the last track
+      if (track > 0) track -= 1
+      else track = playlist.length - 1
     }
   }
-})
+
+  shared.methods.playback.start(track, 0)
+}
+
+const onPlay = () => {
+  const lastPlayed = (state.value.lastPlayed || 0);
+  shared.methods.playback.start(lastPlayed, 0);
+}
+
+const onPause = () => {
+  player.pause();
+  state.value.isPaused = true;
+}
+
+const onResume = () => {
+  player.resume();
+  state.value.isPaused = false;
+}
+
+const onStop = () => {
+  shared.methods.playback.stop();
+}
+
+const onLoop = () => {
+  state.value.looping = !state.value.looping
+
+  // update the currently playing track
+  const nowPlaying = state.value.nowPlaying
+  if (nowPlaying === undefined) return
+
+  const track = playlist[nowPlaying]
+  const sampleRate = shared.sampleRate
+  player.setLoop({
+    enabled: state.value.looping,
+    start: track.loop.start / sampleRate,
+    end: track.loop.end / sampleRate
+  })
+}
+
+const onSeek = (toPosition: number) => {
+  if (!state.value.isPaused) {
+    // we're playing, seek to the position
+    player.seek(toPosition);
+  } else {
+    // we're paused, unpause and seek to position
+    player.resume(toPosition);
+    state.value.isPaused = false;
+  }
+};
 </script>
 
 <template>
   <div class="status-area">
     <NowPlaying/>
     <div class="controls">
-      <ControlButtons/>
-      <ProgressBar :played="state.played" :duration="state.duration" @seek="onSeek"/>
+      <ControlButtons
+        :is-playing="isPlaying"
+        :is-paused="state.isPaused"
+        :is-looping="state.looping"
+        @prev="onNextPrev('prev')"
+        @play="onPlay"
+        @pause="onPause"
+        @resume="onResume"
+        @stop="onStop"
+        @next="onNextPrev('next')"
+        @loop="onLoop"
+      />
+      <ProgressBar
+        :played="state.played"
+        :duration="state.duration"
+        @seek="onSeek"
+      />
     </div>
   </div>
   <Playlist/>

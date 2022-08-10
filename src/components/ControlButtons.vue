@@ -1,101 +1,47 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { computed } from '@vue/reactivity';
 import VolumeSlider from '@/components/VolumeSlider.vue'
-import player from '@/player'
-import shared, { playlist } from '@/shared'
 
-const state = shared.state
+const props = defineProps({
+  isPlaying: Boolean,
+  isPaused: Boolean,
+  isLooping: Boolean,
+});
 
-export default defineComponent({
-  components: {
-    VolumeSlider
-  },
-  data() {
-    return {
-      state: shared.state
-    }
-  },
-  methods: {
-    onPlayButtonClick () {
-      const playing = state.nowPlaying !== undefined
-      const paused = state.isPaused
+const emit = defineEmits<{
+  (event: 'prev'): void,
+  (event: 'play'): void,
+  (event: 'pause'): void,
+  (event: 'resume'): void,
+  (event: 'stop'): void,
+  (event: 'next'): void,
+  (event: 'loop'): void,
+}>();
 
-      if (playing && !paused) { // playing
-        player.pause()
-        state.isPaused = true
-      } else if (playing && paused) { // paused
-        player.resume()
-        state.isPaused = false
-      } else if (!playing && !paused) { // stopped
-        const lastPlayed = (state.lastPlayed || 0)
-        shared.methods.playback.start(lastPlayed, 0)
-      }
-    },
-    onNextPrevButtonClick (direction: string) {
-      const isPlaying = state.nowPlaying !== undefined
-      let track = (state.nowPlaying || state.lastPlayed || 0)
+const onPlayClick = () => {
+  const { isPlaying, isPaused } = props;
 
-      if (!isPlaying && state.lastPlayed === null) {
-        // if player state is fresh, play the first or the last track
-        if (direction === 'next') track = 0
-        else if (direction === 'previous') track = playlist.length - 1
-      } else {
-        if (direction === 'next') {
-          // if we are at the end of the playlist, play the first track
-          if (track < playlist.length - 1) track += 1
-          else track = 0
-        } else if (direction === 'previous') {
-          // if we are at the start of the playlist, play the last track
-          if (track > 0) track -= 1
-          else track = playlist.length - 1
-        }
-      }
+  if (isPlaying && !isPaused) emit('pause'); // playing
+  else if (isPlaying && isPaused) emit('resume'); // paused
+  else emit('play'); // stopped
+};
 
-      shared.methods.playback.start(track, 0)
-    },
-    onLoopButtonClick () {
-      state.looping = !state.looping
+const playButtonIcon = computed(() => {
+  const { isPlaying, isPaused } = props;
 
-      // update the currently playing track
-      const nowPlaying = state.nowPlaying
-      if (nowPlaying === undefined) return
-
-      const track = playlist[nowPlaying]
-      const sampleRate = shared.sampleRate
-      player.setLoop({
-        enabled: state.looping,
-        start: track.loop.start / sampleRate,
-        end: track.loop.end / sampleRate
-      })
-    },
-    onStopButtonClick () {
-      shared.methods.playback.stop()
-    },
-    getPlayButtonIcon () {
-      const isPlaying = state.nowPlaying !== undefined
-      const isPaused = state.isPaused
-
-      if (!isPlaying && !isPaused) return 'play_arrow' // stopped
-      if (isPlaying && isPaused) return 'play_arrow' // paused
-      return 'pause'
-    },
-  }
+  if (isPlaying && isPaused) return 'play_arrow'; // paused
+  if (!isPlaying) return 'play_arrow'; // stopped
+  return 'pause';
 });
 </script>
 
 <template>
   <div class="control-buttons">
-    <span class="previous material-icons" v-on:click="onNextPrevButtonClick('previous')">skip_previous</span>
-    <span class="play material-icons" v-on:click="onPlayButtonClick">{{ getPlayButtonIcon() }}</span>
-    <span class="stop material-icons" v-on:click="onStopButtonClick">stop</span>
-    <span class="next material-icons" v-on:click="onNextPrevButtonClick('next')">skip_next</span>
-    <span class="loop material-icons"
-      v-on:click="onLoopButtonClick"
-      v-bind:class="{ active: state.looping }"
-    >
-      loop
-    </span>
-
+    <span class="previous material-icons" @click="emit('prev')">skip_previous</span>
+    <span class="play material-icons" @click="onPlayClick">{{ playButtonIcon }}</span>
+    <span class="stop material-icons" @click="emit('stop')">stop</span>
+    <span class="next material-icons" @click="emit('next')">skip_next</span>
+    <span class="loop material-icons" :class="{ active: isLooping }" @click="emit('loop')">loop</span>
     <VolumeSlider/>
   </div>
 </template>
