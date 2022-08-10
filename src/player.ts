@@ -4,11 +4,15 @@ interface Loop {
   end: number
 }
 
-interface Callbacks {
-  progress?: (event: ProgressEvent) => void, // FIXME clashing name with download and playback
+interface DownloadCallbacks {
+  progress?: (event: ProgressEvent) => void
   load?: () => void,
   decoded?: (buffer: AudioBuffer) => void,
   error?: (error?: string) => void,
+}
+
+interface PlaybackCallbacks {
+  progress?: (played: number) => void
   loop?: () => void,
   stop?: () => void
 }
@@ -16,7 +20,7 @@ interface Callbacks {
 interface Progress {
   iid: number,
   played: number,
-  callbacks: Callbacks | undefined
+  callbacks: PlaybackCallbacks | undefined
 }
 
 class AudioPlayer {
@@ -24,12 +28,8 @@ class AudioPlayer {
   source: AudioBufferSourceNode | undefined
   gain: GainNode | undefined
   progress: Progress
-  set: {
-    source: (buffer: AudioBuffer, loop: Loop) => void
-    loop: (loop: Loop) => void
-  }
 
-  constructor () {
+  constructor() {
     this.context = new AudioContext()
 
     this.source = undefined
@@ -39,47 +39,45 @@ class AudioPlayer {
       played: 0,
       callbacks: {}
     }
-    this.set = {
-      /**
-       * Set audio source
-       * @param {AudioBuffer} buffer
-       * @param {{start: number, end: number}} loop
-       */
-      source: function (this: AudioPlayer, buffer: AudioBuffer, loop: Loop) {
-        console.log('Setting the source to', buffer, loop)
-        const gain = this.context.createGain()
-        this.gain = gain
-
-        const source = this.context.createBufferSource()
-        source.buffer = buffer
-        source.connect(gain)
-        gain.connect(this.context.destination)
-        this.source = source
-        if (loop) this.set.loop(loop)
-      }.bind(this),
-      loop: function (this: AudioPlayer, loop: Loop) {
-        const source = this.source
-        if (source && loop) {
-          source.loop = Boolean(loop.enabled && (loop.start || loop.end))
-          source.loopStart = loop.start
-          source.loopEnd = loop.end
-        }
-      }.bind(this)
-    }
   }
 
-  get volume (): number {
+  /**
+   * Set audio source
+   * @param {AudioBuffer} buffer
+   * @param {{start: number, end: number}} loop
+   */
+  public setSource(buffer: AudioBuffer, loop?: Loop) {
+    console.log('Setting the source to', buffer, loop)
+    this.gain = this.context.createGain()
+
+    const source = this.context.createBufferSource()
+    source.buffer = buffer
+    source.connect(this.gain)
+    this.gain.connect(this.context.destination)
+    this.source = source
+    if (loop) this.setLoop(loop)
+  }
+
+  public setLoop(loop: Loop) {
+    if (!this.source) return
+
+    this.source.loop = Boolean(loop.enabled && (loop.start || loop.end))
+    this.source.loopStart = loop.start
+    this.source.loopEnd = loop.end
+  }
+
+  public get volume(): number {
     if (!this.gain) return 1
     return this.gain.gain.value
   }
-  set volume (value: number) { if (this.gain) this.gain.gain.value = value }
+  public set volume(value: number) { if (this.gain) this.gain.gain.value = value }
 
   /**
    * Download audio from URL and do something with it in callback
    * @param {string} url
    * @param {function(AudioBuffer)} callback
    */
-  public download (url: string, callbacks: Callbacks) {
+  public download(url: string, callbacks: DownloadCallbacks) {
     if (!callbacks || (callbacks && !callbacks.decoded)) throw Error('Decoded callback is missing')
 
     const self = this
@@ -103,7 +101,7 @@ class AudioPlayer {
    * @param {number} position - At what position start the audio playback
    * @param {object} Object with progress, stop and/or loop callback functions
    */
-  public play (position: number, callbacks: Callbacks) {
+  public play(position: number, callbacks: PlaybackCallbacks) {
     if (!this.source) return
 
     console.log('Starting playback from', position)
@@ -137,11 +135,11 @@ class AudioPlayer {
         progress.played = 0
         if (callbacks && callbacks.stop) callbacks.stop()
       }
-      // if (callbacks && callbacks.progress) callbacks.progress(progress.played)
+      if (callbacks && callbacks.progress) callbacks.progress(progress.played)
     }, 1000)
   }
 
-  public stop () {
+  public stop() {
     console.log('Stopping')
     // stop and null the source
     if (this.source) {
@@ -162,7 +160,7 @@ class AudioPlayer {
   /**
    * Resume the playback of paused source
    */
-  public resume (resumeAt?: number) {
+  public resume(resumeAt?: number) {
     if (!this.source) return
 
     console.log('Resuming at', this.progress.played)
@@ -185,15 +183,15 @@ class AudioPlayer {
     this.progress.callbacks = undefined
 
     // set the source back and resume playback
-    this.set.source(buffer as AudioBuffer, loop)
+    this.setSource(buffer as AudioBuffer, loop)
     this.volume = volume
-    this.play(resumeAt, callbacks as Callbacks)
+    this.play(resumeAt, callbacks as PlaybackCallbacks)
   }
 
   /**
    * Pause the audio source
    */
-  public pause () {
+  public pause() {
     console.log('Pausing at', this.progress.played)
 
     // stop the source
@@ -204,7 +202,7 @@ class AudioPlayer {
     this.progress.iid = 0
   }
 
-  public seek (position: number) {
+  public seek(position: number) {
     if (!this.source) return
 
     const buffer = this.source.buffer
@@ -220,10 +218,10 @@ class AudioPlayer {
     const volume = this.volume
 
     this.stop()
-    this.set.source(buffer, loop)
+    this.setSource(buffer, loop)
     this.volume = volume
     this.progress.played = position
-    this.play(position, callbacks as Callbacks)
+    this.play(position, callbacks as PlaybackCallbacks)
   }
 }
 

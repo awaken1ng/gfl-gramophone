@@ -1,0 +1,35 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+.material-icons {
+  display: flex;
+  user-select: none;
+}
+
+@media (max-width: 500px) {
+  body {
+    margin: 0 0.5rem 0.5rem 0.5rem
+
+  }
+
+
+  #app > div:first-child {
+    padding-top: 0.5rem;
+  }
+}
+
+@media (min-width: 500px) {
+  body {
+    margin: 0 15% 4% 15%
+  }
+
+  #app > div:first-child {
+    padding-top: 1%;
+  }
+}

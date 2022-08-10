@@ -1,5 +1,6 @@
-import Slider from 'vue-slider-component'
-import player from '#/player'
+import type Slider from 'vue-slider-component'
+import player from './player'
+import { reactive } from 'vue'
 
 export interface Playlist {
   [index: number]: {
@@ -23,10 +24,12 @@ interface Shared {
     looping: boolean,
     isLoading: { track: number, progress: number } | undefined,
     isDecoding: number | undefined,
-    isPaused: boolean
+    isPaused: boolean,
+    played: number,
+    duration: number,
   },
   sliders: {
-    seekbar: Slider | undefined
+    seekbar: typeof Slider | undefined
   },
   methods: {
     playback: {
@@ -37,9 +40,10 @@ interface Shared {
 }
 
 const root = 'bgm' // root of audio files
-export const playlist = require('#/assets/playlist.json') as Playlist // tslint:disable-line no-var-requires
+import playlist from './assets/playlist.json';
+export { default as playlist } from './assets/playlist.json';
 
-const shared: Shared = {
+const shared: Shared = reactive({
   sampleRate: 44100,
   state: {
     cache: {},
@@ -48,7 +52,9 @@ const shared: Shared = {
     looping: true,
     isLoading: undefined,
     isDecoding: undefined,
-    isPaused: false
+    isPaused: false,
+    played: 0,
+    duration: 0,
   },
   sliders: {
     seekbar: undefined
@@ -59,13 +65,14 @@ const shared: Shared = {
       start: (trackIndex: number, position: number) => {} // tslint:disable-line:no-empty
     }
   }
-}
+});
 
 shared.methods.playback.stop = () => {
   player.stop()
   shared.state.nowPlaying = undefined
   shared.state.isPaused = false
-  if (shared.sliders.seekbar) shared.sliders.seekbar.setIndex(0)
+  shared.state.played = 0
+  shared.state.duration = 0
 }
 
 shared.methods.playback.start = (trackIndex: number, position: number) => {
@@ -87,9 +94,14 @@ shared.methods.playback.start = (trackIndex: number, position: number) => {
       end: track.loop.end / sampleRate
     }
     shared.methods.playback.stop()
-    player.set.source(buffer, loop)
+    player.setSource(buffer, loop)
+    state.played = 0;
+    state.duration = buffer.duration;
     player.volume = parseFloat(volume)
-    player.play(position, { stop: () => { stopPlayback() } })
+    player.play(position, {
+      stop: () => { stopPlayback() },
+      progress: (played) => { state.played = played }
+    })
     state.nowPlaying = trackIndex
     state.lastPlayed = trackIndex
   }
@@ -117,7 +129,8 @@ shared.methods.playback.start = (trackIndex: number, position: number) => {
           callback(buffer)
         },
         error: () => { state.isLoading = undefined }
-      })
+      }
+    )
   }
 }
 

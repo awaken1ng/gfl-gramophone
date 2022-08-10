@@ -1,73 +1,95 @@
-<template lang="pug">
-  div#app
-    div.status-area
-      now-playing
-      div.controls
-        control-buttons
-        progress-bar
-    playlist
-    div.footer
-      p Girls' Frontline is Copyright SUNBORN Network Technology Co., Ltd.
-      p All music is property of SUNBORN Network Technology Co., Ltd. or it's respective owner.
-</template>
-
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import ControlButtons from '#/components/ControlButtons.vue'
-import ProgressBar from '#/components/ProgressBar.vue'
-import Playlist from '#/components/Playlist.vue'
-import NowPlaying from '#/components/NowPlaying.vue'
-import 'vue-slider-component/theme/default.css'
+import { defineComponent } from 'vue'
+import NowPlaying from '@/components/NowPlaying.vue';
+import ControlButtons from '@/components/ControlButtons.vue';
+import ProgressBar from '@/components/ProgressBar.vue';
+import Playlist from '@/components/Playlist.vue';
+import shared from '@/shared';
+import player from '@/player';
 
-@Component({ components: { ControlButtons, ProgressBar, Playlist, NowPlaying } })
-export default class App extends Vue {}
+export default defineComponent({
+  components: {
+    NowPlaying,
+    ControlButtons,
+    ProgressBar,
+    Playlist,
+  },
+  data() {
+    return {
+      state: shared.state,
+    }
+  },
+  methods: {
+    onSeek(toPosition: number) {
+      if (!shared.state.isPaused) {
+        // we're playing, seek to the position
+        player.seek(toPosition)
+      } else {
+        // we're paused, unpause and seek to position
+        player.resume(toPosition)
+        this.state.isPaused = false
+      }
+    }
+  }
+})
 </script>
 
-<style lang="stylus">
-@import '~material-icons/iconfont/material-icons.css'
-@require '~#/shared.styl'
+<template>
+  <div class="status-area">
+    <NowPlaying/>
+    <div class="controls">
+      <ControlButtons/>
+      <ProgressBar :played="state.played" :duration="state.duration" @seek="onSeek"/>
+    </div>
+  </div>
+  <Playlist/>
+  <div class="footer">
+    <p>Girls' Frontline is Copyright SUNBORN Network Technology Co., Ltd.</p>
+    <p>All music is property of SUNBORN Network Technology Co., Ltd. or it's respective owner.</p>
+  </div>
+</template>
 
-.material-icons
-  display: flex
-  user-select: none
+<style>
+:root {
+  --subtitle: #636363;
+  --focus: #cccccc;
+  --highlight-r: 246;
+  --highlight-g: 164;
+  --highlight-b: 0;
+  --highlight: rgb(246, 164, 0);
+  --icon-size: 32px;
+  --control-buttons-horizontal-padding: 0.5rem;
+}
 
-@media (max-width: 500px)
-  body
-    margin: 0 0.5rem 0.5rem 0.5rem
-    #app > div:first-child
-      padding-top: 0.5rem
+.status-area {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
 
-@media (min-width: 500px)
-  body
-    margin: 0 15% 4% 15%
-    #app > div:first-child
-      padding-top: 1%
+/* recolour the slider */
+.vue-slider .vue-slider-process {
+  background-color: var(--highlight);
+}
 
-#app
-  font-family: 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
+.vue-slider .vue-slider-dot-tooltip-inner {
+  background-color: var(--highlight);
+  border-color: var(--highlight);
+}
+.vue-slider .vue-slider-dot-handle-focus {
+  box-shadow: 0px 0px 1px 2px rgba(var(--highlight-r), var(--highlight-g), var(--highlight-b), 0.36);
+}
 
-.status-area
-  position: sticky
-  top: 0
-  display: flex
-  flex-direction: column
-  background-color: white
+.footer {
+  color: var(--subtitle);
+  margin-top: 3rem;
+  font-size: 75%;
+  text-align: center;
+}
 
-// recolour the slider
-.vue-slider
-  .vue-slider-process
-    background-color: $highlight
-  .vue-slider-dot-tooltip-inner
-    background-color: $highlight
-    border-color: $highlight
-
-.footer
-  color: $subtitle
-  margin-top: 3rem
-  font-size: 75%
-  text-align: center
-  p
-    margin: 0
+.footer p {
+  margin: 0;
+}
 </style>

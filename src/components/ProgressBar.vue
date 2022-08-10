@@ -1,67 +1,51 @@
-<template lang="pug">
-  div.progress-bar
-    slider.seek-bar(style="padding: 10px; height: 6px"
-                    ref="seekbar"
-                    v-model="played"
-                    v-bind="slider"
-                    v-bind:max="Math.ceil(duration)")
-    span.played {{ formatMMSS(played) }}
-    | /
-    span.duration {{ formatMMSS(duration) }}
-</template>
+<script setup lang="ts">
+import { ref, computed } from 'vue';
+import Slider from 'vue-slider-component';
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Slider from 'vue-slider-component'
-import player from '#/player'
-import shared from '#/shared'
+const seekbar = ref<InstanceType<typeof Slider> | undefined>();
 
-@Component({ components: { Slider } })
-export default class ProgressBar extends Vue {
-  player = player
-  slider = {
-    width: '100%',
-    tooltip: 'none'
-  }
+const props = defineProps<{
+  played: number,
+  duration: number,
+}>();
 
-  mounted () {
-    shared.sliders.seekbar = this.$refs.seekbar as Slider
-  }
-  get played (): number { return this.player.progress.played || 0 }
-  set played (value: number) {
-    if (!shared.state.isPaused) {
-      // we're playing, seek to the position
-      this.player.seek(value)
-    } else {
-      // we're paused, unpause and seek to position
-      this.player.resume(value)
-      shared.state.isPaused = false
-    }
-  }
+const emit = defineEmits<{
+  (event: 'seek', toPosition: number): void
+}>();
 
-  get duration () {
-    let duration = 0
-    if (player.source && player.source.buffer) {
-      duration = player.source.buffer.duration
-    }
-    return duration
-  }
-
-  formatMMSS (seconds: number) {
-    // format seconds to 'mm:ss'
-    seconds = Math.round(seconds)
-    const minutes = String(Math.floor(seconds / 60)).padStart(2, '0')
-    const secondsFormatted = String(Math.round(seconds % 60)).padStart(2, '0')
-    return `${minutes}:${secondsFormatted}`
-  }
+function formatMMSS(seconds: number) {
+  // format seconds to 'mm:ss'
+  seconds = Math.round(seconds)
+  const minutesFormatted = String(Math.floor(seconds / 60)).padStart(2, '0')
+  const secondsFormatted = String(Math.round(seconds % 60)).padStart(2, '0')
+  return `${minutesFormatted}:${secondsFormatted}`
 }
+
+const playedMMSS = computed(() => formatMMSS(props.played));
+const durationMMSS = computed(() => formatMMSS(props.duration));
 </script>
 
-<style lang="stylus">
-@require '~#/shared.styl'
+<template>
+  <div class="progress-bar">
+    <Slider
+      style="padding: 10px 0; margin: 0 10px; height: 6px;"
+      ref="seekbar"
+      width="100%"
+      tooltip="none"
+      v-model="played"
+      :max="Math.ceil(duration)"
+      @change="(v: number) => emit('seek', v)"
+    />
+    <span class="played">{{ playedMMSS }}</span>
+    /
+    <span class="duration">{{ durationMMSS }}</span>
+  </div>
+</template>
 
-.progress-bar
-  display: flex
-  align-items: center
-  width: 100%
+<style scoped>
+.progress-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
 </style>
