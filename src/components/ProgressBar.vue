@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import Slider from 'vue-slider-component';
-
-const seekbar = ref<InstanceType<typeof Slider> | undefined>();
 
 const props = defineProps<{
   played: number,
@@ -29,7 +27,6 @@ const durationMMSS = computed(() => formatMMSS(props.duration));
   <div class="progress-bar">
     <Slider
       style="padding: 10px 0; margin: 0 10px; height: 6px;"
-      ref="seekbar"
       width="100%"
       tooltip="none"
       v-model="played"

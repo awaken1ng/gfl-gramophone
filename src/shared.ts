@@ -1,4 +1,3 @@
-import type Slider from 'vue-slider-component'
 import player from './player'
 import { reactive } from 'vue'
 
@@ -28,9 +27,6 @@ interface Shared {
     played: number,
     duration: number,
   },
-  sliders: {
-    seekbar: typeof Slider | undefined
-  },
   methods: {
     playback: {
       start: (trackIndex: number, position: number) => void,
@@ -55,9 +51,6 @@ const shared: Shared = reactive({
     isPaused: false,
     played: 0,
     duration: 0,
-  },
-  sliders: {
-    seekbar: undefined
   },
   methods: {
     playback: {
