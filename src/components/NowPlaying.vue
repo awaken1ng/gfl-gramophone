@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { playlist } from '@/shared'
+import playlist from '@/assets/playlist.json'
 
 const props = defineProps<{
   nowPlaying?: number,

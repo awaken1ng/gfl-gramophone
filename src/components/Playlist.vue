@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { playlist } from '@/shared';
+import playlist from '@/assets/playlist.json'
 
 const props = defineProps<{
   nowPlaying?: number,
