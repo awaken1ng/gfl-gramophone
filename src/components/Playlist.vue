@@ -1,33 +1,42 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
-import shared, { playlist } from '@/shared'
+<script setup lang="ts">
+import { playlist } from '@/shared';
 
-export default defineComponent({
-  data() {
-    return {
-      state: shared.state,
-      playlist
-    }
-  },
-  methods: {
-    onPlaylistItemClick(index: number) {
-      // ignore the event if user clicked on the currently playing item
-      if (this.state.nowPlaying === index) return
+const props = defineProps<{
+  nowPlaying?: number,
+  isLoading?: { track: number, progress: number },
+  isDecoding?: number,
+}>();
 
-      shared.methods.playback.start(index, 0)
-    },
-    isPlaying(index: number) {
-      return this.state.nowPlaying === index
-    },
-    isLoading(index: number) {
-      if (this.state.isLoading) return this.state.isLoading.track === index
-      if (this.state.isDecoding !== undefined) return this.state.isDecoding === index
-    },
-    getPlaybackStatusIcon(index: number) {
-      return this.isPlaying(index) ? 'play_arrow' : ''
-    }
+const emit = defineEmits<{
+  (event: 'play', trackIndex: number): void,
+}>();
+
+const isPlaying = (trackIndex: number) => props.nowPlaying === trackIndex;
+
+const isLoading = (trackIndex: number) => {
+  if (props.isLoading) return props.isLoading.track === trackIndex;
+  if (props.isDecoding !== undefined) return props.isDecoding === trackIndex;
+  return false;
+};
+
+const getPlaybackStatusIcon = (trackIndex: number) => isPlaying(trackIndex) ? 'play_arrow' : '';
+
+const onPlaylistItemClick = (trackIndex: number) => {
+  // ignore the event if user clicked on the currently playing item
+  if (props.nowPlaying === trackIndex) return;
+
+  emit('play', trackIndex);
+};
+
+const trackTags = (trackIndex: number): string => {
+  const track = playlist[trackIndex];
+
+  if (typeof track.tags === 'string') {
+    return track.tags;
+  } else { // array
+    return track.tags?.join(', ') || '';
   }
-})
+};
 </script>
 
 <template>
@@ -41,7 +50,7 @@ export default defineComponent({
       <span class="status material-icons">{{ getPlaybackStatusIcon(index) }}</span>
       <div class="title">
         <div class="name">{{ track.title }}</div>
-        <div class="tags">{{ track.tags ? typeof track.tags === 'string' ? track.tags : track.tags.join(', ') : '' }}</div>
+        <div class="tags">{{ trackTags(index) }}</div>
       </div>
     </div>
   </div>

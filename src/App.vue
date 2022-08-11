@@ -36,9 +36,9 @@ const onNextPrev = (direction: 'next' | 'prev') => {
   shared.methods.playback.start(track, 0)
 }
 
-const onPlay = () => {
-  const lastPlayed = (state.value.lastPlayed || 0);
-  shared.methods.playback.start(lastPlayed, 0);
+const onPlay = (trackIndex?: number) => {
+  if (trackIndex === undefined) trackIndex = state.value.lastPlayed || 0;
+  shared.methods.playback.start(trackIndex, 0);
 }
 
 const onPause = () => {
@@ -118,7 +118,12 @@ const onVolumeChange = (newVolume: number) => {
       />
     </div>
   </div>
-  <Playlist/>
+  <Playlist
+    :now-playing="state.nowPlaying"
+    :is-loading="state.isLoading"
+    :is-decoding="state.isDecoding"
+    @play="onPlay"
+  />
   <div class="footer">
     <p>Girls' Frontline is Copyright SUNBORN Network Technology Co., Ltd.</p>
     <p>All music is property of SUNBORN Network Technology Co., Ltd. or it's respective owner.</p>
