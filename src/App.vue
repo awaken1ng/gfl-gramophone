@@ -90,7 +90,12 @@ const onVolumeChange = (newVolume: number) => {
 
 <template>
   <div class="status-area">
-    <NowPlaying/>
+    <NowPlaying
+      :now-playing="state.nowPlaying"
+      :is-paused="state.isPaused"
+      :is-loading="state.isLoading"
+      :is-decoding="state.isDecoding"
+    />
     <div class="controls">
       <ControlButtons
         :is-playing="isPlaying"

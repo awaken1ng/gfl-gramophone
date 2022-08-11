@@ -1,47 +1,55 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
-import shared, { playlist } from '@/shared'
+<script setup lang="ts">
+import { ref, watch } from 'vue'
+import { playlist } from '@/shared'
 
-export default defineComponent({
-  data() {
-    return {
-      state: shared.state,
-      text: "",
-    }
-  },
-  methods: {
-    getClass() {
-      return {
-        playing: this.state.nowPlaying !== undefined && !this.state.isPaused,
-        loading: this.state.isLoading || this.state.isDecoding !== undefined
-      }
-    }
-  },
-  watch: {
-    'state.isLoading.progress'(current: number) {
-      const isLoading = this.state.isLoading
-      if (!current || !isLoading) return
+const props = defineProps<{
+  nowPlaying?: number,
+  isPaused: boolean,
+  isLoading?: { track: number, progress: number },
+  isDecoding?: number,
+}>();
 
-      const track = playlist[isLoading.track]
-      this.text = `Downloading - ${track.title} - ${current}%`
-    },
-    'state.isDecoding'(current?: number) {
-      if (current === undefined) return
+const text = ref("");
 
-      const track = playlist[current]
-      this.text = `Decoding - ${track.title}`
-    },
-    'state.nowPlaying'(current?: number) {
-      if (current === undefined) return
+watch(
+  () => props.isLoading?.progress,
+  () => {
+      const isLoading = props.isLoading;
+      if (!isLoading) return;
 
-      this.text = playlist[current].title
-    }
+      const track = playlist[isLoading.track];
+      text.value = `Downloading - ${track.title} - ${isLoading.progress}%`;
   }
-});
+);
+
+watch(
+  () => props.isDecoding,
+  (isDecoding) => {
+    if (isDecoding === undefined) return;
+
+    const track = playlist[isDecoding];
+    text.value = `Decoding - ${track.title}`;
+  }
+);
+
+watch(
+  () => props.nowPlaying,
+  (nowPlaying) => {
+    if (nowPlaying === undefined) return;
+
+    text.value = playlist[nowPlaying].title;
+  }
+);
 </script>
 
 <template>
-  <div class="now-playing" v-bind:class="getClass()">
+  <div
+    class="now-playing"
+    :class="{
+      playing: nowPlaying !== undefined && !isPaused,
+      loading: isLoading || isDecoding !== undefined,
+    }"
+  >
     {{ text }}
   </div>
 </template>
