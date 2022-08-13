@@ -35,7 +35,7 @@ const state = reactive<State>({
 
 const isPlaying = computed(() => state.nowPlayingTrackIndex !== undefined);
 
-const volume = ref(parseFloat(localStorage.getItem('volume') || '1'));
+const volume = ref(parseFloat(localStorage.getItem('volume') || '0.5'));
 
 const startPlayback = (trackIndex: number, position: number) => {
   if (!position) position = 0;
