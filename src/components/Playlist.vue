@@ -3,7 +3,7 @@ import playlist from '@/assets/playlist.json'
 
 const props = defineProps<{
   nowPlaying?: number,
-  isLoading?: { track: number, progress: number },
+  isDownloading?: { trackIndex: number, progress: number },
   isDecoding?: number,
 }>();
 
@@ -14,7 +14,7 @@ const emit = defineEmits<{
 const isPlaying = (trackIndex: number) => props.nowPlaying === trackIndex;
 
 const isLoading = (trackIndex: number) => {
-  if (props.isLoading) return props.isLoading.track === trackIndex;
+  if (props.isDownloading) return props.isDownloading.trackIndex === trackIndex;
   if (props.isDecoding !== undefined) return props.isDecoding === trackIndex;
   return false;
 };
@@ -43,9 +43,9 @@ const trackTags = (trackIndex: number): string => {
   <div class="playlist">
     <div class="item"
       v-for="(track, index) in playlist"
-      v-bind:key="index"
-      v-bind:class="{ playing: isPlaying(index), loading: isLoading(index) }"
-      v-on:click="onPlaylistItemClick(index)"
+      :key="index"
+      :class="{ playing: isPlaying(index), loading: isLoading(index) }"
+      @click="onPlaylistItemClick(index)"
     >
       <span class="status material-icons">{{ getPlaybackStatusIcon(index) }}</span>
       <div class="title">

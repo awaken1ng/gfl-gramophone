@@ -11,121 +11,121 @@ const SAMPLE_RATE = 44100;
 
 interface State {
     cache: {[index: number]: AudioBuffer},
-    nowPlaying: number | undefined,
-    lastPlayed: number | null,
-    looping: boolean,
-    isLoading: { track: number, progress: number } | undefined,
-    isDecoding: number | undefined,
-    isPaused: boolean,
+    nowPlayingTrackIndex?: number,
+    lastPlayedTrackIndex?: number,
     played: number,
     duration: number,
+    isPaused: boolean,
+    isLooping: boolean,
+    nowDownloadingTrack?: { trackIndex: number, progress: number },
+    nowDecodingTrackIndex?: number,
 };
 
 const state = reactive<State>({
   cache: {},
-  nowPlaying: undefined, // track index
-  lastPlayed: null, // index of last played track
-  looping: true,
-  isLoading: undefined,
-  isDecoding: undefined,
-  isPaused: false,
+  nowPlayingTrackIndex: undefined,
+  lastPlayedTrackIndex: undefined,
   played: 0,
   duration: 0,
+  isPaused: false,
+  isLooping: true,
+  nowDownloadingTrack: undefined,
+  nowDecodingTrackIndex: undefined,
 });
 
-const volume = ref(parseFloat(localStorage.getItem('volume') || "1"));
+const isPlaying = computed(() => state.nowPlayingTrackIndex !== undefined);
 
-const isPlaying = computed(() => state.nowPlaying !== undefined);
-
-const stopPlayback = () => {
-  player.stop()
-  state.nowPlaying = undefined
-  state.isPaused = false
-  state.played = 0
-  state.duration = 0
-};
+const volume = ref(parseFloat(localStorage.getItem('volume') || '1'));
 
 const startPlayback = (trackIndex: number, position: number) => {
-  if (!position) position = 0
+  if (!position) position = 0;
 
-  const track = playlist[trackIndex]
-  const url = 'bgm/' + track.path
-  const cache = state.cache
-  const volume = localStorage.getItem('volume') || '1'
+  const track = playlist[trackIndex];
+  const url = 'bgm/' + track.path;
+  const volume = localStorage.getItem('volume') || '1';
 
   const callback = (buffer: AudioBuffer) => {
     // loop ranges are stored in samples, convert to seconds
     const loop = {
-      enabled: state.looping,
+      enabled: state.isLooping,
       start: track.loop.start / SAMPLE_RATE,
-      end: track.loop.end / SAMPLE_RATE
-    }
+      end: track.loop.end / SAMPLE_RATE,
+    };
     stopPlayback();
-    player.setSource(buffer, loop)
+    player.setSource(buffer, loop);
     state.played = 0;
     state.duration = buffer.duration;
-    player.volume = parseFloat(volume)
+    player.volume = parseFloat(volume);
     player.play(position, {
-      stop: () => { stopPlayback() },
-      progress: (played) => { state.played = played }
-    })
-    state.nowPlaying = trackIndex
-    state.lastPlayed = trackIndex
+      stop: () => stopPlayback(),
+      progress: (played) => state.played = played,
+    });
+    state.nowPlayingTrackIndex = trackIndex;
+    state.lastPlayedTrackIndex = trackIndex;
   }
 
   // pull the track from cache,
   // or download it and cache for future use
-  if (cache[trackIndex]) {
-    callback(cache[trackIndex])
+  if (state.cache[trackIndex]) {
+    callback(state.cache[trackIndex]);
   } else {
-    state.isLoading = { track: trackIndex, progress: 0 }
-    player.download(url,
+    state.nowDownloadingTrack = { trackIndex: trackIndex, progress: 0 };
+    player.download(
+      url,
       {
         progress: (event) => {
-          if (!event.lengthComputable) return
-          const percent = (event.loaded / event.total) * 100
-          if (typeof state.isLoading === 'object') state.isLoading.progress = parseInt(percent.toFixed(0), 10)
+          if (!event.lengthComputable) return;
+          const percent = (event.loaded / event.total) * 100;
+          if (typeof state.nowDownloadingTrack === 'object') state.nowDownloadingTrack.progress = parseInt(percent.toFixed(0), 10);
         },
         load: () => {
-          state.isLoading = undefined
-          state.isDecoding = trackIndex
+          state.nowDownloadingTrack = undefined;
+          state.nowDecodingTrackIndex = trackIndex;
         },
         decoded: (buffer: AudioBuffer) => {
-          state.isDecoding = undefined
-          cache[trackIndex] = buffer
-          callback(buffer)
+          state.nowDecodingTrackIndex = undefined;
+          state.cache[trackIndex] = buffer;
+          callback(buffer);
         },
-        error: () => { state.isLoading = undefined }
+        error: () => state.nowDownloadingTrack = undefined,
       }
     )
   }
-}
+};
+
+const stopPlayback = () => {
+  player.stop();
+  state.nowPlayingTrackIndex = undefined;
+  state.isPaused = false;
+  state.played = 0;
+  state.duration = 0;
+};
 
 const onNextPrev = (direction: 'next' | 'prev') => {
-  const isPlaying = state.nowPlaying !== undefined
-  let track = (state.nowPlaying || state.lastPlayed || 0)
+  const isPlaying = state.nowPlayingTrackIndex !== undefined;
+  let track = (state.nowPlayingTrackIndex || state.lastPlayedTrackIndex || 0)
 
-  if (!isPlaying && state.lastPlayed === null) {
+  if (!isPlaying && state.lastPlayedTrackIndex === undefined) {
     // if player state is fresh, play the first or the last track
-    if (direction === 'next') track = 0
-    else if (direction === 'prev') track = playlist.length - 1
+    if (direction === 'next') track = 0;
+    else if (direction === 'prev') track = playlist.length - 1;
   } else {
     if (direction === 'next') {
       // if we are at the end of the playlist, play the first track
-      if (track < playlist.length - 1) track += 1
-      else track = 0
+      if (track < playlist.length - 1) track += 1;
+      else track = 0;
     } else if (direction === 'prev') {
       // if we are at the start of the playlist, play the last track
-      if (track > 0) track -= 1
-      else track = playlist.length - 1
+      if (track > 0) track -= 1;
+      else track = playlist.length - 1;
     }
   }
 
-  startPlayback(track, 0)
+  startPlayback(track, 0);
 }
 
 const onPlay = (trackIndex?: number) => {
-  if (trackIndex === undefined) trackIndex = state.lastPlayed || 0;
+  if (trackIndex === undefined) trackIndex = state.lastPlayedTrackIndex || 0;
   startPlayback(trackIndex, 0);
 }
 
@@ -143,19 +143,19 @@ const onStop = () => {
   stopPlayback();
 }
 
-const onLoop = () => {
-  state.looping = !state.looping
+const onLoopToggle = () => {
+  state.isLooping = !state.isLooping;
 
   // update the currently playing track
-  const nowPlaying = state.nowPlaying
-  if (nowPlaying === undefined) return
+  const nowPlaying = state.nowPlayingTrackIndex;
+  if (nowPlaying === undefined) return;
 
-  const track = playlist[nowPlaying]
+  const track = playlist[nowPlaying];
   player.setLoop({
-    enabled: state.looping,
+    enabled: state.isLooping,
     start: track.loop.start / SAMPLE_RATE,
-    end: track.loop.end / SAMPLE_RATE
-  })
+    end: track.loop.end / SAMPLE_RATE,
+  });
 }
 
 const onSeek = (toPosition: number) => {
@@ -178,16 +178,16 @@ const onVolumeChange = (newVolume: number) => {
 <template>
   <div class="status-area">
     <NowPlaying
-      :now-playing="state.nowPlaying"
-      :is-paused="state.isPaused"
-      :is-loading="state.isLoading"
-      :is-decoding="state.isDecoding"
+      :nowPlaying="state.nowPlayingTrackIndex"
+      :isPaused="state.isPaused"
+      :isDownloading="state.nowDownloadingTrack"
+      :isDecoding="state.nowDecodingTrackIndex"
     />
     <div class="controls">
       <ControlButtons
-        :is-playing="isPlaying"
-        :is-paused="state.isPaused"
-        :is-looping="state.looping"
+        :isPlaying="isPlaying"
+        :isPaused="state.isPaused"
+        :isLooping="state.isLooping"
         :volume="volume"
         @prev="onNextPrev('prev')"
         @play="onPlay"
@@ -195,7 +195,7 @@ const onVolumeChange = (newVolume: number) => {
         @resume="onResume"
         @stop="onStop"
         @next="onNextPrev('next')"
-        @loop="onLoop"
+        @loop="onLoopToggle"
         @volume="onVolumeChange"
       />
       <ProgressBar
@@ -206,9 +206,9 @@ const onVolumeChange = (newVolume: number) => {
     </div>
   </div>
   <Playlist
-    :now-playing="state.nowPlaying"
-    :is-loading="state.isLoading"
-    :is-decoding="state.isDecoding"
+    :nowPlaying="state.nowPlayingTrackIndex"
+    :isDownloading="state.nowDownloadingTrack"
+    :isDecoding="state.nowDecodingTrackIndex"
     @play="onPlay"
   />
   <div class="footer">

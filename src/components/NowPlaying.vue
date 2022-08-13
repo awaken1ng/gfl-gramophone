@@ -5,19 +5,19 @@ import playlist from '@/assets/playlist.json'
 const props = defineProps<{
   nowPlaying?: number,
   isPaused: boolean,
-  isLoading?: { track: number, progress: number },
+  isDownloading?: { trackIndex: number, progress: number },
   isDecoding?: number,
 }>();
 
 const text = ref("");
 
 watch(
-  () => props.isLoading?.progress,
+  () => props.isDownloading?.progress,
   () => {
-      const isLoading = props.isLoading;
+      const isLoading = props.isDownloading;
       if (!isLoading) return;
 
-      const track = playlist[isLoading.track];
+      const track = playlist[isLoading.trackIndex];
       text.value = `Downloading - ${track.title} - ${isLoading.progress}%`;
   }
 );
@@ -47,7 +47,7 @@ watch(
     class="now-playing"
     :class="{
       playing: nowPlaying !== undefined && !isPaused,
-      loading: isLoading || isDecoding !== undefined,
+      loading: isDownloading || isDecoding !== undefined,
     }"
   >
     {{ text }}
