@@ -37,7 +37,7 @@ const isPlaying = computed(() => state.nowPlaying !== undefined);
 
 const volume = ref(parseFloat(localStorage.getItem('volume') || '0.5'));
 
-const startPlayback = (trackIndex: number, variantIndex: number, position: number) => {
+const startPlayback = (trackIndex: number, variantIndex: number) => {
   const track = playlist[trackIndex][variantIndex];
 
   const callback = (buffer: AudioBuffer) => {
@@ -47,9 +47,10 @@ const startPlayback = (trackIndex: number, variantIndex: number, position: numbe
       start: track.loop.start / SAMPLE_RATE,
       end: track.loop.end / SAMPLE_RATE,
     };
+    let position = state.nowPlaying?.trackIndex === trackIndex ? state.played : 0;
     stopPlayback();
     player.setSource(buffer, loop);
-    state.played = 0;
+    state.played = position;
     state.duration = buffer.duration;
     player.volume = volume.value;
     player.play(position, {
@@ -117,13 +118,13 @@ const onNextPrev = (direction: 'next' | 'prev') => {
     }
   }
 
-  startPlayback(trackIndex, 0, 0);
+  startPlayback(trackIndex, 0);
 }
 
 const onPlay = (trackIndex?: number, variantIndex?: number) => {
   trackIndex ??= state.lastPlayed?.trackIndex || 0;
   variantIndex ??= state.lastPlayed?.variantIndex || 0;
-  startPlayback(trackIndex, variantIndex, 0);
+  startPlayback(trackIndex, variantIndex);
 }
 
 const onPause = () => {
