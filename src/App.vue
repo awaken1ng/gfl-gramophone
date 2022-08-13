@@ -172,6 +172,7 @@ const onSeek = (toPosition: number) => {
 const onVolumeChange = (newVolume: number) => {
   localStorage.setItem('volume', newVolume.toString());
   volume.value = newVolume;
+  player.volume = newVolume;
 }
 </script>
 
