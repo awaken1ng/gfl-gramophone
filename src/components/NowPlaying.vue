@@ -3,31 +3,33 @@ import { ref, watch } from 'vue'
 import playlist from '@/assets/playlist.json'
 
 const props = defineProps<{
-  nowPlaying?: number,
+  nowPlaying?: { trackIndex: number, variantIndex: number },
   isPaused: boolean,
-  isDownloading?: { trackIndex: number, progress: number },
-  isDecoding?: number,
+  nowDownloading?: { trackIndex: number, variantIndex: number, progress: number },
+  nowDecoding?: { trackIndex: number, variantIndex: number },
 }>();
 
 const text = ref("");
 
 watch(
-  () => props.isDownloading?.progress,
+  () => props.nowDownloading?.progress,
   () => {
-      const isLoading = props.isDownloading;
+      const isLoading = props.nowDownloading;
       if (!isLoading) return;
 
-      const track = playlist[isLoading.trackIndex];
-      text.value = `Downloading - ${track.title} - ${isLoading.progress}%`;
+      const { trackIndex, variantIndex, progress } = isLoading;
+      const track = playlist[trackIndex][variantIndex];
+      text.value = `Downloading - ${track.title} - ${progress}%`;
   }
 );
 
 watch(
-  () => props.isDecoding,
+  () => props.nowDecoding,
   (isDecoding) => {
     if (isDecoding === undefined) return;
+    const { trackIndex, variantIndex } = isDecoding;
 
-    const track = playlist[isDecoding];
+    const track = playlist[trackIndex][variantIndex];
     text.value = `Decoding - ${track.title}`;
   }
 );
@@ -36,8 +38,9 @@ watch(
   () => props.nowPlaying,
   (nowPlaying) => {
     if (nowPlaying === undefined) return;
+    const { trackIndex, variantIndex } = nowPlaying;
 
-    text.value = playlist[nowPlaying].title;
+    text.value = playlist[trackIndex][variantIndex].title;
   }
 );
 </script>
@@ -47,7 +50,7 @@ watch(
     class="now-playing"
     :class="{
       playing: nowPlaying !== undefined && !isPaused,
-      loading: isDownloading || isDecoding !== undefined,
+      loading: nowDownloading || nowDecoding !== undefined,
     }"
   >
     {{ text }}

@@ -10,39 +10,35 @@ import playlist from '@/assets/playlist.json'
 const SAMPLE_RATE = 44100;
 
 interface State {
-    cache: {[index: number]: AudioBuffer},
-    nowPlayingTrackIndex?: number,
-    lastPlayedTrackIndex?: number,
+    cache: { [trackIndex: number]: { [variantIndex: number]: AudioBuffer } },
+    nowPlaying?: { trackIndex: number, variantIndex: number },
+    lastPlayed?: { trackIndex: number, variantIndex: number },
     played: number,
     duration: number,
     isPaused: boolean,
     isLooping: boolean,
-    nowDownloadingTrack?: { trackIndex: number, progress: number },
-    nowDecodingTrackIndex?: number,
+    nowDownloading?: { trackIndex: number, variantIndex: number, progress: number },
+    nowDecoding?: { trackIndex: number, variantIndex: number },
 };
 
 const state = reactive<State>({
   cache: {},
-  nowPlayingTrackIndex: undefined,
-  lastPlayedTrackIndex: undefined,
+  nowPlaying: undefined,
+  lastPlayed: undefined,
   played: 0,
   duration: 0,
   isPaused: false,
   isLooping: true,
-  nowDownloadingTrack: undefined,
-  nowDecodingTrackIndex: undefined,
+  nowDownloading: undefined,
+  nowDecoding: undefined,
 });
 
-const isPlaying = computed(() => state.nowPlayingTrackIndex !== undefined);
+const isPlaying = computed(() => state.nowPlaying !== undefined);
 
 const volume = ref(parseFloat(localStorage.getItem('volume') || '0.5'));
 
-const startPlayback = (trackIndex: number, position: number) => {
-  if (!position) position = 0;
-
-  const track = playlist[trackIndex];
-  const url = 'bgm/' + track.path;
-  const volume = localStorage.getItem('volume') || '1';
+const startPlayback = (trackIndex: number, variantIndex: number, position: number) => {
+  const track = playlist[trackIndex][variantIndex];
 
   const callback = (buffer: AudioBuffer) => {
     // loop ranges are stored in samples, convert to seconds
@@ -55,39 +51,40 @@ const startPlayback = (trackIndex: number, position: number) => {
     player.setSource(buffer, loop);
     state.played = 0;
     state.duration = buffer.duration;
-    player.volume = parseFloat(volume);
+    player.volume = volume.value;
     player.play(position, {
       stop: () => stopPlayback(),
       progress: (played) => state.played = played,
     });
-    state.nowPlayingTrackIndex = trackIndex;
-    state.lastPlayedTrackIndex = trackIndex;
+    state.nowPlaying = { trackIndex, variantIndex };
+    state.lastPlayed = { trackIndex, variantIndex };
   }
 
   // pull the track from cache,
   // or download it and cache for future use
-  if (state.cache[trackIndex]) {
-    callback(state.cache[trackIndex]);
+  if (state.cache[trackIndex] && state.cache[trackIndex][variantIndex]) {
+    callback(state.cache[trackIndex][variantIndex]);
   } else {
-    state.nowDownloadingTrack = { trackIndex: trackIndex, progress: 0 };
+    state.nowDownloading = { trackIndex, variantIndex, progress: 0 };
     player.download(
-      url,
+      `bgm/${track.path}`,
       {
         progress: (event) => {
           if (!event.lengthComputable) return;
           const percent = (event.loaded / event.total) * 100;
-          if (typeof state.nowDownloadingTrack === 'object') state.nowDownloadingTrack.progress = parseInt(percent.toFixed(0), 10);
+          if (typeof state.nowDownloading === 'object') state.nowDownloading.progress = parseInt(percent.toFixed(0), 10);
         },
         load: () => {
-          state.nowDownloadingTrack = undefined;
-          state.nowDecodingTrackIndex = trackIndex;
+          state.nowDownloading = undefined;
+          state.nowDecoding = { trackIndex, variantIndex };
         },
         decoded: (buffer: AudioBuffer) => {
-          state.nowDecodingTrackIndex = undefined;
-          state.cache[trackIndex] = buffer;
+          state.nowDecoding = undefined;
+          if (!state.cache[trackIndex]) state.cache[trackIndex] = {}
+          state.cache[trackIndex][variantIndex] = buffer;
           callback(buffer);
         },
-        error: () => state.nowDownloadingTrack = undefined,
+        error: () => state.nowDownloading = undefined,
       }
     )
   }
@@ -95,38 +92,38 @@ const startPlayback = (trackIndex: number, position: number) => {
 
 const stopPlayback = () => {
   player.stop();
-  state.nowPlayingTrackIndex = undefined;
+  state.nowPlaying = undefined;
   state.isPaused = false;
   state.played = 0;
   state.duration = 0;
 };
 
 const onNextPrev = (direction: 'next' | 'prev') => {
-  const isPlaying = state.nowPlayingTrackIndex !== undefined;
-  let track = (state.nowPlayingTrackIndex || state.lastPlayedTrackIndex || 0)
+  let trackIndex = state.nowPlaying?.trackIndex || state.lastPlayed?.trackIndex || 0;
 
-  if (!isPlaying && state.lastPlayedTrackIndex === undefined) {
+  if (!isPlaying && !state.lastPlayed) {
     // if player state is fresh, play the first or the last track
-    if (direction === 'next') track = 0;
-    else if (direction === 'prev') track = playlist.length - 1;
+    if (direction === 'next') trackIndex = 0;
+    else if (direction === 'prev') trackIndex = playlist.length - 1;
   } else {
     if (direction === 'next') {
       // if we are at the end of the playlist, play the first track
-      if (track < playlist.length - 1) track += 1;
-      else track = 0;
+      if (trackIndex < playlist.length - 1) trackIndex += 1;
+      else trackIndex = 0;
     } else if (direction === 'prev') {
       // if we are at the start of the playlist, play the last track
-      if (track > 0) track -= 1;
-      else track = playlist.length - 1;
+      if (trackIndex > 0) trackIndex -= 1;
+      else trackIndex = playlist.length - 1;
     }
   }
 
-  startPlayback(track, 0);
+  startPlayback(trackIndex, 0, 0);
 }
 
-const onPlay = (trackIndex?: number) => {
-  if (trackIndex === undefined) trackIndex = state.lastPlayedTrackIndex || 0;
-  startPlayback(trackIndex, 0);
+const onPlay = (trackIndex?: number, variantIndex?: number) => {
+  trackIndex ??= state.lastPlayed?.trackIndex || 0;
+  variantIndex ??= state.lastPlayed?.variantIndex || 0;
+  startPlayback(trackIndex, variantIndex, 0);
 }
 
 const onPause = () => {
@@ -147,10 +144,10 @@ const onLoopToggle = () => {
   state.isLooping = !state.isLooping;
 
   // update the currently playing track
-  const nowPlaying = state.nowPlayingTrackIndex;
+  const nowPlaying = state.nowPlaying;
   if (nowPlaying === undefined) return;
 
-  const track = playlist[nowPlaying];
+  const track = playlist[nowPlaying.trackIndex][nowPlaying.variantIndex];
   player.setLoop({
     enabled: state.isLooping,
     start: track.loop.start / SAMPLE_RATE,
@@ -179,10 +176,10 @@ const onVolumeChange = (newVolume: number) => {
 <template>
   <div class="status-area">
     <NowPlaying
-      :nowPlaying="state.nowPlayingTrackIndex"
+      :nowPlaying="state.nowPlaying"
       :isPaused="state.isPaused"
-      :isDownloading="state.nowDownloadingTrack"
-      :isDecoding="state.nowDecodingTrackIndex"
+      :nowDownloading="state.nowDownloading"
+      :nowDecoding="state.nowDecoding"
     />
     <div class="controls">
       <ControlButtons
@@ -207,9 +204,9 @@ const onVolumeChange = (newVolume: number) => {
     </div>
   </div>
   <Playlist
-    :nowPlaying="state.nowPlayingTrackIndex"
-    :isDownloading="state.nowDownloadingTrack"
-    :isDecoding="state.nowDecodingTrackIndex"
+    :nowPlaying="state.nowPlaying"
+    :nowDownloading="state.nowDownloading"
+    :nowDecoding="state.nowDecoding"
     @play="onPlay"
   />
   <div class="footer">

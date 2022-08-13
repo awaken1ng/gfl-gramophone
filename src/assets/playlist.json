@@ -1,898 +1,1211 @@
 [
-  {
-    "title": "Cuty",
-    "tags": "Dormitory",
-    "path": "dorm/dorm.ogg",
-    "loop": {
-      "start": 7844,
-      "end": 4241258
-    }
-  },
-  {
-    "title": "Cafe",
-    "path": "GF_Cafe/GF_Cafe.ogg",
-    "loop": {
-      "start": 384861,
-      "end": 3656284
-    }
-  },
-  {
-    "title": "Memorial",
-    "path": "GF_Memorial/GF_Memorial.ogg",
-    "loop": {
-      "start": 859354,
-      "end": 4250552
-    }
-  },
-  {
-    "title": "Daily 1",
-    "path": "GF_Daily_01_loop/GF_Daily_01_loop.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5115508
-    }
-  },
-  {
-    "title": "Daily 2",
-    "path": "GF_Daily02_loop/GF_Daily02_loop.ogg",
-    "loop": {
-      "start": 14516,
-      "end": 4389576
-    }
-  },
-  {
-    "title": "Safety first.A",
-    "tags": "Chapter 1",
-    "path": "GF_MAP1_BGM/GF_MAP1_BGM_1.ogg",
-    "loop": {
-      "start": 227379,
-      "end": 5519390
-    }
-  },
-  {
-    "title": "Safety first.B",
-    "tags": "Chapter 1",
-    "path": "GF_MAP1_BGM/GF_MAP1_BGM_0.ogg",
-    "loop": {
-      "start": 227379,
-      "end": 5519390
-    }
-  },
-  {
-    "title": "Greenlight.A",
-    "tags": "Chapter 2",
-    "path": "GF_MAP2_BGM/GF_MAP2_BGM_1.ogg",
-    "loop": {
-      "start": 160348,
-      "end": 4810933
-    }
-  },
-  {
-    "title": "Greenlight.B",
-    "tags": "Chapter 2",
-    "path": "GF_MAP2_BGM/GF_MAP2_BGM_0.ogg",
-    "loop": {
-      "start": 160348,
-      "end": 4810933
-    }
-  },
-  {
-    "title": "Beacon.A",
-    "tags": "Chapter 3",
-    "path": "GF_MAP3_BGM/GF_MAP3_BGM_1.ogg",
-    "loop": {
-      "start": 160348,
-      "end": 5291969
-    }
-  },
-  {
-    "title": "Beacon.B",
-    "tags": "Chapter 3",
-    "path": "GF_MAP3_BGM/GF_MAP3_BGM_0.ogg",
-    "loop": {
-      "start": 160348,
-      "end": 5291969
-    }
-  },
-  {
-    "title": "Sentry.A",
-    "tags": "Chapter 4",
-    "path": "GF_MAP4_BGM/GF_MAP4_BGM_1.ogg",
-    "loop": {
-      "start": 826875,
-      "end": 5126625
-    }
-  },
-  {
-    "title": "Sentry.B",
-    "tags": "Chapter 4",
-    "path": "GF_MAP4_BGM/GF_MAP4_BGM_0.ogg",
-    "loop": {
-      "start": 826875,
-      "end": 5126625
-    }
-  },
-  {
-    "title": "For the Record.A",
-    "tags": "Chapter 5",
-    "path": "GF_MAP5_BGM/GF_MAP5_BGM_1.ogg",
-    "loop": {
-      "start": 165375,
-      "end": 5457375
-    }
-  },
-  {
-    "title": "For the Record.B",
-    "tags": "Chapter 5",
-    "path": "GF_MAP5_BGM/GF_MAP5_BGM_0.ogg",
-    "loop": {
-      "start": 165375,
-      "end": 5457375
-    }
-  },
-  {
-    "title": "Departure",
-    "tags": "Operation Cube",
-    "path": "GF_EV1Stage_LoopV2/GF_EV1Stage_LoopV2.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5225015
-    }
-  },
-  {
-    "title": "Black Out",
-    "tags": "Operation Cube Boss",
-    "path": "GF_EV1Boss_loop/GF_EV1Boss_loop.ogg",
-    "loop": {
-      "start": 7177,
-      "end": 4021920
-    }
-  },
-  {
-    "title": "Host.A",
-    "tags": "Chapter 6",
-    "path": "GF_MAP6_BGM/GF_MAP6_BGM_1.ogg",
-    "loop": {
-      "start": 139621,
-      "end": 5314050
-    }
-  },
-  {
-    "title": "Host.B",
-    "tags": "Chapter 6",
-    "path": "GF_MAP6_BGM/GF_MAP6_BGM_0.ogg",
-    "loop": {
-      "start": 139621,
-      "end": 5314050
-    }
-  },
-  {
-    "title": "Nihilism.A",
-    "tags": ["Chapter 7", "Arctic Warfare E1"],
-    "path": "GF_MAP7_BGM/GF_MAP7_BGM_1.ogg",
-    "loop": {
-      "start": 186014,
-      "end": 5478102
-    }
-  },
-  {
-    "title": "Nihilism.B",
-    "tags": ["Chapter 7", "Arctic Warfare E1"],
-    "path": "GF_MAP7_BGM/GF_MAP7_BGM_0.ogg",
-    "loop": {
-      "start": 186014,
-      "end": 5478102
-    }
-  },
-  {
-    "title": "To the Twilight",
-    "tags": "Arctic Warfare E2",
-    "path": "GF_Winter_Night/GF_Winter_Night.ogg",
-    "loop": {
-      "start": 492244,
-      "end": 4615117
-    }
-  },
-  {
-    "title": "White Front",
-    "tags": "Arctic Warfare E3",
-    "path": "GF_Winter_Hiru/GF_Winter_Hiru.ogg",
-    "loop": {
-      "start": 123039,
-      "end": 4245910
-    }
-  },
-  {
-    "title": "Snowflake",
-    "tags": "Arctic Warfare Boss",
-    "path": "GF_Boss_Map/GF_Boss_Map.ogg",
-    "loop": {
-      "start": 249165,
-      "end": 4420377
-    }
-  },
-  {
-    "title": "GF_MAP8_BGM_old",
-    "tags": "Chapter 8",
-    "path": "GF_MAP8_BGM_old/GF_MAP8_BGM_old.ogg",
-    "loop": {
-      "start": 933862,
-      "end": 5416516
-    }
-  },
-  {
-    "title": "GF_EV3_Intermission",
-    "tags": "Deep Dive",
-    "path": "GF_EV3_Intermission/GF_EV3_Intermission.ogg",
-    "loop": {
-      "start": 82688,
-      "end": 4134397
-    }
-  },
-  {
-    "title": "GF_EV3_Map1_tri",
-    "tags": "Deep Dive",
-    "path": "GF_EV3_Map1_tri/GF_EV3_Map1_tri.ogg",
-    "loop": {
-      "start": 7230,
-      "end": 4171612
-    }
-  },
-  {
-    "title": "GF_EV3_Map2",
-    "tags": "Deep Dive",
-    "path": "GF_EV3_Map2/GF_EV3_Map2.ogg",
-    "loop": {
-      "start": 7211,
-      "end": 4938303
-    }
-  },
-  {
-    "title": "GF_EV3_Map3",
-    "tags": "Deep Dive",
-    "path": "GF_EV3_Map3/GF_EV3_Map3.ogg",
-    "loop": {
-      "start": 513164,
-      "end": 5388205
-    }
-  },
-  {
-    "title": "GF_EV3_MapEX",
-    "tags": "Deep Dive",
-    "path": "GF_EV3_MapEX/GF_EV3_MapEX.ogg",
-    "loop": {
-      "start": 741682,
-      "end": 6675072
-    }
-  },
-  {
-    "title": "Barbarous Funera",
-    "tags": "Deep Dive Boss",
-    "path": "GF_EV3_Boss/GF_EV3_Boss.ogg",
-    "loop": {
-      "start": 17090,
-      "end": 3419099
-    }
-  },
-  {
-    "title": "Barbarous Funera (Instrumental)",
-    "tags": "Deep Dive Boss",
-    "path": "GF_EV3_Boss_Inst/GF_EV3_Boss_Inst.ogg",
-    "loop": {
-      "start": 17090,
-      "end": 3419099
-    }
-  },
-  {
-    "title": "GF_MAP9_BGM",
-    "tags": "Chapter 9",
-    "path": "GF_MAP9_BGM/GF_MAP9_BGM.ogg",
-    "loop": {
-      "start": 1180513,
-      "end": 5251292
-    }
-  },
-  {
-    "title": "GF_MAP10_BGM",
-    "tags": "Chapter 10",
-    "path": "GF_MAP10_BGM/GF_MAP10_BGM.ogg",
-    "loop": {
-      "start": 926100,
-      "end": 5247900
-    }
-  },
-  {
-    "title": "GF_EV4_intermission",
-    "tags": "Singularity",
-    "path": "GF_EV4_intermission/GF_EV4_intermission.ogg",
-    "loop": {
-      "start": 120966,
-      "end": 3884169
-    }
-  },
-  {
-    "title": "GF_EV4_Map1",
-    "tags": "Singularity",
-    "path": "GF_EV4_Map1/GF_EV4_Map1.ogg",
-    "loop": {
-      "start": 117571,
-      "end": 5292000
-    }
-  },
-  {
-    "title": "GF_EV4_Map2",
-    "tags": "Singularity",
-    "path": "GF_EV4_Map2/GF_EV4_Map2.ogg",
-    "loop": {
-      "start": 194525,
-      "end": 5253088
-    }
-  },
-  {
-    "title": "GF_EV4_Map3",
-    "tags": "Singularity",
-    "path": "GF_EV4_Map3/GF_EV4_Map3.ogg",
-    "loop": {
-      "start": 222793,
-      "end": 5570526
-    }
-  },
-  {
-    "title": "GF_EV4_Boss1",
-    "tags": "Singularity",
-    "path": "GF_EV4_Boss1/GF_EV4_Boss1.ogg",
-    "loop": {
-      "start": 940962,
-      "end": 5610607
-    }
-  },
-  {
-    "title": "GF_EV4_Boss2",
-    "tags": "Singularity",
-    "path": "GF_EV4_Boss2/GF_EV4_Boss2.ogg",
-    "loop": {
-      "start": 7180,
-      "end": 3015680
-    }
-  },
-  {
-    "title": "What am I Fighting for",
-    "tags": "Singularity Ending Song",
-    "path": "GF_Song/GF_Song.ogg",
-    "loop": {
-      "start": 0,
-      "end": 12477174
-    }
-  },
-  {
-    "title": "GF_EV5_Intermission",
-    "tags": "Continuum Turbulence",
-    "path": "GF_EV5_Intermission/GF_EV5_Intermission.ogg",
-    "loop": {
-      "start": 696316,
-      "end": 5152739
-    }
-  },
-  {
-    "title": "GF_EV5_BattleL1",
-    "tags": "Continuum Turbulence",
-    "path": "GF_EV5_BattleL1/GF_EV5_BattleL1.ogg",
-    "loop": {
-      "start": 105840,
-      "end": 5186160
-    }
-  },
-  {
-    "title": "GF_EV5_BattleL2",
-    "tags": "Continuum Turbulence",
-    "path": "GF_EV5_BattleL2/GF_EV5_BattleL2.ogg",
-    "loop": {
-      "start": 248063,
-      "end": 5540063
-    }
-  },
-  {
-    "title": "GF_EV5_BattleL3",
-    "tags": "Continuum Turbulence",
-    "path": "GF_EV5_BattleL3/GF_EV5_BattleL3.ogg",
-    "loop": {
-      "start": 264600,
-      "end": 5556600
-    }
-  },
-  {
-    "title": "GF_EV5_Boss",
-    "tags": "Continuum Turbulence",
-    "path": "GF_EV5_Boss/GF_EV5_Boss.ogg",
-    "loop": {
-      "start": 330750,
-      "end": 5622785
-    }
-  },
-  {
-    "title": "GF_MAP11_BGM",
-    "tags": "Chapter 11",
-    "path": "GF_MAP11_BGM/GF_MAP11_BGM.ogg",
-    "loop": {
-      "start": 635040,
-      "end": 5927040
-    }
-  },
-  {
-    "title": "GF_EV6_90w_pt1",
-    "tags": "Isomer",
-    "path": "GF_EV6_90w_pt1/GF_EV6_90w_pt1.ogg",
-    "loop": {
-      "start": 1209601,
-      "end": 3628803
-    }
-  },
-  {
-    "title": "GF_EV6_90w_pt2",
-    "tags": "Isomer",
-    "path": "GF_EV6_90w_pt2/GF_EV6_90w_pt2.ogg",
-    "loop": {
-      "start": 504000,
-      "end": 3830403
-    }
-  },
-  {
-    "title": "GF_EV6_90w_pt3",
-    "tags": "Isomer",
-    "path": "GF_EV6_90w_pt3/GF_EV6_90w_pt3.ogg",
-    "loop": {
-      "start": 453600,
-      "end": 3880803
-    }
-  },
-  {
-    "title": "GF_EV6_G&K_pt1",
-    "tags": "Isomer",
-    "path": "GF_EV6_G&K_pt1/GF_EV6_G&K_pt1.ogg",
-    "loop": {
-      "start": 315940,
-      "end": 3475342
-    }
-  },
-  {
-    "title": "GF_EV6_G&K_pt2",
-    "tags": "Isomer",
-    "path": "GF_EV6_G&K_pt2/GF_EV6_G&K_pt2.ogg",
-    "loop": {
-      "start": 315940,
-      "end": 4739102
-    }
-  },
-  {
-    "title": "GF_EV6_G&K_pt3",
-    "tags": "Isomer",
-    "path": "GF_EV6_G&K_pt3/GF_EV6_G&K_pt3.ogg",
-    "loop": {
-      "start": 236955,
-      "end": 3080417
-    }
-  },
-  {
-    "title": "GF_EV6_SF_pt1",
-    "tags": "Isomer",
-    "path": "GF_EV6_SF_pt1/GF_EV6_SF_pt1.ogg",
-    "loop": {
-      "start": 311294,
-      "end": 2801644
-    }
-  },
-  {
-    "title": "GF_EV6_SF_pt2",
-    "tags": "Isomer",
-    "path": "GF_EV6_SF_pt2/GF_EV6_SF_pt2.ogg",
-    "loop": {
-      "start": 933881,
-      "end": 5291994
-    }
-  },
-  {
-    "title": "GF_EV6_SF_pt3",
-    "tags": "Isomer",
-    "path": "GF_EV6_SF_pt3/GF_EV6_SF_pt3.ogg",
-    "loop": {
-      "start": 1712116,
-      "end": 2645997
-    }
-  },
-  {
-    "title": "GF_EV6_Motor_Loop",
-    "tags": "Isomer",
-    "path": "GF_EV6_Motor_Loop/GF_EV6_Motor_Loop.ogg",
-    "loop": {
-      "start": 330750,
-      "end": 2447550
-    }
-  },
-  {
-    "title": "Shirakaba no Hikari",
-    "tags": "Isomer Ending Song",
-    "path": "GF_EV6_ED/GF_EV6_ED.ogg",
-    "loop": {
-      "start": 88236,
-      "end": 12965133
-    }
-  },
-  {
-    "title": "Sign",
-    "tags": "Operation Rabbit Hunt Menu",
-    "path": "GF_MAP_EX_8_select/GF_MAP_EX_8_select.ogg",
-    "loop": {
-      "start": 368764,
-      "end": 2950244
-    }
-  },
-  {
-    "title": "Uprising",
-    "tags": ["Operation Rabbit Hunt E1", "Guilty Gear Xrd -SIGN-"],
-    "path": "GF_MAP_EX_8_1/GF_MAP_EX_8_1.ogg",
-    "loop": {
-      "start": 529200,
-      "end": 10407600
-    }
-  },
-  {
-    "title": "The Spider's Thread (Do you know?)",
-    "tags": ["Operation Rabbit Hunt E2", "Guilty Gear Xrd -SIGN-"],
-    "path": "GF_MAP_EX_8_2/GF_MAP_EX_8_2.ogg",
-    "loop": {
-      "start": 2262198,
-      "end": 12846232
-    }
-  },
-  {
-    "title": "Reunion",
-    "tags": ["Operation Rabbit Hunt E3", "Guilty Gear Xrd -SIGN-"],
-    "path": "GF_MAP_EX_8_3/GF_MAP_EX_8_3.ogg",
-    "loop": {
-      "start": 2975603,
-      "end": 9273530
-    }
-  },
-  {
-    "title": "Marionette",
-    "tags": ["Operation Rabbit Hunt E4", "Guilty Gear Xrd -SIGN-"],
-    "path": "GF_MAP_EX_8_4/GF_MAP_EX_8_4.ogg",
-    "loop": {
-      "start": 4395976,
-      "end": 13501352
-    }
-  },
-  {
-    "title": "Miles",
-    "tags": ["Glory Day Menu", "DJMax Respect"],
-    "path": "DJMAX_Miles/DJMAX_Miles.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5718528
-    }
-  },
-  {
-    "title": "Plastic Method",
-    "tags": ["Glory Day E1-1, E3-1", "DJMax Respect"],
-    "path": "DJMAX_PlasticMethod/DJMAX_PlasticMethod.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5943168
-    }
-  },
-  {
-    "title": "Armored Phantom",
-    "tags": ["Glory Day E1-2, E3-2", "DJMax Respect"],
-    "path": "DJMAX_ArmoredPhantom/DJMAX_ArmoredPhantom.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5504256
-    }
-  },
-  {
-    "title": "Ventilator",
-    "tags": ["Glory Day E1-3, E3-3", "DJMax Respect"],
-    "path": "DJMAX_Ventilator/DJMAX_Ventilator.ogg",
-    "loop": {
-      "start": 0,
-      "end": 4699296
-    }
-  },
-  {
-    "title": "The Last Scene",
-    "tags": ["Glory Day E2-1, E4-1", "DJMax Respect"],
-    "path": "DJMAX_TheLastScene/DJMAX_TheLastScene.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5128192
-    }
-  },
-  {
-    "title": "Nightmare",
-    "tags": ["Glory Day E2-2, E4-2", "DJMax Respect"],
-    "path": "DJMAX_Nightmare/DJMAX_Nightmare.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5519232
-    }
-  },
-  {
-    "title": "Black Cat",
-    "tags": ["Glory Day E2-3, E4-3", "DJMax Respect"],
-    "path": "DJMAX_BlackCat/DJMAX_BlackCat.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5387904
-    }
-  },
-  {
-    "title": "Ask to Wind",
-    "tags": ["Glory Day E1-2", "DJMax Respect"],
-    "path": "DJMAX_AsktoWind/DJMAX_AsktoWind.ogg",
-    "loop": {
-      "start": 0,
-      "end": 4773888
-    }
-  },
-  {
-    "title": "Fallen Angel",
-    "tags": ["Glory Day E1-3", "DJMax Respect"],
-    "path": "DJMAX_FallenAngel/DJMAX_FallenAngel.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5309568
-    }
-  },
-  {
-    "title": "Virgin Force",
-    "tags": ["Glory Day E2-1", "DJMax Respect"],
-    "path": "DJMAX_VirginForce/DJMAX_VirginForce.ogg",
-    "loop": {
-      "start": 0,
-      "end": 6234624
-    }
-  },
-  {
-    "title": "Syrianna",
-    "tags": ["Glory Day E2-2", "DJMax Respect"],
-    "path": "DJMAX_Syriana/DJMAX_Syriana.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5606213
-    }
-  },
-  {
-    "title": "OBLIVION",
-    "tags": ["Glory Day E2-3", "DJMax Respect"],
-    "path": "DJMAX_OBLIVION/DJMAX_OBLIVION.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5261306
-    }
-  },
-  {
-    "title": "Beyond Yourself",
-    "tags": ["Glory Day", "DJMax Respect"],
-    "path": "DJMAX_BeyondYourself/DJMAX_BeyondYourself.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5207040
-    }
-  },
-  {
-    "title": "Shadow Flower",
-    "tags": ["Glory Day", "DJMax Respect"],
-    "path": "DJMAX_ShadowFlower/DJMAX_ShadowFlower.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5167872
-    }
-  },
-  {
-    "title": "Shadow Flower (Mycin.T Funk session)",
-    "tags": ["Glory Day", "DJMax Respect"],
-    "path": "DJMAX_ShadowFlowerF/DJMAX_ShadowFlowerF.ogg",
-    "loop": {
-      "start": 0,
-      "end": 7937280
-    }
-  },
-  {
-    "title": "Only For You",
-    "tags": ["Glory Day", "DJMax Respect"],
-    "path": "DJMAX_OnlyForYou/DJMAX_OnlyForYou.ogg",
-    "loop": {
-      "start": 0,
-      "end": 6266880
-    }
-  },
-  {
-    "title": "BELL",
-    "tags": ["Glory Day", "DJMax Respect"],
-    "path": "DJMAX_BELL/DJMAX_BELL.ogg",
-    "loop": {
-      "start": 0,
-      "end": 9588096
-    }
-  },
-  {
-    "title": "Bullet Wanted",
-    "tags": ["Glory Day", "DJMax Respect"],
-    "path": "DJMAX_BulletWanted/DJMAX_BulletWanted.ogg",
-    "loop": {
-      "start": 0,
-      "end": 4172544
-    }
-  },
-  {
-    "title": "The Obliterator",
-    "tags": ["Glory Day", "DJMax Respect"],
-    "path": "DJMAX_TheObliterator/DJMAX_TheObliterator.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5021568
-    }
-  },
-  {
-    "title": "Lady Made Star",
-    "tags": ["Glory Day", "DJMax Respect"],
-    "path": "DJMAX_LadyMadeStar/DJMAX_LadyMadeStar.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5541371
-    }
-  },
-  {
-    "title": "I Want You",
-    "tags": ["Glory Day", "DJMax Respect"],
-    "path": "DJMAX_IWantYou/DJMAX_IWantYou.ogg",
-    "loop": {
-      "start": 0,
-      "end": 4691138
-    }
-  },
-  {
-    "title": "WHY",
-    "tags": ["Glory Day", "DJMax Respect"],
-    "path": "DJMAX_WHY/DJMAX_WHY.ogg",
-    "loop": {
-      "start": 0,
-      "end": 5319936
-    }
-  },
-  {
-    "title": "Glory Day",
-    "tags": ["Glory Day", "DJMax Respect"],
-    "path": "DJMAX_GloryDay/DJMAX_GloryDay.ogg",
-    "loop": {
-      "start": 0,
-      "end": 7266816
-    }
-  },
-  {
-    "title": "First Kiss",
-    "tags": ["Glory Day", "DJMax Respect"],
-    "path": "DJMAX_FirstKiss/DJMAX_FirstKiss.ogg",
-    "loop": {
-      "start": 0,
-      "end": 9671040
-    }
-  },
-  {
-    "title": "Shopsation",
-    "tags": ["Hitoribocchi Menu", "Houkai Gakuen"],
-    "path": "GF_xBH2_Menu/GF_xBH2_Menu.ogg",
-    "loop": {
-      "start": 0,
-      "end": 2822400
-    }
-  },
-  {
-    "title": "Innerlink",
-    "tags": ["Hitoribocchi E1-1", "Houkai Gakuen"],
-    "path": "GF_xBH2_Map1/GF_xBH2_Map1.ogg",
-    "loop": {
-      "start": 7241,
-      "end": 2612950
-    }
-  },
-  {
-    "title": "Encounter",
-    "tags": ["Hitoribocchi E1-2", "Houkai Gakuen"],
-    "path": "GF_xBH2_Map2/GF_xBH2_Map2.ogg",
-    "loop": {
-      "start": 7426,
-      "end": 3086488
-    }
-  },
-  {
-    "title": "Lift",
-    "tags": ["Hitoribocchi E1-3", "Houkai Gakuen"],
-    "path": "GF_xBH2_Map3/GF_xBH2_Map3.ogg",
-    "loop": {
-      "start": 0,
-      "end": 2690848
-    }
-  },
-  {
-    "title": "Lighting",
-    "tags": ["Hitoribocchi E1-4", "Houkai Gakuen"],
-    "path": "GF_xBH2_Map4/GF_xBH2_Map4.ogg",
-    "loop": {
-      "start": 7264,
-      "end": 2426880
-    }
-  },
-  {
-    "title": "BANG",
-    "tags": ["Hitoribocchi E2-1", "Houkai Gakuen"],
-    "path": "GF_xBH2_Map5/GF_xBH2_Map5.ogg",
-    "loop": {
-      "start": 7190,
-      "end": 1860147
-    }
-  },
-  {
-    "title": "Tiger onceit",
-    "tags": ["Hitoribocchi E2-2", "Houkai Gakuen"],
-    "path": "GF_xBH2_Map6/GF_xBH2_Map6.ogg",
-    "loop": {
-      "start": 7326,
-      "end": 3120572
-    }
-  },
-  {
-    "title": "Amber",
-    "tags": ["Hitoribocchi E2-3", "Houkai Gakuen"],
-    "path": "GF_xBH2_Map7/GF_xBH2_Map7.ogg",
-    "loop": {
-      "start": 7316,
-      "end": 1961715
-    }
-  },
-  {
-    "title": "EVO",
-    "tags": ["Hitoribocchi E2-4", "Houkai Gakuen"],
-    "path": "GF_xBH2_Map8/GF_xBH2_Map8.ogg",
-    "loop": {
-      "start": 7346,
-      "end": 2450432
-    }
-  },
-  {
-    "title": "GF_GGX_BGM_Danger",
-    "tags": ["Hitoribocchi", "Houkai Gakuen"],
-    "path": "GF_GGX_BGM_Danger/GF_GGX_BGM_Danger.ogg",
-    "loop": {
-      "start": 117571,
-      "end": 4469017
-    }
-  },
-  {
-    "title": "GF_GGX_BGM_Sad",
-    "tags": ["Hitoribocchi", "Houkai Gakuen"],
-    "path": "GF_GGX_BGM_Sad/GF_GGX_BGM_Sad.ogg",
-    "loop": {
-      "start": 2115786,
-      "end": 5398614
-    }
-  },
-  {
-    "title": "GF_GGX_BGM_Sunshine",
-    "tags": ["Hitoribocchi", "Houkai Gakuen"],
-    "path": "GF_GGX_BGM_Sunshine/GF_GGX_BGM_Sunshine.ogg",
-    "loop": {
-      "start": 113425,
-      "end": 4463057
-    }
-  },
-  {
-    "title": "GF_GGX_BGM_War",
-    "tags": ["Hitoribocchi", "Houkai Gakuen"],
-    "path": "GF_GGX_BGM_War/GF_GGX_BGM_War.ogg",
-    "loop": {
-      "start": 6364,
-      "end": 8142901
-    }
-  }
+  [
+    {
+      "title": "Cuty",
+      "tags": "Dormitory",
+      "path": "dorm/dorm.ogg",
+      "loop": {
+        "start": 7844,
+        "end": 4241258
+      }
+    }
+  ],
+  [
+    {
+      "title": "Cafe",
+      "path": "GF_Cafe/GF_Cafe.ogg",
+      "loop": {
+        "start": 384861,
+        "end": 3656284
+      }
+    }
+  ],
+  [
+    {
+      "title": "Memorial",
+      "path": "GF_Memorial/GF_Memorial.ogg",
+      "loop": {
+        "start": 859354,
+        "end": 4250552
+      }
+    }
+  ],
+  [
+    {
+      "title": "Daily 1",
+      "path": "GF_Daily_01_loop/GF_Daily_01_loop.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5115508
+      }
+    }
+  ],
+  [
+    {
+      "title": "Daily 2",
+      "path": "GF_Daily02_loop/GF_Daily02_loop.ogg",
+      "loop": {
+        "start": 14516,
+        "end": 4389576
+      }
+    }
+  ],
+  [
+    {
+      "title": "Safety first.A",
+      "tags": "Chapter 1",
+      "path": "GF_MAP1_BGM/GF_MAP1_BGM_1.ogg",
+      "loop": {
+        "start": 227379,
+        "end": 5519390
+      }
+    },
+    {
+      "title": "Safety first.B",
+      "tags": "Chapter 1",
+      "path": "GF_MAP1_BGM/GF_MAP1_BGM_0.ogg",
+      "loop": {
+        "start": 227379,
+        "end": 5519390
+      }
+    }
+  ],
+  [
+    {
+      "title": "Greenlight.A",
+      "tags": "Chapter 2",
+      "path": "GF_MAP2_BGM/GF_MAP2_BGM_1.ogg",
+      "loop": {
+        "start": 160348,
+        "end": 4810933
+      }
+    },
+    {
+      "title": "Greenlight.B",
+      "tags": "Chapter 2",
+      "path": "GF_MAP2_BGM/GF_MAP2_BGM_0.ogg",
+      "loop": {
+        "start": 160348,
+        "end": 4810933
+      }
+    }
+  ],
+  [
+    {
+      "title": "Beacon.A",
+      "tags": "Chapter 3",
+      "path": "GF_MAP3_BGM/GF_MAP3_BGM_1.ogg",
+      "loop": {
+        "start": 160348,
+        "end": 5291969
+      }
+    },
+    {
+      "title": "Beacon.B",
+      "tags": "Chapter 3",
+      "path": "GF_MAP3_BGM/GF_MAP3_BGM_0.ogg",
+      "loop": {
+        "start": 160348,
+        "end": 5291969
+      }
+    }
+  ],
+  [
+    {
+      "title": "Sentry.A",
+      "tags": "Chapter 4",
+      "path": "GF_MAP4_BGM/GF_MAP4_BGM_1.ogg",
+      "loop": {
+        "start": 826875,
+        "end": 5126625
+      }
+    },
+    {
+      "title": "Sentry.B",
+      "tags": "Chapter 4",
+      "path": "GF_MAP4_BGM/GF_MAP4_BGM_0.ogg",
+      "loop": {
+        "start": 826875,
+        "end": 5126625
+      }
+    }
+  ],
+  [
+    {
+      "title": "For the Record.A",
+      "tags": "Chapter 5",
+      "path": "GF_MAP5_BGM/GF_MAP5_BGM_1.ogg",
+      "loop": {
+        "start": 165375,
+        "end": 5457375
+      }
+    },
+    {
+      "title": "For the Record.B",
+      "tags": "Chapter 5",
+      "path": "GF_MAP5_BGM/GF_MAP5_BGM_0.ogg",
+      "loop": {
+        "start": 165375,
+        "end": 5457375
+      }
+    }
+  ],
+  [
+    {
+      "title": "Departure",
+      "tags": "Operation Cube",
+      "path": "GF_EV1Stage_LoopV2/GF_EV1Stage_LoopV2.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5225015
+      }
+    }
+  ],
+  [
+    {
+      "title": "Black Out",
+      "tags": "Operation Cube Boss",
+      "path": "GF_EV1Boss_loop/GF_EV1Boss_loop.ogg",
+      "loop": {
+        "start": 7177,
+        "end": 4021920
+      }
+    }
+  ],
+  [
+    {
+      "title": "Host.A",
+      "tags": "Chapter 6",
+      "path": "GF_MAP6_BGM/GF_MAP6_BGM_1.ogg",
+      "loop": {
+        "start": 139621,
+        "end": 5314050
+      }
+    },
+    {
+      "title": "Host.B",
+      "tags": "Chapter 6",
+      "path": "GF_MAP6_BGM/GF_MAP6_BGM_0.ogg",
+      "loop": {
+        "start": 139621,
+        "end": 5314050
+      }
+    }
+  ],
+  [
+    {
+      "title": "Nihilism.A",
+      "tags": [
+        "Chapter 7",
+        "Arctic Warfare E1"
+      ],
+      "path": "GF_MAP7_BGM/GF_MAP7_BGM_1.ogg",
+      "loop": {
+        "start": 186014,
+        "end": 5478102
+      }
+    },
+    {
+      "title": "Nihilism.B",
+      "tags": [
+        "Chapter 7",
+        "Arctic Warfare E1"
+      ],
+      "path": "GF_MAP7_BGM/GF_MAP7_BGM_0.ogg",
+      "loop": {
+        "start": 186014,
+        "end": 5478102
+      }
+    }
+  ],
+  [
+    {
+      "title": "To the Twilight",
+      "tags": "Arctic Warfare E2",
+      "path": "GF_Winter_Night/GF_Winter_Night.ogg",
+      "loop": {
+        "start": 492244,
+        "end": 4615117
+      }
+    }
+  ],
+  [
+    {
+      "title": "White Front",
+      "tags": "Arctic Warfare E3",
+      "path": "GF_Winter_Hiru/GF_Winter_Hiru.ogg",
+      "loop": {
+        "start": 123039,
+        "end": 4245910
+      }
+    }
+  ],
+  [
+    {
+      "title": "Snowflake",
+      "tags": "Arctic Warfare Boss",
+      "path": "GF_Boss_Map/GF_Boss_Map.ogg",
+      "loop": {
+        "start": 249165,
+        "end": 4420377
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_MAP8_BGM_old",
+      "tags": "Chapter 8",
+      "path": "GF_MAP8_BGM_old/GF_MAP8_BGM_old.ogg",
+      "loop": {
+        "start": 933862,
+        "end": 5416516
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV3_Intermission",
+      "tags": "Deep Dive",
+      "path": "GF_EV3_Intermission/GF_EV3_Intermission.ogg",
+      "loop": {
+        "start": 82688,
+        "end": 4134397
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV3_Map1_tri",
+      "tags": "Deep Dive",
+      "path": "GF_EV3_Map1_tri/GF_EV3_Map1_tri.ogg",
+      "loop": {
+        "start": 7230,
+        "end": 4171612
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV3_Map2",
+      "tags": "Deep Dive",
+      "path": "GF_EV3_Map2/GF_EV3_Map2.ogg",
+      "loop": {
+        "start": 7211,
+        "end": 4938303
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV3_Map3",
+      "tags": "Deep Dive",
+      "path": "GF_EV3_Map3/GF_EV3_Map3.ogg",
+      "loop": {
+        "start": 513164,
+        "end": 5388205
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV3_MapEX",
+      "tags": "Deep Dive",
+      "path": "GF_EV3_MapEX/GF_EV3_MapEX.ogg",
+      "loop": {
+        "start": 741682,
+        "end": 6675072
+      }
+    }
+  ],
+  [
+    {
+      "title": "Barbarous Funera",
+      "tags": "Deep Dive Boss",
+      "path": "GF_EV3_Boss/GF_EV3_Boss.ogg",
+      "loop": {
+        "start": 17090,
+        "end": 3419099
+      }
+    },
+    {
+      "title": "Barbarous Funera (Instrumental)",
+      "tags": "Deep Dive Boss",
+      "path": "GF_EV3_Boss_Inst/GF_EV3_Boss_Inst.ogg",
+      "loop": {
+        "start": 17090,
+        "end": 3419099
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_MAP9_BGM",
+      "tags": "Chapter 9",
+      "path": "GF_MAP9_BGM/GF_MAP9_BGM.ogg",
+      "loop": {
+        "start": 1180513,
+        "end": 5251292
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_MAP10_BGM",
+      "tags": "Chapter 10",
+      "path": "GF_MAP10_BGM/GF_MAP10_BGM.ogg",
+      "loop": {
+        "start": 926100,
+        "end": 5247900
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV4_intermission",
+      "tags": "Singularity",
+      "path": "GF_EV4_intermission/GF_EV4_intermission.ogg",
+      "loop": {
+        "start": 120966,
+        "end": 3884169
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV4_Map1",
+      "tags": "Singularity",
+      "path": "GF_EV4_Map1/GF_EV4_Map1.ogg",
+      "loop": {
+        "start": 117571,
+        "end": 5292000
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV4_Map2",
+      "tags": "Singularity",
+      "path": "GF_EV4_Map2/GF_EV4_Map2.ogg",
+      "loop": {
+        "start": 194525,
+        "end": 5253088
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV4_Map3",
+      "tags": "Singularity",
+      "path": "GF_EV4_Map3/GF_EV4_Map3.ogg",
+      "loop": {
+        "start": 222793,
+        "end": 5570526
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV4_Boss1",
+      "tags": "Singularity",
+      "path": "GF_EV4_Boss1/GF_EV4_Boss1.ogg",
+      "loop": {
+        "start": 940962,
+        "end": 5610607
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV4_Boss2",
+      "tags": "Singularity",
+      "path": "GF_EV4_Boss2/GF_EV4_Boss2.ogg",
+      "loop": {
+        "start": 7180,
+        "end": 3015680
+      }
+    }
+  ],
+  [
+    {
+      "title": "What am I Fighting for",
+      "tags": "Singularity Ending Song",
+      "path": "GF_Song/GF_Song.ogg",
+      "loop": {
+        "start": 0,
+        "end": 12477174
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV5_Intermission",
+      "tags": "Continuum Turbulence",
+      "path": "GF_EV5_Intermission/GF_EV5_Intermission.ogg",
+      "loop": {
+        "start": 696316,
+        "end": 5152739
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV5_BattleL1",
+      "tags": "Continuum Turbulence",
+      "path": "GF_EV5_BattleL1/GF_EV5_BattleL1.ogg",
+      "loop": {
+        "start": 105840,
+        "end": 5186160
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV5_BattleL2",
+      "tags": "Continuum Turbulence",
+      "path": "GF_EV5_BattleL2/GF_EV5_BattleL2.ogg",
+      "loop": {
+        "start": 248063,
+        "end": 5540063
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV5_BattleL3",
+      "tags": "Continuum Turbulence",
+      "path": "GF_EV5_BattleL3/GF_EV5_BattleL3.ogg",
+      "loop": {
+        "start": 264600,
+        "end": 5556600
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV5_Boss",
+      "tags": "Continuum Turbulence",
+      "path": "GF_EV5_Boss/GF_EV5_Boss.ogg",
+      "loop": {
+        "start": 330750,
+        "end": 5622785
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_MAP11_BGM",
+      "tags": "Chapter 11",
+      "path": "GF_MAP11_BGM/GF_MAP11_BGM.ogg",
+      "loop": {
+        "start": 635040,
+        "end": 5927040
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV6_90w_pt1",
+      "tags": "Isomer",
+      "path": "GF_EV6_90w_pt1/GF_EV6_90w_pt1.ogg",
+      "loop": {
+        "start": 1209601,
+        "end": 3628803
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV6_90w_pt2",
+      "tags": "Isomer",
+      "path": "GF_EV6_90w_pt2/GF_EV6_90w_pt2.ogg",
+      "loop": {
+        "start": 504000,
+        "end": 3830403
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV6_90w_pt3",
+      "tags": "Isomer",
+      "path": "GF_EV6_90w_pt3/GF_EV6_90w_pt3.ogg",
+      "loop": {
+        "start": 453600,
+        "end": 3880803
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV6_G&K_pt1",
+      "tags": "Isomer",
+      "path": "GF_EV6_G&K_pt1/GF_EV6_G&K_pt1.ogg",
+      "loop": {
+        "start": 315940,
+        "end": 3475342
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV6_G&K_pt2",
+      "tags": "Isomer",
+      "path": "GF_EV6_G&K_pt2/GF_EV6_G&K_pt2.ogg",
+      "loop": {
+        "start": 315940,
+        "end": 4739102
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV6_G&K_pt3",
+      "tags": "Isomer",
+      "path": "GF_EV6_G&K_pt3/GF_EV6_G&K_pt3.ogg",
+      "loop": {
+        "start": 236955,
+        "end": 3080417
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV6_SF_pt1",
+      "tags": "Isomer",
+      "path": "GF_EV6_SF_pt1/GF_EV6_SF_pt1.ogg",
+      "loop": {
+        "start": 311294,
+        "end": 2801644
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV6_SF_pt2",
+      "tags": "Isomer",
+      "path": "GF_EV6_SF_pt2/GF_EV6_SF_pt2.ogg",
+      "loop": {
+        "start": 933881,
+        "end": 5291994
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV6_SF_pt3",
+      "tags": "Isomer",
+      "path": "GF_EV6_SF_pt3/GF_EV6_SF_pt3.ogg",
+      "loop": {
+        "start": 1712116,
+        "end": 2645997
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_EV6_Motor_Loop",
+      "tags": "Isomer",
+      "path": "GF_EV6_Motor_Loop/GF_EV6_Motor_Loop.ogg",
+      "loop": {
+        "start": 330750,
+        "end": 2447550
+      }
+    }
+  ],
+  [
+    {
+      "title": "Shirakaba no Hikari",
+      "tags": "Isomer Ending Song",
+      "path": "GF_EV6_ED/GF_EV6_ED.ogg",
+      "loop": {
+        "start": 88236,
+        "end": 12965133
+      }
+    }
+  ],
+  [
+    {
+      "title": "Sign",
+      "tags": "Operation Rabbit Hunt Menu",
+      "path": "GF_MAP_EX_8_select/GF_MAP_EX_8_select.ogg",
+      "loop": {
+        "start": 368764,
+        "end": 2950244
+      }
+    }
+  ],
+  [
+    {
+      "title": "Uprising",
+      "tags": [
+        "Operation Rabbit Hunt E1",
+        "Guilty Gear Xrd -SIGN-"
+      ],
+      "path": "GF_MAP_EX_8_1/GF_MAP_EX_8_1.ogg",
+      "loop": {
+        "start": 529200,
+        "end": 10407600
+      }
+    }
+  ],
+  [
+    {
+      "title": "The Spider's Thread (Do you know?)",
+      "tags": [
+        "Operation Rabbit Hunt E2",
+        "Guilty Gear Xrd -SIGN-"
+      ],
+      "path": "GF_MAP_EX_8_2/GF_MAP_EX_8_2.ogg",
+      "loop": {
+        "start": 2262198,
+        "end": 12846232
+      }
+    }
+  ],
+  [
+    {
+      "title": "Reunion",
+      "tags": [
+        "Operation Rabbit Hunt E3",
+        "Guilty Gear Xrd -SIGN-"
+      ],
+      "path": "GF_MAP_EX_8_3/GF_MAP_EX_8_3.ogg",
+      "loop": {
+        "start": 2975603,
+        "end": 9273530
+      }
+    }
+  ],
+  [
+    {
+      "title": "Marionette",
+      "tags": [
+        "Operation Rabbit Hunt E4",
+        "Guilty Gear Xrd -SIGN-"
+      ],
+      "path": "GF_MAP_EX_8_4/GF_MAP_EX_8_4.ogg",
+      "loop": {
+        "start": 4395976,
+        "end": 13501352
+      }
+    }
+  ],
+  [
+    {
+      "title": "Miles",
+      "tags": [
+        "Glory Day Menu",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_Miles/DJMAX_Miles.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5718528
+      }
+    }
+  ],
+  [
+    {
+      "title": "Plastic Method",
+      "tags": [
+        "Glory Day E1-1, E3-1",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_PlasticMethod/DJMAX_PlasticMethod.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5943168
+      }
+    }
+  ],
+  [
+    {
+      "title": "Armored Phantom",
+      "tags": [
+        "Glory Day E1-2, E3-2",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_ArmoredPhantom/DJMAX_ArmoredPhantom.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5504256
+      }
+    }
+  ],
+  [
+    {
+      "title": "Ventilator",
+      "tags": [
+        "Glory Day E1-3, E3-3",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_Ventilator/DJMAX_Ventilator.ogg",
+      "loop": {
+        "start": 0,
+        "end": 4699296
+      }
+    }
+  ],
+  [
+    {
+      "title": "The Last Scene",
+      "tags": [
+        "Glory Day E2-1, E4-1",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_TheLastScene/DJMAX_TheLastScene.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5128192
+      }
+    }
+  ],
+  [
+    {
+      "title": "Nightmare",
+      "tags": [
+        "Glory Day E2-2, E4-2",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_Nightmare/DJMAX_Nightmare.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5519232
+      }
+    }
+  ],
+  [
+    {
+      "title": "Black Cat",
+      "tags": [
+        "Glory Day E2-3, E4-3",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_BlackCat/DJMAX_BlackCat.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5387904
+      }
+    }
+  ],
+  [
+    {
+      "title": "Ask to Wind",
+      "tags": [
+        "Glory Day E1-2",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_AsktoWind/DJMAX_AsktoWind.ogg",
+      "loop": {
+        "start": 0,
+        "end": 4773888
+      }
+    }
+  ],
+  [
+    {
+      "title": "Fallen Angel",
+      "tags": [
+        "Glory Day E1-3",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_FallenAngel/DJMAX_FallenAngel.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5309568
+      }
+    }
+  ],
+  [
+    {
+      "title": "Virgin Force",
+      "tags": [
+        "Glory Day E2-1",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_VirginForce/DJMAX_VirginForce.ogg",
+      "loop": {
+        "start": 0,
+        "end": 6234624
+      }
+    }
+  ],
+  [
+    {
+      "title": "Syrianna",
+      "tags": [
+        "Glory Day E2-2",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_Syriana/DJMAX_Syriana.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5606213
+      }
+    }
+  ],
+  [
+    {
+      "title": "OBLIVION",
+      "tags": [
+        "Glory Day E2-3",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_OBLIVION/DJMAX_OBLIVION.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5261306
+      }
+    }
+  ],
+  [
+    {
+      "title": "Beyond Yourself",
+      "tags": [
+        "Glory Day",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_BeyondYourself/DJMAX_BeyondYourself.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5207040
+      }
+    }
+  ],
+  [
+    {
+      "title": "Shadow Flower",
+      "tags": [
+        "Glory Day",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_ShadowFlower/DJMAX_ShadowFlower.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5167872
+      }
+    }
+  ],
+  [
+    {
+      "title": "Shadow Flower (Mycin.T Funk session)",
+      "tags": [
+        "Glory Day",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_ShadowFlowerF/DJMAX_ShadowFlowerF.ogg",
+      "loop": {
+        "start": 0,
+        "end": 7937280
+      }
+    }
+  ],
+  [
+    {
+      "title": "Only For You",
+      "tags": [
+        "Glory Day",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_OnlyForYou/DJMAX_OnlyForYou.ogg",
+      "loop": {
+        "start": 0,
+        "end": 6266880
+      }
+    }
+  ],
+  [
+    {
+      "title": "BELL",
+      "tags": [
+        "Glory Day",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_BELL/DJMAX_BELL.ogg",
+      "loop": {
+        "start": 0,
+        "end": 9588096
+      }
+    }
+  ],
+  [
+    {
+      "title": "Bullet Wanted",
+      "tags": [
+        "Glory Day",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_BulletWanted/DJMAX_BulletWanted.ogg",
+      "loop": {
+        "start": 0,
+        "end": 4172544
+      }
+    }
+  ],
+  [
+    {
+      "title": "The Obliterator",
+      "tags": [
+        "Glory Day",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_TheObliterator/DJMAX_TheObliterator.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5021568
+      }
+    }
+  ],
+  [
+    {
+      "title": "Lady Made Star",
+      "tags": [
+        "Glory Day",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_LadyMadeStar/DJMAX_LadyMadeStar.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5541371
+      }
+    }
+  ],
+  [
+    {
+      "title": "I Want You",
+      "tags": [
+        "Glory Day",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_IWantYou/DJMAX_IWantYou.ogg",
+      "loop": {
+        "start": 0,
+        "end": 4691138
+      }
+    }
+  ],
+  [
+    {
+      "title": "WHY",
+      "tags": [
+        "Glory Day",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_WHY/DJMAX_WHY.ogg",
+      "loop": {
+        "start": 0,
+        "end": 5319936
+      }
+    }
+  ],
+  [
+    {
+      "title": "Glory Day",
+      "tags": [
+        "Glory Day",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_GloryDay/DJMAX_GloryDay.ogg",
+      "loop": {
+        "start": 0,
+        "end": 7266816
+      }
+    }
+  ],
+  [
+    {
+      "title": "First Kiss",
+      "tags": [
+        "Glory Day",
+        "DJMax Respect"
+      ],
+      "path": "DJMAX_FirstKiss/DJMAX_FirstKiss.ogg",
+      "loop": {
+        "start": 0,
+        "end": 9671040
+      }
+    }
+  ],
+  [
+    {
+      "title": "Shopsation",
+      "tags": [
+        "Hitoribocchi Menu",
+        "Houkai Gakuen"
+      ],
+      "path": "GF_xBH2_Menu/GF_xBH2_Menu.ogg",
+      "loop": {
+        "start": 0,
+        "end": 2822400
+      }
+    }
+  ],
+  [
+    {
+      "title": "Innerlink",
+      "tags": [
+        "Hitoribocchi E1-1",
+        "Houkai Gakuen"
+      ],
+      "path": "GF_xBH2_Map1/GF_xBH2_Map1.ogg",
+      "loop": {
+        "start": 7241,
+        "end": 2612950
+      }
+    }
+  ],
+  [
+    {
+      "title": "Encounter",
+      "tags": [
+        "Hitoribocchi E1-2",
+        "Houkai Gakuen"
+      ],
+      "path": "GF_xBH2_Map2/GF_xBH2_Map2.ogg",
+      "loop": {
+        "start": 7426,
+        "end": 3086488
+      }
+    }
+  ],
+  [
+    {
+      "title": "Lift",
+      "tags": [
+        "Hitoribocchi E1-3",
+        "Houkai Gakuen"
+      ],
+      "path": "GF_xBH2_Map3/GF_xBH2_Map3.ogg",
+      "loop": {
+        "start": 0,
+        "end": 2690848
+      }
+    }
+  ],
+  [
+    {
+      "title": "Lighting",
+      "tags": [
+        "Hitoribocchi E1-4",
+        "Houkai Gakuen"
+      ],
+      "path": "GF_xBH2_Map4/GF_xBH2_Map4.ogg",
+      "loop": {
+        "start": 7264,
+        "end": 2426880
+      }
+    }
+  ],
+  [
+    {
+      "title": "BANG",
+      "tags": [
+        "Hitoribocchi E2-1",
+        "Houkai Gakuen"
+      ],
+      "path": "GF_xBH2_Map5/GF_xBH2_Map5.ogg",
+      "loop": {
+        "start": 7190,
+        "end": 1860147
+      }
+    }
+  ],
+  [
+    {
+      "title": "Tiger onceit",
+      "tags": [
+        "Hitoribocchi E2-2",
+        "Houkai Gakuen"
+      ],
+      "path": "GF_xBH2_Map6/GF_xBH2_Map6.ogg",
+      "loop": {
+        "start": 7326,
+        "end": 3120572
+      }
+    }
+  ],
+  [
+    {
+      "title": "Amber",
+      "tags": [
+        "Hitoribocchi E2-3",
+        "Houkai Gakuen"
+      ],
+      "path": "GF_xBH2_Map7/GF_xBH2_Map7.ogg",
+      "loop": {
+        "start": 7316,
+        "end": 1961715
+      }
+    }
+  ],
+  [
+    {
+      "title": "EVO",
+      "tags": [
+        "Hitoribocchi E2-4",
+        "Houkai Gakuen"
+      ],
+      "path": "GF_xBH2_Map8/GF_xBH2_Map8.ogg",
+      "loop": {
+        "start": 7346,
+        "end": 2450432
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_GGX_BGM_Danger",
+      "tags": [
+        "Hitoribocchi",
+        "Houkai Gakuen"
+      ],
+      "path": "GF_GGX_BGM_Danger/GF_GGX_BGM_Danger.ogg",
+      "loop": {
+        "start": 117571,
+        "end": 4469017
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_GGX_BGM_Sad",
+      "tags": [
+        "Hitoribocchi",
+        "Houkai Gakuen"
+      ],
+      "path": "GF_GGX_BGM_Sad/GF_GGX_BGM_Sad.ogg",
+      "loop": {
+        "start": 2115786,
+        "end": 5398614
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_GGX_BGM_Sunshine",
+      "tags": [
+        "Hitoribocchi",
+        "Houkai Gakuen"
+      ],
+      "path": "GF_GGX_BGM_Sunshine/GF_GGX_BGM_Sunshine.ogg",
+      "loop": {
+        "start": 113425,
+        "end": 4463057
+      }
+    }
+  ],
+  [
+    {
+      "title": "GF_GGX_BGM_War",
+      "tags": [
+        "Hitoribocchi",
+        "Houkai Gakuen"
+      ],
+      "path": "GF_GGX_BGM_War/GF_GGX_BGM_War.ogg",
+      "loop": {
+        "start": 6364,
+        "end": 8142901
+      }
+    }
+  ]
 ]
