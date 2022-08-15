@@ -5,6 +5,7 @@ import NowPlaying from '@/components/NowPlaying.vue';
 import Playlist from '@/components/Playlist.vue';
 import ProgressBar from '@/components/ProgressBar.vue';
 import player from '@/player';
+import type { Loop } from '@/player';
 import playlist from '@/assets/playlist.json'
 
 const SAMPLE_RATE = 44100;
@@ -13,8 +14,8 @@ interface State {
     cache: { [trackIndex: number]: { [variantIndex: number]: AudioBuffer } },
     nowPlaying?: { trackIndex: number, variantIndex: number },
     lastPlayed?: { trackIndex: number, variantIndex: number },
-    played: number,
-    duration: number,
+    playedMs: number,
+    durationMs: number,
     isPaused: boolean,
     isLooping: boolean,
     nowDownloading?: { trackIndex: number, variantIndex: number, progress: number },
@@ -25,8 +26,8 @@ const state = reactive<State>({
   cache: {},
   nowPlaying: undefined,
   lastPlayed: undefined,
-  played: 0,
-  duration: 0,
+  playedMs: 0,
+  durationMs: 0,
   isPaused: false,
   isLooping: true,
   nowDownloading: undefined,
@@ -34,6 +35,8 @@ const state = reactive<State>({
 });
 
 const isPlaying = computed(() => state.nowPlaying !== undefined);
+const playedS = computed(() => Math.round(state.playedMs / 1000));
+const durationS = computed(() => Math.round(state.durationMs / 1000));
 
 const volume = ref(parseFloat(localStorage.getItem('volume') || '0.5'));
 
@@ -41,21 +44,21 @@ const startPlayback = (trackIndex: number, variantIndex: number) => {
   const track = playlist[trackIndex][variantIndex];
 
   const callback = (buffer: AudioBuffer) => {
-    // loop ranges are stored in samples, convert to seconds
-    const loop = {
+    // loop ranges are stored in samples, convert to seconds, as required by `AudioBufferSourceNode`
+    const loop: Loop = {
       enabled: state.isLooping,
-      start: track.loop.start / SAMPLE_RATE,
-      end: track.loop.end / SAMPLE_RATE,
+      startS: track.loop.start / SAMPLE_RATE,
+      endS: track.loop.end / SAMPLE_RATE,
     };
-    let position = state.nowPlaying?.trackIndex === trackIndex ? state.played : 0;
+    const position = state.nowPlaying?.trackIndex === trackIndex ? state.playedMs : 0;
     stopPlayback();
     player.setSource(buffer, loop);
-    state.played = position;
-    state.duration = buffer.duration;
+    state.playedMs = position;
+    state.durationMs = buffer.length / buffer.sampleRate * 1000; // buffer sample rate isn't guaranteed to be the same as track sample rate
     player.volume = volume.value;
     player.play(position, {
       stop: () => stopPlayback(),
-      progress: (played) => state.played = played,
+      progress: (played) => state.playedMs = played,
     });
     state.nowPlaying = { trackIndex, variantIndex };
     state.lastPlayed = { trackIndex, variantIndex };
@@ -95,8 +98,8 @@ const stopPlayback = () => {
   player.stop();
   state.nowPlaying = undefined;
   state.isPaused = false;
-  state.played = 0;
-  state.duration = 0;
+  state.playedMs = 0;
+  state.durationMs = 0;
 };
 
 const onNextPrev = (direction: 'next' | 'prev') => {
@@ -151,18 +154,20 @@ const onLoopToggle = () => {
   const track = playlist[nowPlaying.trackIndex][nowPlaying.variantIndex];
   player.setLoop({
     enabled: state.isLooping,
-    start: track.loop.start / SAMPLE_RATE,
-    end: track.loop.end / SAMPLE_RATE,
+    startS: track.loop.start / SAMPLE_RATE,
+    endS: track.loop.end / SAMPLE_RATE,
   });
 }
 
-const onSeek = (toPosition: number) => {
+const onSeek = (toPositionS: number) => {
+  const toPositionMs = toPositionS * 1000;
+
   if (!state.isPaused) {
     // we're playing, seek to the position
-    player.seek(toPosition);
+    player.seek(toPositionMs);
   } else {
     // we're paused, unpause and seek to position
-    player.resume(toPosition);
+    player.resume(toPositionMs);
     state.isPaused = false;
   }
 };
@@ -198,8 +203,8 @@ const onVolumeChange = (newVolume: number) => {
         @volume="onVolumeChange"
       />
       <ProgressBar
-        :played="state.played"
-        :duration="state.duration"
+        :played="playedS"
+        :duration="durationS"
         @seek="onSeek"
       />
     </div>

@@ -1,7 +1,7 @@
-interface Loop {
+export interface Loop {
   enabled?: boolean,
-  start: number,
-  end: number
+  startS: number,
+  endS: number,
 }
 
 interface DownloadCallbacks {
@@ -18,8 +18,10 @@ interface PlaybackCallbacks {
 }
 
 interface Progress {
-  iid: number,
-  played: number,
+  timeoutId: number,
+  // timestamp of monotoic clock on the start of the tick
+  timestampMs: number,
+  playedMs: number,
   callbacks: PlaybackCallbacks | undefined
 }
 
@@ -35,8 +37,9 @@ class AudioPlayer {
     this.source = undefined
     this.gain = undefined
     this.progress = {
-      iid: 0, // interval id
-      played: 0,
+      timeoutId: 0,
+      timestampMs: 0,
+      playedMs: 0,
       callbacks: {}
     }
   }
@@ -61,9 +64,9 @@ class AudioPlayer {
   public setLoop(loop: Loop) {
     if (!this.source) return
 
-    this.source.loop = Boolean(loop.enabled && (loop.start || loop.end))
-    this.source.loopStart = loop.start
-    this.source.loopEnd = loop.end
+    this.source.loop = Boolean(loop.enabled && (loop.startS || loop.endS))
+    this.source.loopStart = loop.startS
+    this.source.loopEnd = loop.endS
   }
 
   public get volume(): number {
@@ -98,45 +101,59 @@ class AudioPlayer {
 
   /**
    *
-   * @param {number} position - At what position start the audio playback
+   * @param {number} positionMs - At what position start the audio playback
    * @param {object} Object with progress, stop and/or loop callback functions
    */
-  public play(position: number, callbacks: PlaybackCallbacks) {
+  public play(positionMs: number, callbacks: PlaybackCallbacks) {
     if (!this.source) return
 
-    console.log('Starting playback from', position)
+    console.log(`Starting playback from ${positionMs} ms`)
     // start the playback
     const source = this.source
     if (!source.buffer) return
 
-    source.start(0, position)
+    // AudioBufferSourceNode requires the position to be in seconds
+    source.start(0, positionMs / 1000)
 
     // start counting seconds on how long the audio been playing
-    // send the position to callback every second
+    // send the position to callback every tick
     const progress = this.progress
     progress.callbacks = callbacks
-    progress.played = position
-    progress.iid = setInterval(() => {
+    progress.playedMs = positionMs
+    progress.timestampMs = performance.now()
+
+    const loopStartMs = source.loopStart * 1000
+    const loopEndMs = source.loopEnd * 1000
+    const durationMs = source.buffer.duration * 1000
+
+    const tick = () => {
+      // if playback was stopped, stop the timer
       if (!source.buffer) {
-        clearInterval(progress.iid)
+        clearTimeout(progress.timeoutId)
         return
       }
 
-      progress.played += 1
+      const now = performance.now()
+      const delta = now - progress.timestampMs
+      progress.playedMs += delta
 
-      if (source.loop && progress.played >= source.loopEnd) {
+      if (source.loop && progress.playedMs >= loopEndMs) {
         // wrap around if we passed the loop end
-        progress.played = source.loopStart + (progress.played - source.loopEnd)
-        if (callbacks && callbacks.loop) callbacks.loop()
-      } else if (!source.loop && progress.played >= source.buffer.duration) {
+        progress.playedMs = loopStartMs + (progress.playedMs - loopEndMs)
+        if (callbacks.loop) callbacks.loop()
+      } else if (!source.loop && progress.playedMs >= durationMs) {
         // if we passed the end of the song, stop the counter
-        clearInterval(progress.iid)
-        progress.iid = 0
-        progress.played = 0
-        if (callbacks && callbacks.stop) callbacks.stop()
+        clearTimeout(progress.timeoutId)
+        progress.playedMs = 0
+        if (callbacks.stop) callbacks.stop()
       }
-      if (callbacks && callbacks.progress) callbacks.progress(progress.played)
-    }, 1000)
+      if (callbacks.progress) callbacks.progress(progress.playedMs)
+
+      progress.timestampMs = now
+      progress.timeoutId = setTimeout(() => tick(), 100)
+    }
+
+    tick()
   }
 
   public stop() {
@@ -149,70 +166,68 @@ class AudioPlayer {
     }
 
     // stop and reset the progress counter
-    if (this.progress.iid) clearInterval(this.progress.iid)
-    this.progress = {
-      iid: 0,
-      played: 0,
-      callbacks: undefined
-    }
+    // avoid redefining a new object,
+    // otherwise timer will not pick up the timestamp change
+    clearTimeout(this.progress.timeoutId)
+    this.progress.playedMs = 0
+    this.progress.callbacks = undefined
   }
 
   /**
    * Resume the playback of paused source
    */
-  public resume(resumeAt?: number) {
+  public resume(resumeAtMs?: number) {
     if (!this.source) return
 
-    console.log('Resuming at', this.progress.played)
+    console.log(`Resuming at ${this.progress.playedMs} ms`)
     // move the source, loop range, callback and position
     const buffer = this.source.buffer
-    const loop = {
+    const loop: Loop = {
       enabled: this.source.loop,
-      start: this.source.loopStart,
-      end: this.source.loopEnd
+      startS: this.source.loopStart,
+      endS: this.source.loopEnd
     }
     const callbacks = this.progress.callbacks
     const volume = this.volume
 
-    if (resumeAt === undefined) resumeAt = this.progress.played
+    if (resumeAtMs === undefined) resumeAtMs = this.progress.playedMs
 
     // clean up
     this.source = undefined
     this.gain = undefined
-    this.progress.played = 0
+    this.progress.playedMs = 0
     this.progress.callbacks = undefined
 
     // set the source back and resume playback
     this.setSource(buffer as AudioBuffer, loop)
     this.volume = volume
-    this.play(resumeAt, callbacks as PlaybackCallbacks)
+    this.play(resumeAtMs, callbacks as PlaybackCallbacks)
   }
 
   /**
    * Pause the audio source
    */
   public pause() {
-    console.log('Pausing at', this.progress.played)
+    console.log(`Pausing at ${this.progress.playedMs} ms`)
 
     // stop the source
     if (this.source) this.source.stop()
 
     // stop the progress counter
-    clearInterval(this.progress.iid)
-    this.progress.iid = 0
+    clearTimeout(this.progress.timeoutId)
   }
 
-  public seek(position: number) {
+  public seek(positionMs: number) {
     if (!this.source) return
 
     const buffer = this.source.buffer
     if (!buffer) return
 
-    console.log('Seeking to', position)
-    const loop = {
+    console.log(`Seeking to ${positionMs} ms`)
+    const loop: Loop = {
       enabled: this.source.loop,
-      start: this.source.loopStart,
-      end: this.source.loopEnd
+      startS: this.source.loopStart,
+      endS: this.source.loopEnd
     }
     const callbacks = this.progress.callbacks
     const volume = this.volume
@@ -220,8 +235,8 @@ class AudioPlayer {
     this.stop()
     this.setSource(buffer, loop)
     this.volume = volume
-    this.progress.played = position
-    this.play(position, callbacks as PlaybackCallbacks)
+    this.progress.playedMs = positionMs
+    this.play(positionMs, callbacks as PlaybackCallbacks)
   }
 }
 
