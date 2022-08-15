@@ -12,7 +12,7 @@
   ],
   [
     {
-      "title": "Cafe",
+      "title": "Café de Springfield",
       "path": "GF_Cafe/GF_Cafe.ogg",
       "loop": {
         "start": 384861,
@@ -22,7 +22,7 @@
   ],
   [
     {
-      "title": "Memorial",
+      "title": "Roommate",
       "path": "GF_Memorial/GF_Memorial.ogg",
       "loop": {
         "start": 859354,
@@ -32,7 +32,7 @@
   ],
   [
     {
-      "title": "Daily 1",
+      "title": "Vacance 6.64",
       "path": "GF_Daily_01_loop/GF_Daily_01_loop.ogg",
       "loop": {
         "start": 0,
@@ -42,7 +42,7 @@
   ],
   [
     {
-      "title": "Daily 2",
+      "title": "Lyrique",
       "path": "GF_Daily02_loop/GF_Daily02_loop.ogg",
       "loop": {
         "start": 14516,
@@ -253,7 +253,7 @@
   ],
   [
     {
-      "title": "GF_MAP8_BGM_old",
+      "title": "Haza",
       "tags": "Chapter 8",
       "path": "GF_MAP8_BGM_old/GF_MAP8_BGM_old.ogg",
       "loop": {
@@ -264,7 +264,7 @@
   ],
   [
     {
-      "title": "GF_EV3_Intermission",
+      "title": "Synthesis Catalyst",
       "tags": "Deep Dive",
       "path": "GF_EV3_Intermission/GF_EV3_Intermission.ogg",
       "loop": {
@@ -275,7 +275,7 @@
   ],
   [
     {
-      "title": "GF_EV3_Map1_tri",
+      "title": "Adaptative Algorithm",
       "tags": "Deep Dive",
       "path": "GF_EV3_Map1_tri/GF_EV3_Map1_tri.ogg",
       "loop": {
@@ -286,7 +286,7 @@
   ],
   [
     {
-      "title": "GF_EV3_Map2",
+      "title": "Move On",
       "tags": "Deep Dive",
       "path": "GF_EV3_Map2/GF_EV3_Map2.ogg",
       "loop": {
@@ -297,7 +297,7 @@
   ],
   [
     {
-      "title": "GF_EV3_Map3",
+      "title": "Excavation",
       "tags": "Deep Dive",
       "path": "GF_EV3_Map3/GF_EV3_Map3.ogg",
       "loop": {
@@ -308,7 +308,7 @@
   ],
   [
     {
-      "title": "GF_EV3_MapEX",
+      "title": "Mind Hack",
       "tags": "Deep Dive",
       "path": "GF_EV3_MapEX/GF_EV3_MapEX.ogg",
       "loop": {
@@ -339,7 +339,7 @@
   ],
   [
     {
-      "title": "GF_MAP9_BGM",
+      "title": "Stay Alive",
       "tags": "Chapter 9",
       "path": "GF_MAP9_BGM/GF_MAP9_BGM.ogg",
       "loop": {
@@ -350,7 +350,7 @@
   ],
   [
     {
-      "title": "GF_MAP10_BGM",
+      "title": "Refrain",
       "tags": "Chapter 10",
       "path": "GF_MAP10_BGM/GF_MAP10_BGM.ogg",
       "loop": {
@@ -361,7 +361,7 @@
   ],
   [
     {
-      "title": "GF_EV4_intermission",
+      "title": "The War Has Begun",
       "tags": "Singularity",
       "path": "GF_EV4_intermission/GF_EV4_intermission.ogg",
       "loop": {
@@ -372,7 +372,7 @@
   ],
   [
     {
-      "title": "GF_EV4_Map1",
+      "title": "Granular Assembly",
       "tags": "Singularity",
       "path": "GF_EV4_Map1/GF_EV4_Map1.ogg",
       "loop": {
@@ -383,7 +383,7 @@
   ],
   [
     {
-      "title": "GF_EV4_Map2",
+      "title": "Autonome",
       "tags": "Singularity",
       "path": "GF_EV4_Map2/GF_EV4_Map2.ogg",
       "loop": {
@@ -394,7 +394,7 @@
   ],
   [
     {
-      "title": "GF_EV4_Map3",
+      "title": "Escalation",
       "tags": "Singularity",
       "path": "GF_EV4_Map3/GF_EV4_Map3.ogg",
       "loop": {
@@ -405,7 +405,7 @@
   ],
   [
     {
-      "title": "GF_EV4_Boss1",
+      "title": "Mythoclast",
       "tags": "Singularity",
       "path": "GF_EV4_Boss1/GF_EV4_Boss1.ogg",
       "loop": {
@@ -416,7 +416,7 @@
   ],
   [
     {
-      "title": "GF_EV4_Boss2",
+      "title": "Cradle of Fear",
       "tags": "Singularity",
       "path": "GF_EV4_Boss2/GF_EV4_Boss2.ogg",
       "loop": {
