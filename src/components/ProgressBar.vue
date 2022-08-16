@@ -29,7 +29,7 @@ const durationMMSS = computed(() => formatMMSS(props.duration));
       style="padding: 10px 0; margin: 0 10px; height: 6px;"
       width="100%"
       tooltip="none"
-      v-model="played"
+      :modelValue="played"
       :max="Math.ceil(duration)"
       @change="(v: number) => emit('seek', v)"
     />
