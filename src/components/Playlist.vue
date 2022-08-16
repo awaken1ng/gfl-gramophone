@@ -107,6 +107,7 @@ const trackTags = (trackIndex: number, variantIndex: number): string => {
 }
 
 .playlist > .item.loading {
+  position: relative;
   background-color: var(--highlight);
   animation: pulse 3s infinite ease-in-out;
   z-index: -1;
