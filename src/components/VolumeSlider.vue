@@ -49,8 +49,8 @@ const tooltipFormatter = (value: number) => {
     <Slider
       :class="{ active }"
       style="padding: 8px;"
-      v-model="volume"
       direction="ttb"
+      :modelValue="volume"
       :height="180"
       :min="0"
       :max="1"
